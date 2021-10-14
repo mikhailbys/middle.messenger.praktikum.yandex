@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/registry/registry.scss"],"names":[],"mappings":"AAEA;EACE,OAHS","file":"registry.1a6bad6a.css","sourceRoot":"../src","sourcesContent":["$color_h1: blue;\n\nh1 {\n  color: $color_h1;\n}"]}
