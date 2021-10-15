@@ -1,5 +1,107 @@
-$color_h1: blue;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-h1 {
-  color: $color_h1;
+// colors
+$primary: #3b74c9;
+$secondary: lightgray;
+
+// spacing
+$spacing: 24px;
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h3 {
+  text-align: center;
+}
+
+.container {
+  margin-top: 20vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  border: 0.5px solid lightgray;
+  border-radius: 5%;
+
+  padding: $spacing;
+  width: 40vh;
+
+  min-height: 40vh;
+  //height: 50vh;
+}
+
+.element-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+}
+
+label {
+  font-size: 12px;
+  color: darkgray;
+}
+
+form {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+input :last-child {
+  margin-bottom: 48px;
+}
+
+input {
+  display: block;
+  height: 24px;
+  margin-bottom: 12px;
+
+  width: 100%;
+
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: $primary
+}
+
+button {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 12px;
+
+  height: 32px;
+  padding: 0;
+
+  background-color: $primary;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 3%;
+  border: 0 solid $primary;
+  box-shadow: none;
+}
+
+a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  color: $primary;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-top: 48px;
+}
+
+.input-group {
+  margin-top: 0;
 }

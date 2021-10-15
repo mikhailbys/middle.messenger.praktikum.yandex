@@ -6,31 +6,33 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
     body
-        form
-            fieldset
-                legend Регистрация
-                label(for='mail') Почта
-                input(type='email' name='mail' id='mail')
+        div(class='container')
+            div(class='form-container')
+                form
+                    h3 Регистрация
 
-                label(for='login') Логин
-                input(type='text' name='login' id='login')
+                    label(for='mail') Почта
+                    input(type='email' name='mail' id='mail')
 
-                label(for='name') Имя
-                input(type='text' name='name' id='name')
+                    label(for='login') Логин
+                    input(type='text' name='login' id='login')
 
-                label(for='surname') Фамилия
-                input(type='text' name='surname' id='surname')
+                    label(for='name') Имя
+                    input(type='text' name='name' id='name')
 
-                label(for='phone') Телефон
-                input(type='tel' name='phone' id='phone')
+                    label(for='surname') Фамилия
+                    input(type='text' name='surname' id='surname')
 
-                label(for='password') Пароль
-                input(type='password' name='password' id='password')
+                    label(for='phone') Телефон
+                    input(type='tel' name='phone' id='phone')
 
-                label(for='password-repeat') Пароль (еще раз)
-                input(type='password' name='password-repeat' id='password-repeat')
+                    label(for='password') Пароль
+                    input(type='password' name='password' id='password')
 
-                button(type='submit') Зарегистрироваться
-                a(href='') Войти
+                    label(for='password-repeat') Пароль (еще раз)
+                    input(type='password' name='password-repeat' id='password-repeat')
+
+                    button(type='submit') Зарегистрироваться
+                    a(href='../../index.pug') Войти
 
         script(src='./registry.js')
