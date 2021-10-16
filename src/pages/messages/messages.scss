@@ -44,10 +44,10 @@ html {
 
 .list-header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
 
-  height: 75px;
+  height: 90px;
 
   width: 100%;
 
@@ -56,8 +56,8 @@ html {
 }
 
 .search-input {
-  margin: 20px;
-  width: 100%;
+  margin: 0 10px;
+  width: 90%;
   height: 25px;
 
   border: 0.5px solid gray;
@@ -140,4 +140,16 @@ input:focus {
 
   margin-left: 20px;
   margin-top: 3px;
+}
+
+.profile-container {
+  display: flex;
+  align-self: flex-end;
+}
+
+.profile {
+  color: gray;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
 }

@@ -34,16 +34,16 @@ html {
 
 .list-header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
-  height: 75px;
+  height: 90px;
   width: 100%;
   border-bottom: 0.5px solid gray;
 }
 
 .search-input {
-  margin: 20px;
-  width: 100%;
+  margin: 0 10px;
+  width: 90%;
   height: 25px;
   border: 0.5px solid gray;
   border-radius: 5px;
@@ -112,6 +112,18 @@ input:focus {
   height: 20px;
   margin-left: 20px;
   margin-top: 3px;
+}
+
+.profile-container {
+  display: flex;
+  align-self: flex-end;
+}
+
+.profile {
+  color: gray;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=/messages.3f2cafae.css.map */
