@@ -9,9 +9,45 @@ html(lang="en")
         div(class='container')
             div(class='list-container')
                 div(class='list-header')
-                    input(type='text' class='search-input')
+                    input(type='text' class='search-input' placeholder='Поиск')
 
-            div(class='chat-container' aria-placeholder='Поиск')
+                div(class='single-chat-container')
+                    div(class='avatar-container')
+                        div(class='avatar')
+
+                    div(class='message')
+                        h4(class='messenger-name') Андрей
+                        span(class='messenger-text') изображение
+
+                    div(class='info')
+                        span(class='time') 10:10
+                        div(class='counter') 2
+
+                div(class='single-chat-container')
+                    div(class='avatar-container')
+                        div(class='avatar')
+
+                    div(class='message')
+                        h4(class='messenger-name') Вася
+                        span(class='messenger-text') изображение
+
+                    div(class='info')
+                        span(class='time') 10:10
+                        div(class='counter') 2
+
+                div(class='single-chat-container')
+                    div(class='avatar-container')
+                        div(class='avatar')
+
+                    div(class='message')
+                        h4(class='messenger-name') Ирина
+                        span(class='messenger-text') изображение
+
+                    div(class='info')
+                        span(class='time') 10:10
+                        div(class='counter') 2
+
+            div(class='chat-container')
                 div(class='choose-chat')
                     span Выберите чат, чтобы начать общение
 
