@@ -116,7 +116,7 @@ h3 {
   }
 }
 
-.password-input {
+.password-input, .field-input {
   display: block;
   height: 24px;
 
@@ -124,4 +124,12 @@ h3 {
 
   outline: 0;
   border-width: 0 0 0px;
+
+  font-size: 12px;
+
+  color: gray;
+}
+
+.field-input {
+  text-align: end;
 }
