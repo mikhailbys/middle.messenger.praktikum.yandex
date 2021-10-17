@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/index.pug",
+    "start": "PORT=3000 parcel src/index.pug",
     "build": "parcel build src/index.pug -d docs --public-url ./"
   },
   "repository": {
