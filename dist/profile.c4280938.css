@@ -81,4 +81,26 @@ h3 {
   margin-top: 0;
 }
 
+.save-button {
+  border: 1px #3b74c9;
+  border-radius: 15px;
+  background-color: #3b74c9;
+  width: 20%;
+  text-align: center;
+  height: 25px;
+  padding: 10px 5px;
+}
+.save-button a {
+  color: white;
+  font-size: 14px;
+}
+
+.password-input {
+  display: block;
+  height: 24px;
+  width: 100%;
+  outline: 0;
+  border-width: 0 0 0px;
+}
+
 /*# sourceMappingURL=/profile.c4280938.css.map */
