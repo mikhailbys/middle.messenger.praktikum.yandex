@@ -7,32 +7,60 @@ html(lang="en")
         title Document
     body
         div(class='container')
-            div(class='form-container')
-                form
-                    h3 Регистрация
+            div(class='profile_image')
+                img(src='../../../public/svg/image.svg' class='empty-image')
+            div
+                h3(class='user-name') Михаил
 
-                    label(for='mail') Почта
-                    input(type='email' name='mail' id='mail')
+            div(class='row-data')
+                div(class='legend')
+                    span Почта
+                div(class='value')
+                    span pochta@mail.ru
 
-                    label(for='login') Логин
-                    input(type='text' name='login' id='login')
+            div(class='row-data')
+                div(class='legend')
+                    span Логин
+                div(class='value')
+                    span loggin
 
-                    label(for='name') Имя
-                    input(type='text' name='name' id='name')
+            div(class='row-data')
+                div(class='legend')
+                    span Имя
+                div(class='value')
+                    span Михаил
 
-                    label(for='surname') Фамилия
-                    input(type='text' name='surname' id='surname')
+            div(class='row-data')
+                div(class='legend')
+                    span Фамилия
+                div(class='value')
+                    span Иванов
 
-                    label(for='phone') Телефон
-                    input(type='tel' name='phone' id='phone')
+            div(class='row-data')
+                div(class='legend')
+                    span Имя в чате
+                div(class='value')
+                    span Михаил
 
-                    label(for='password') Пароль
-                    input(type='password' name='password' id='password')
+            div(class='row-data')
+                div(class='legend')
+                    span Телефон
+                div(class='value')
+                    span 8-999-140-14-14
 
-                    label(for='password-repeat') Пароль (еще раз)
-                    input(type='password' name='password-repeat' id='password-repeat')
 
-                    button(type='submit') Зарегистрироваться
-                    a(href='../../index.pug') Войти
+            div(class='row-data-action')
+                div(class='row-data')
+                    div(class='change-data')
+                        a(href='') Изменить данные
+
+                div(class='row-data')
+                    div(class='change-password')
+                        a(href='') Изменить пароль
+
+                div(class='row-data')
+                    div(class='log-out')
+                        a(href='../../index.pug' class='log-out') Выйти
+
 
         script(src='./profile.js')
