@@ -1,11 +1,5 @@
+@use 'src/styles/variables' as variables;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-
-// colors
-$primary: #3b74c9;
-$secondary: lightgray;
-
-// spacing
-$spacing: 24px;
 
 html {
   font-family: 'Open Sans', sans-serif;
@@ -16,22 +10,21 @@ h3 {
 }
 
 .container {
-  margin-top: 10vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-top: 10vh;
 }
 
 .form-container {
-  border: 0.5px solid lightgray;
+  border: 0.5px solid variables.$secondary;
   border-radius: 5%;
 
-  padding: $spacing;
-  width: 40vh;
+  padding: variables.$spacing_x2;
 
+  width: 40vh;
   min-height: 40vh;
-  //height: 50vh;
 }
 
 .element-container {
@@ -43,55 +36,56 @@ h3 {
 }
 
 label {
-  font-size: 12px;
+  font-size: variables.$small;
   color: darkgray;
 }
 
 form {
-  height: 100%;
-
   display: flex;
   flex-direction: column;
+
+  height: 100%;
 }
 
 input :last-child {
-  margin-bottom: 48px;
+  margin-bottom: variables.$spacing_x3;
 }
 
 input {
   display: block;
-  height: 24px;
-  margin-bottom: 12px;
 
   width: 100%;
+  height: variables.$spacing_x2;
+
+  margin-bottom: variables.$spacing_x1;
 
   outline: 0;
   border-width: 0 0 1px;
-  border-color: $primary
+  border-color: variables.$primary;
 }
 
 button {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: variables.$spacing_x1;
 
-  font-size: 12px;
+  font-size: variables.$small;
 
   height: 32px;
   padding: 0;
 
-  background-color: $primary;
+  background-color: variables.$primary;
   color: white;
   box-sizing: border-box;
   border-radius: 3%;
-  border: 0 solid $primary;
+  border: 0 solid variables.$primary;
   box-shadow: none;
 }
 
 a {
   text-align: center;
   text-decoration: none;
-  font-size: 12px;
-  color: $primary;
+  font-size: variables.$small;
+  color: variables.$primary;
 }
 
 .button-group {
@@ -99,7 +93,7 @@ a {
   flex-direction: column;
   justify-content: center;
 
-  margin-top: 48px;
+  margin-top: variables.$spacing_x3;
 }
 
 .input-group {

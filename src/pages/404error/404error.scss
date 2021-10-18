@@ -1,8 +1,5 @@
+@use 'src/styles/variables' as variables;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-
-// colors
-$primary: #3b74c9;
-$secondary: lightgray;
 
 html {
   font-family: 'Open Sans', sans-serif;
@@ -12,9 +9,9 @@ html {
   text-align: center;
 
   font-size: 50px;
-  letter-spacing: 14px;
+  letter-spacing: variables.$medium;
 
-  margin-bottom: 12px;
+  margin-bottom: variables.$small;
 }
 
 .container {
@@ -26,10 +23,11 @@ html {
 }
 
 .description {
-  font-size: 14px;
-  color: darkgrey;
-  margin-top: 6px;
+  font-size: variables.$medium;
+  color: variables.$default_dark;
   text-align: center;
+
+  margin-top: 6px;
 }
 
 .button-container {
@@ -41,18 +39,18 @@ html {
 
 button {
   display: block;
-  margin-top: 12px;
+  margin-top: variables.$spacing_x1;
 
-  font-size: 12px;
+  font-size: variables.$small;
 
   height: 32px;
   padding: 0;
 
-  background-color: $primary;
+  background-color: variables.$primary;
   color: white;
   box-sizing: border-box;
   border-radius: 3%;
-  border: 0 solid $primary;
+  border: 0 solid variables.$primary;
   box-shadow: none;
 }
 

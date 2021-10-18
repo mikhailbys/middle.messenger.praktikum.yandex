@@ -1,20 +1,14 @@
+@use 'src/styles/variables' as variables;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-
-// colors
-$primary: #3b74c9;
-$secondary: lightgray;
-
-// spacing
-$spacing: 24px;
 
 html {
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-size: variables.$small;
 }
 
 .profile_image{
-  border: 1px solid lightgray;
-  background-color: lightgray;
+  border: 1px solid variables.$secondary;
+  background-color: variables.$secondary;
   border-radius: 50%;
 
   width: 125px;
@@ -24,10 +18,9 @@ html {
 .empty-image {
   width: 60px;
   height: 60px;
-
-  color: gray;
-
   margin: 32px;
+
+  color: variables.$default;
 }
 
 .row-data {
@@ -36,9 +29,9 @@ html {
   justify-content: space-between;
 
   width: 40%;
-  border-bottom: 0.5px solid gray;
-
   padding: 8px;
+
+  border-bottom: 0.5px solid variables.$default;
 }
 
 .legend {
@@ -46,32 +39,31 @@ html {
 }
 
 .value {
-  color: gray;
+  color: variables.$default;
   font-weight: bold;
 }
 
 .row-data-action {
-  margin-top: 30px;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
+
   width: 100%;
+  margin-top: 30px;
 }
 
 a {
   text-align: center;
   text-decoration: none;
-  color: $primary;
+  color: variables.$primary;
 }
 
 .change-data, .change-password {
-  color: $primary;
+  color: variables.$primary;
 }
 
 .log-out {
-  color: red;
+  color: variables.$error;
 }
 
 h3 {
@@ -79,11 +71,11 @@ h3 {
 }
 
 .container {
-  margin-top: 10vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-top: 10vh;
 }
 
 .button-group {
@@ -91,7 +83,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
 
-  margin-top: 48px;
+  margin-top: variables.$spacing_x3;
 }
 
 .input-group {
@@ -99,35 +91,32 @@ h3 {
 }
 
 .save-button {
-  border: 1px $primary;
-  border-radius: 15px;
-
-  background-color: $primary;
   width: 20%;
-
-  text-align: center;
-
   height: 25px;
   padding: 10px 5px;
 
+  border: 1px variables.$primary;
+  border-radius: 15px;
+  background-color: variables.$primary;
+  text-align: center;
+
   a {
     color: white;
-    font-size: 14px;
+    font-size: variables.$medium;
   }
 }
 
 .password-input, .field-input {
   display: block;
-  height: 24px;
 
+  height: variables.$spacing_x2;
   width: 100%;
 
   outline: 0;
-  border-width: 0 0 0px;
+  border-width: 0 0 0;
 
-  font-size: 12px;
-
-  color: gray;
+  font-size: variables.$small;
+  color: variables.$default;
 }
 
 .field-input {
