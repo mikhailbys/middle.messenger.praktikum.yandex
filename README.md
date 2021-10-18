@@ -12,7 +12,7 @@
 
 - `npm install` — установка стабильной версии,
 - `npm run start` — запуск версии для разработчика,
-- `node ./src/server.js` — запуск Express.
+- `npm run server` — запуск Express.
 - 
 [Проект на netlify](https://epic-archimedes-a4c2f2.netlify.app)
 
