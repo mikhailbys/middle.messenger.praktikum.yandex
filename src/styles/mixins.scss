@@ -1,0 +1,33 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  justify-content: center;
+}
+
+@mixin flex-column-align-center {
+  @include flex-column;
+  align-items: center;
+}
+
+@mixin flex-column-space-between {
+  @include flex-column;
+  justify-content: space-between;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin fonts {
+  font-family: 'Open Sans', sans-serif;
+}

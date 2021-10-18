@@ -1,8 +1,9 @@
 @use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 html {
-  font-family: 'Open Sans', sans-serif;
+  @include mixins.fonts;
 }
 
 .header {
@@ -14,9 +15,7 @@ html {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include mixins.flex-column-align-center;
 
   margin-top: 25vh;
 }
@@ -29,8 +28,7 @@ html {
 }
 
 .button-container {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flex-column;
 
   width: 12%;
 }
@@ -39,11 +37,10 @@ button {
   display: block;
   margin-top: variables.$spacing_x1;
 
-  font-size: variables.$small;
-
   height: 32px;
   padding: 0;
 
+  font-size: variables.$small;
   background-color: variables.$primary;
   color: white;
   box-sizing: border-box;

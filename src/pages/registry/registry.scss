@@ -1,8 +1,9 @@
 @use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 html {
-  font-family: 'Open Sans', sans-serif;
+  @include mixins.fonts;
 }
 
 h3 {
@@ -10,9 +11,7 @@ h3 {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include mixins.flex-column-align-center;
 
   margin-top: 10vh;
 }
@@ -28,9 +27,7 @@ h3 {
 }
 
 .element-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include mixins.flex-column-space-between;
 
   height: 100%;
 }
@@ -41,8 +38,7 @@ label {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flex-column;
 
   height: 100%;
 }
@@ -89,9 +85,7 @@ a {
 }
 
 .button-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include mixins.flex-column-center;
 
   margin-top: variables.$spacing_x3;
 }
