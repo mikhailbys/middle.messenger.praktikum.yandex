@@ -15,23 +15,40 @@ html(lang="en")
                     label(for='mail') Почта
                     input(type='email' name='mail' id='mail')
 
+                    span(class='hide' id='mail-empty') Введите почту
+
                     label(for='login') Логин
                     input(type='text' name='login' id='login')
+
+                    span(class='hide' id='login-empty') Введите логин
 
                     label(for='name') Имя
                     input(type='text' name='first_name' id='name')
 
+                    span(class='hide' id='name-empty') Введите имя
+
                     label(for='surname') Фамилия
                     input(type='text' name='second_name' id='surname')
+
+                    span(class='hide' id='second-name-empty') Введите фамилию
 
                     label(for='phone') Телефон
                     input(type='tel' name='phone' id='phone')
 
+                    span(class='hide' id='phone-empty') Введите номер телефона
+
                     label(for='password') Пароль
                     input(type='password' name='password' id='password')
 
+                    span(class='hide' id='password-empty') Введите пароль
+                    span(class='hide' id='password-error') Пароль должен соответствовать определенному шаблону
+
                     label(for='password-repeat') Пароль (еще раз)
                     input(type='password' name='password-repeat' id='password-repeat')
+
+                    span(class='hide' id='password-repeat-empty') Повторите пароль
+                    span(class='hide' id='password-repeat-error') Пароль должен соответствовать определенному шаблону
+                    span(class='hide' id='password-repeat-equality') Введенные пароли не одинаковы
 
                     button(type='submit') Зарегистрироваться
                     a(href='../../index.pug') Войти

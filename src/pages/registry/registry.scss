@@ -93,3 +93,17 @@ a {
 .input-group {
   margin-top: 0;
 }
+
+.input-error {
+  border-color: variables.$error;
+}
+
+.hide {
+  display: none;
+}
+
+.show-error {
+  font-size: variables.$small;
+  color: variables.$error;
+  display: block;
+}
