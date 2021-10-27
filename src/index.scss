@@ -58,6 +58,20 @@ input {
   border-color: variables.$primary;
 }
 
+.input-error {
+  border-color: variables.$error;
+}
+
+.hide {
+  display: none;
+}
+
+.show-error {
+  font-size: variables.$small;
+  color: variables.$error;
+  display: block;
+}
+
 button {
   display: block;
   margin-bottom: variables.$spacing_x1;
