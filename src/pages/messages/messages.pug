@@ -52,4 +52,12 @@ html(lang="en")
 
             div(class='chat-container')
                 div(class='choose-chat')
-                    span Выберите чат, чтобы начать общение
+                    span(class='choose-chat-clue') Выберите чат, чтобы начать общение
+
+                div(class='new-message-container hide')
+                    input(class='message-input' name='message' type='text' placeholder='Введите сообщение..')
+
+                    div(class='send-button-container')
+                        button(class='send-button') >
+
+    script(src='./messages.ts')
