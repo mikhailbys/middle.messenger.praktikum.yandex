@@ -61,6 +61,8 @@ input {
 }
 
 button {
+  margin-top: variables.$spacing_x1;
+
   display: block;
   margin-bottom: variables.$spacing_x1;
 
@@ -82,12 +84,6 @@ a {
   text-decoration: none;
   font-size: variables.$small;
   color: variables.$primary;
-}
-
-.button-group {
-  @include mixins.flex-column-center;
-
-  margin-top: variables.$spacing_x3;
 }
 
 .input-group {

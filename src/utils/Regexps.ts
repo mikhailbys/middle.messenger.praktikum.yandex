@@ -1,1 +1,5 @@
-export const PASSWORD_REGEXP = '/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/';
+// more secure regex password must be :
+// more than 8 chars
+// at least one number
+// at least one special character
+export const PASSWORD_REGEXP=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
