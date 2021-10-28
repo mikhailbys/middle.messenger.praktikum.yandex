@@ -148,3 +148,13 @@ h3 {
 
   font-size: variables.$medium;
 }
+
+.hide {
+  display: none;
+}
+
+.show-error {
+  font-size: variables.$small;
+  color: variables.$error;
+  display: block;
+}
