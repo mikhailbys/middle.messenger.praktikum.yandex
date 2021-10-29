@@ -2,7 +2,14 @@ import EventBus from "../EventBus";
 
 interface Meta {
     tagName: string;
-    props: any;
+    props: Props;
+}
+
+interface Props {
+    className?: string,
+    type?: string,
+    label?: string,
+    onClick?: () => void
 }
 
 class Block {
@@ -17,7 +24,7 @@ class Block {
     _element: HTMLElement | null = null;
     _meta: Meta | null = null;
 
-    private props: any;
+    props: any;
     private eventBus: () => EventBus;
 
     constructor(tagName = "div", props = {}) {
@@ -45,8 +52,13 @@ class Block {
     }
 
     _createResources() {
-        const { tagName } = this._meta!;
+        const { tagName, props } = this._meta!;
         this._element = this._createDocumentElement(tagName);
+        props.className && this._element?.classList.add(props.className);
+        if (props.label) {
+            // @ts-ignore
+            this._element?.innerHTML = props.label;
+        }
     }
 
     init() {
@@ -62,11 +74,6 @@ class Block {
     // Может переопределять пользователь, необязательно трогать
     componentDidMount() {}
 
-    // эмитится через Event Bus после изменения пропсов блока.
-    // Если пропсы не поменялись, перерендер не нужен, если явно не переопределён в классе блока такой метод.
-    // Метод должен вернуть значение boolean.
-    // Если true — компоненту нужно перерендерить, если false — не нужно.
-    // Название события: flow:component-did-update,
     _componentDidUpdate(oldProps, newProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
         response && this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -92,14 +99,11 @@ class Block {
 
     _render() {
         const block = this.render();
-        // Этот небезопасный метод для упрощения логики
-        // Используйте шаблонизатор из npm или напишите свой безопасный
-        // Нужно не в строку компилировать (или делать это правильно),
-        // либо сразу в DOM-элементы возвращать из compile DOM-ноду
-        this._element!.innerHTML = block;
+        // Удалить старые события через removeEventListener
+        // Навесить новые события через addEventListener
+        this.props.onClick && this._element?.addEventListener('click', this.props.onClick)
     }
 
-    // todo
     render(): string {
         return ''
     }

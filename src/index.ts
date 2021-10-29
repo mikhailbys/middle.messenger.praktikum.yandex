@@ -1,5 +1,7 @@
 import {PASSWORD_REGEXP} from "./utils/Regexps";
 import {triggerValidateError} from "./utils/FormValidation";
+import Button from "./components/button/button";
+import {render} from "./utils/renderDOM";
 
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
 
@@ -53,3 +55,11 @@ function onSubmit(event: Event) {
 if (authForm) {
     authForm.onsubmit = onSubmit;
 }
+
+// test
+const button = new Button({
+    className: 'enter',
+    label: 'Тест',
+    onClick: () => console.log('click')
+});
+render('.form-container', button);
