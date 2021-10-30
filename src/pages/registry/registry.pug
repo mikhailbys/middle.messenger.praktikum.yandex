@@ -50,7 +50,9 @@ html(lang="en")
                     span(class='hide' id='password-repeat-error') Пароль должен соответствовать определенному шаблону
                     span(class='hide' id='password-repeat-equality') Введенные пароли не одинаковы
 
-                    button(type='submit') Зарегистрироваться
-                    a(href='../../index.pug') Войти
+                    div(class='submit-container')
+
+                    div(class='center-text')
+                        a(href='../../index.pug') Войти
 
     script(src='./registry.ts')

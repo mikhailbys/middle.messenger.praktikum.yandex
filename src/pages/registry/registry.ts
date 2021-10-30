@@ -1,5 +1,7 @@
 import {triggerValidateError} from "../../utils/FormValidation";
 import {PASSWORD_REGEXP} from "../../utils/Regexps";
+import Button from "../../components/button";
+import {render} from "../../utils/RenderDOM";
 
 const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
 
@@ -119,3 +121,9 @@ if (registryForm) {
         e.preventDefault();
     };
 }
+
+const registryButton = new Button({
+    buttonType: 'submit',
+    label: 'Зарегистрироваться'
+});
+render('.submit-container', registryButton);

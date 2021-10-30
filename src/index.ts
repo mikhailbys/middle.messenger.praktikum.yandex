@@ -1,6 +1,6 @@
 import {PASSWORD_REGEXP} from "./utils/Regexps";
 import {triggerValidateError} from "./utils/FormValidation";
-import Button from "./components/Button/Button.component";
+import Button from "./components/button/button.component";
 import {render} from "./utils/RenderDOM";
 
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
@@ -56,10 +56,8 @@ if (authForm) {
     authForm.onsubmit = onSubmit;
 }
 
-// test
-const button = new Button({
+const authButton = new Button({
     className: 'enter',
-    label: 'Тест',
-    onClick: () => console.log('click')
+    label: 'Авторизоваться'
 });
-render('.form-container', button);
+render('.button-group', authButton);

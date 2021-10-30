@@ -103,3 +103,11 @@ a {
   color: variables.$error;
   display: block;
 }
+
+.submit-container {
+  @include mixins.flex-column
+}
+
+.center-text {
+  text-align: center;
+}

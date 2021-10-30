@@ -1,5 +1,7 @@
 import {triggerValidateError} from "../../../utils/FormValidation";
 import {PASSWORD_REGEXP} from "../../../utils/Regexps";
+import Button from "../../../components/button";
+import {render} from "../../../utils/RenderDOM";
 
 const passwordForm: HTMLFormElement | null = document.querySelector('#password_form');
 
@@ -83,3 +85,10 @@ if (passwordForm) {
         validate() ? console.log({ oldPassword, newPassword, newPasswordRepeat }) : null;
     };
 }
+
+const saveButton = new Button({
+    className: 'submit',
+    label: 'Сохранить',
+    buttonType: 'submit'
+});
+render('.row-data-action', saveButton);

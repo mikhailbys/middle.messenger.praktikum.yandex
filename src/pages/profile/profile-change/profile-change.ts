@@ -1,4 +1,6 @@
 import {triggerValidateError} from "../../../utils/FormValidation";
+import Button from "../../../components/button";
+import {render} from "../../../utils/RenderDOM";
 
 const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
 
@@ -54,19 +56,27 @@ function validate() {
     return result;
 }
 
-if (profileForm) {
-    profileForm.onsubmit = (e) => {
-        e.preventDefault();
+function onSubmit(e: Event) {
+    e.preventDefault();
 
-        const formData = new FormData(profileForm);
+    const formData = new FormData(profileForm!);
+    const mail = formData.get('mail');
+    const login = formData.get('login');
+    const firstName = formData.get('firstName');
+    const secondName = formData.get('secondName');
+    const displayName = formData.get('displayName');
+    const phone = formData.get('phone');
 
-        const mail = formData.get('mail');
-        const login = formData.get('login');
-        const firstName = formData.get('firstName');
-        const secondName = formData.get('secondName');
-        const displayName = formData.get('displayName');
-        const phone = formData.get('phone');
-
-        validate() ? console.log({ mail, login, firstName, secondName, displayName, phone }) : null;
-    };
+    validate() ? console.log({ mail, login, firstName, secondName, displayName, phone }) : null;
 }
+
+if (profileForm) {
+    profileForm.onsubmit = onSubmit
+}
+
+const saveButton = new Button({
+    className: 'submit',
+    label: 'Сохранить',
+    buttonType: 'submit'
+});
+render('.row-data-action', saveButton);

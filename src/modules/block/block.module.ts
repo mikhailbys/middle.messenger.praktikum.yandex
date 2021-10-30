@@ -1,4 +1,4 @@
-import EventBus from "../EventBus";
+import EventBus from "../eventBus";
 
 interface Meta {
     tagName: string;
@@ -7,8 +7,8 @@ interface Meta {
 
 interface Props {
     className?: string,
-    type?: string,
     label?: string,
+    buttonType?: 'button' | 'submit' | 'reset',
     onClick?: () => void
 }
 
@@ -59,6 +59,7 @@ class Block {
             // @ts-ignore
             this._element?.innerHTML = props.label;
         }
+        props.buttonType && this._element?.setAttribute('type', props.buttonType);
     }
 
     init() {

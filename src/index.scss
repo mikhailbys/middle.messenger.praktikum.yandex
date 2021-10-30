@@ -105,3 +105,7 @@ a {
 .input-group {
   margin-top: 0;
 }
+
+.a-group {
+  @include mixins.flex-column;
+}

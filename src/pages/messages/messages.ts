@@ -1,4 +1,4 @@
-import Button from "../../components/Button";
+import Button from "../../components/button";
 import {render} from "../../utils/RenderDOM";
 
 const chats = document.querySelectorAll('.single-chat-container');
