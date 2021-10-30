@@ -1,6 +1,6 @@
 import Block from "../../modules/block";
 // @ts-ignore
-import templateCompile from "./button.template.pug";
+import templateCompile from "./Button.template.pug";
 
 type Props = {
     className?: string,
@@ -8,7 +8,7 @@ type Props = {
     onClick?: () => void
 }
 
-export default class Button extends Block {
+class Button extends Block {
     constructor(props: Props) {
         super("button", props);
     }
@@ -17,3 +17,5 @@ export default class Button extends Block {
         return templateCompile;
     }
 }
+
+export default Button;

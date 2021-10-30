@@ -1,12 +1,19 @@
-const chats = document.querySelectorAll('.single-chat-container');
+import Button from "../../components/Button";
+import {render} from "../../utils/RenderDOM";
 
+const chats = document.querySelectorAll('.single-chat-container');
 const messageContainer = document.querySelector('.new-message-container');
 const clue = document.querySelector('.choose-chat-clue');
-
 const messageInput: HTMLInputElement | null = document.querySelector('.message-input');
-const sendButton = document.querySelector('.send-button');
 
-function validate() {
+chats.forEach(chat => {
+    chat.addEventListener('click', () => {
+        messageContainer?.classList.remove('hide');
+        clue?.classList.add('hide');
+    })
+});
+
+function validateMessageInput() {
     let result = true;
 
     if(messageInput?.value === '') {
@@ -17,14 +24,14 @@ function validate() {
     return result;
 }
 
-chats.forEach(chat => {
-    chat.addEventListener('click', () => {
-        messageContainer?.classList.remove('hide');
-        clue?.classList.add('hide');
-    })
-});
+function onSend() {
+    validateMessageInput() ? console.log({ message: messageInput?.value}) : null;
+}
 
-sendButton?.addEventListener('click', () => {
-    validate() ? console.log({ message: messageInput?.value}) : null;
+const sendButton = new Button({
+    className: 'send-button',
+    label: '>',
+    onClick: onSend
 });
+render('.send-button-container', sendButton);
 

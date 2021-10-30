@@ -1,7 +1,7 @@
 import {PASSWORD_REGEXP} from "./utils/Regexps";
 import {triggerValidateError} from "./utils/FormValidation";
-import Button from "./components/button/button";
-import {render} from "./utils/renderDOM";
+import Button from "./components/Button/Button.component";
+import {render} from "./utils/RenderDOM";
 
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
 
