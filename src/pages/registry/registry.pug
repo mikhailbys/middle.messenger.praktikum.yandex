@@ -21,14 +21,19 @@ html(lang="en")
                     input(type='text' name='login' id='login')
 
                     span(class='hide' id='login-empty') Введите логин
+                    span(class='hide' id='login-error') Допустимая длинна логина 3-20 символов, латинские буквы, цифры, без пробелов, без спецсимволов (кроме "-", "_").
+
 
                     label(for='firstName') Имя
                     input(type='text' name='firstName' id='firstName')
 
                     span(class='hide' id='first-name-empty') Введите имя
+                    span(class='hide' id='first-name-error') Убедитесь в отсутствии пробелов, спецсимволов (кроме "-"), имя должно начинаться с прописной буквы
 
                     label(for='secondName') Фамилия
                     input(type='text' name='secondName' id='secondName')
+                    span(class='hide' id='second-name-error') Убедитесь в отсутствии пробелов, спецсимволов (кроме "-"), имя должно начинаться с прописной буквы
+
 
                     span(class='hide' id='second-name-empty') Введите фамилию
 

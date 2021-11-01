@@ -1,9 +1,12 @@
 import {triggerValidateError} from "../../utils/FormValidation";
-import {PASSWORD_REGEXP} from "../../utils/Regexps";
+import {FIO_MASK, PASSWORD_REGEXP} from "../../utils/Regexps";
 import Button from "../../components/button";
 import {render} from "../../utils/RenderDOM";
 
 const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
+
+//латиница или кириллица, первая буква должна быть заглавной,
+// без пробелов и без цифр, нет спецсимволов (допустим только дефис).
 
 function validate() {
     let result = true;
@@ -38,9 +41,16 @@ function validate() {
     document.querySelector('#password-repeat-empty')?.classList.remove('show-error');
     document.querySelector('#password-repeat-error')?.classList.remove('show-error');
     document.querySelector('#password-repeat-equality')?.classList.remove('show-error');
+    document.querySelector('#first-name-error')?.classList.remove('show-error');
+    document.querySelector('#second-name-error')?.classList.remove('show-error');
 
     if (login.value === '') {
         triggerValidateError(login, '#login-empty');
+        result = false;
+    }
+
+    if (login.value !== '' && !login.value.match(FIO_MASK)) {
+        triggerValidateError(login, '#login-error');
         result = false;
     }
 
@@ -54,8 +64,18 @@ function validate() {
         result = false;
     }
 
+    if (firstName.value !== '' && !firstName.value.match(FIO_MASK)) {
+        triggerValidateError(firstName, '#first-name-error');
+        result = false;
+    }
+
     if (secondName.value === '') {
         triggerValidateError(secondName, '#second-name-empty');
+        result = false;
+    }
+
+    if (secondName.value !== '' && !secondName.value.match(FIO_MASK)) {
+        triggerValidateError(secondName, '#second-name-error');
         result = false;
     }
 

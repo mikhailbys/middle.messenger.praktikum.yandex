@@ -1,6 +1,7 @@
 import {triggerValidateError} from "../../../utils/FormValidation";
 import Button from "../../../components/button";
 import {render} from "../../../utils/RenderDOM";
+import {FIO_MASK, LOGIN_MASK} from "../../../utils/Regexps";
 
 const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
 
@@ -22,9 +23,17 @@ function validate() {
     document.querySelector('#mail-empty')?.classList.remove('show-error');
     document.querySelector('#phone-empty')?.classList.remove('show-error');
     document.querySelector('#display-name-empty')?.classList.remove('show-error');
+    document.querySelector('#first-name-error')?.classList.remove('show-error');
+    document.querySelector('#second-name-error')?.classList.remove('show-error');
+    document.querySelector('#login-error')?.classList.remove('show-error');
 
     if (login.value === '') {
         triggerValidateError(login, '#login-empty');
+        result = false;
+    }
+
+    if (login.value !== '' && !login.value.match(LOGIN_MASK)) {
+        triggerValidateError(login, '#login-error');
         result = false;
     }
 
@@ -33,8 +42,18 @@ function validate() {
         result = false;
     }
 
+    if (firstName.value !== '' && !firstName.value.match(FIO_MASK)) {
+        triggerValidateError(firstName, '#first-name-error');
+        result = false;
+    }
+
     if (secondName.value === '') {
         triggerValidateError(secondName, '#second-name-empty');
+        result = false;
+    }
+
+    if (secondName.value !== '' && !secondName.value.match(FIO_MASK)) {
+        triggerValidateError(secondName, '#second-name-error');
         result = false;
     }
 
