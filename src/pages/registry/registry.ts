@@ -1,12 +1,9 @@
 import {triggerValidateError} from "../../utils/FormValidation";
-import {FIO_MASK, PASSWORD_REGEXP} from "../../utils/Regexps";
+import {FIO_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Regexps";
 import Button from "../../components/button";
 import {render} from "../../utils/RenderDOM";
 
 const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
-
-//латиница или кириллица, первая буква должна быть заглавной,
-// без пробелов и без цифр, нет спецсимволов (допустим только дефис).
 
 function validate() {
     let result = true;
@@ -43,6 +40,7 @@ function validate() {
     document.querySelector('#password-repeat-equality')?.classList.remove('show-error');
     document.querySelector('#first-name-error')?.classList.remove('show-error');
     document.querySelector('#second-name-error')?.classList.remove('show-error');
+    document.querySelector('#phone-error')?.classList.remove('show-error');
 
     if (login.value === '') {
         triggerValidateError(login, '#login-empty');
@@ -81,6 +79,11 @@ function validate() {
 
     if (phone.value === '') {
         triggerValidateError(phone, '#phone-empty');
+        result = false;
+    }
+
+    if (phone.value !== '' && !phone.value.match(PHONE_MASK)) {
+        triggerValidateError(phone, '#phone-error');
         result = false;
     }
 

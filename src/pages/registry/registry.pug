@@ -41,12 +41,14 @@ html(lang="en")
                     input(type='tel' name='phone' id='phone')
 
                     span(class='hide' id='phone-empty') Введите номер телефона
+                    span(class='hide' id='phone-error') Телефон должен быть от 10 до 20 символов длинной и состоять только из цифр
+
 
                     label(for='password') Пароль
                     input(type='password' name='password' id='password')
 
                     span(class='hide' id='password-empty') Введите пароль
-                    span(class='hide' id='password-error') Пароль должен соответствовать определенному шаблону
+                    span(class='hide' id='password-error') Пароль должен содержать от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.
 
                     label(for='passwordRepeat') Пароль (еще раз)
                     input(type='password' name='passwordRepeat' id='passwordRepeat')
