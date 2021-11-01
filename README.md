@@ -23,5 +23,7 @@
 
 [Pull-request](https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/2)
 
+https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/2
+
 
 
