@@ -21,4 +21,7 @@
 
 [Проект на netlify](https://epic-archimedes-a4c2f2.netlify.app)
 
+[Pull-request](https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/2)
+
+
 
