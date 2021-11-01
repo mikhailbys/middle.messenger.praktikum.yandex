@@ -1,4 +1,4 @@
-import {PASSWORD_REGEXP} from "./utils/Regexps";
+import {PASSWORD_REGEXP} from "./utils/Masks";
 import {triggerValidateError} from "./utils/FormValidation";
 import Button from "./components/button/button.component";
 import {render} from "./utils/RenderDOM";
