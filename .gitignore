@@ -1,0 +1,15 @@
+.cache
+.cache/**
+
+.github
+.github/**
+
+.idea
+.idea/**
+
+dist
+dist/**
+
+node_modules
+
+./package-lock.json

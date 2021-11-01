@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        link(rel='stylesheet', href='./profile.scss')
+    body
+        div(class='container')
+            div(class='profile_image')
+                img(src='../../../public/svg/image.svg' class='empty-image')
+            div
+                h3(class='user-name') Михаил
+
+            div(class='row-data')
+                div(class='legend')
+                    span Почта
+                div(class='value')
+                    span pochta@mail.ru
+
+            div(class='row-data')
+                div(class='legend')
+                    span Логин
+                div(class='value')
+                    span loggin
+
+            div(class='row-data')
+                div(class='legend')
+                    span Имя
+                div(class='value')
+                    span Михаил
+
+            div(class='row-data')
+                div(class='legend')
+                    span Фамилия
+                div(class='value')
+                    span Иванов
+
+            div(class='row-data')
+                div(class='legend')
+                    span Имя в чате
+                div(class='value')
+                    span Михаил
+
+            div(class='row-data')
+                div(class='legend')
+                    span Телефон
+                div(class='value')
+                    span 8-999-140-14-14
+
+
+            div(class='row-data-action')
+                div(class='row-data')
+                    div(class='change-data')
+                        a(href='./profile-change/profile-change.pug') Изменить данные
+
+                div(class='row-data')
+                    div(class='change-password')
+                        a(href='./password-change/password-change.pug') Изменить пароль
+
+                div(class='row-data')
+                    div(class='log-out')
+                        a(href='../../index.pug' class='log-out') Выйти

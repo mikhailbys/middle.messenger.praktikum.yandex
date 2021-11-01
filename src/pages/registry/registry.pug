@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        link(rel='stylesheet', href='./registry.scss')
+    body
+        div(class='container')
+            div(class='form-container')
+                form
+                    h3 Регистрация
+
+                    label(for='mail') Почта
+                    input(type='email' name='mail' id='mail')
+
+                    label(for='login') Логин
+                    input(type='text' name='login' id='login')
+
+                    label(for='name') Имя
+                    input(type='text' name='first_name' id='name')
+
+                    label(for='surname') Фамилия
+                    input(type='text' name='second_name' id='surname')
+
+                    label(for='phone') Телефон
+                    input(type='tel' name='phone' id='phone')
+
+                    label(for='password') Пароль
+                    input(type='password' name='password' id='password')
+
+                    label(for='password-repeat') Пароль (еще раз)
+                    input(type='password' name='password-repeat' id='password-repeat')
+
+                    button(type='submit') Зарегистрироваться
+                    a(href='../../index.pug') Войти

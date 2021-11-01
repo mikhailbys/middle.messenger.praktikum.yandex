@@ -1,0 +1,95 @@
+@use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+html {
+  @include mixins.fonts;
+}
+
+h3 {
+  text-align: center;
+}
+
+.container {
+  @include mixins.flex-column-align-center;
+
+  margin-top: 10vh;
+}
+
+.form-container {
+  border: 0.5px solid variables.$secondary;
+  border-radius: 5%;
+
+  padding: variables.$spacing_x2;
+
+  width: 40vh;
+  min-height: 40vh;
+}
+
+.element-container {
+  @include mixins.flex-column-space-between;
+
+  height: 100%;
+}
+
+label {
+  font-size: variables.$small;
+  color: darkgray;
+}
+
+form {
+  @include mixins.flex-column;
+
+  height: 100%;
+}
+
+input :last-child {
+  margin-bottom: variables.$spacing_x3;
+}
+
+input {
+  display: block;
+
+  width: 100%;
+  height: variables.$spacing_x2;
+
+  margin-bottom: variables.$spacing_x1;
+
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: variables.$primary;
+}
+
+button {
+  display: block;
+  margin-bottom: variables.$spacing_x1;
+
+  font-size: variables.$small;
+
+  height: 32px;
+  padding: 0;
+
+  background-color: variables.$primary;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 3%;
+  border: 0 solid variables.$primary;
+  box-shadow: none;
+}
+
+a {
+  text-align: center;
+  text-decoration: none;
+  font-size: variables.$small;
+  color: variables.$primary;
+}
+
+.button-group {
+  @include mixins.flex-column-center;
+
+  margin-top: variables.$spacing_x3;
+}
+
+.input-group {
+  margin-top: 0;
+}

@@ -1,0 +1,140 @@
+@use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+html {
+  @include mixins.fonts;
+}
+
+.container {
+  display: flex;
+
+  width: 100%;
+  padding: 0;
+}
+
+.list-container {
+  border-right: 1px solid variables.$secondary;
+
+  height: 100vh;
+  width: 30%;
+
+  background-color: lighten(variables.$default_dark, 30%);
+}
+
+.chat-container {
+  text-align: center;
+
+  height: 100vh;
+  width: 70%;
+}
+
+.choose-chat {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.list-header {
+  @include mixins.flex-column;
+  align-items: baseline;
+
+  height: 90px;
+  width: 100%;
+
+  border-bottom: 0.5px solid variables.$default;
+}
+
+.search-input {
+  margin: 0 10px;
+  width: 90%;
+  height: 25px;
+
+  border: 0.5px solid variables.$default;
+  border-radius: 5px;
+
+  font-size: variables.$medium;
+  text-align: start;
+
+  padding: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.single-chat-container {
+  display: flex;
+
+  width: 100%;
+  height: 75px;
+
+  border-bottom: 0.5px solid variables.$default;
+
+  margin-right: 5px;
+}
+
+.avatar-container {
+  padding: 8px 8px;
+}
+
+.avatar{
+  border: 1px solid variables.$secondary;
+  background-color: variables.$secondary;
+  border-radius: 50%;
+
+  width: 55px;
+  height: 55px;
+}
+
+.messenger-name {
+  margin: 8px 0;
+}
+
+.messenger-text {
+  color: variables.$default;
+}
+
+.message {
+  @include mixins.flex-column;
+
+  margin-right: 140px;
+}
+
+.info {
+  @include mixins.flex-column;
+}
+
+.time {
+  color: variables.$default;
+  padding: 8px 5px;
+}
+
+.counter {
+  border: 1px solid variables.$primary;
+  background-color: variables.$primary;
+  color: white;
+
+  border-radius: 50%;
+
+  text-align: center;
+  font-size: variables.$medium;
+
+  width: 20px;
+  height: 20px;
+
+  margin-left: 20px;
+  margin-top: 3px;
+}
+
+.profile-container {
+  display: flex;
+  align-self: flex-end;
+}
+
+.profile {
+  color: variables.$default;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: variables.$medium;
+}
