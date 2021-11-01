@@ -1,5 +1,5 @@
 import {triggerValidateError} from "../../utils/FormValidation";
-import {FIO_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
+import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
 import Button from "../../components/button";
 import {render} from "../../utils/RenderDOM";
 
@@ -41,13 +41,14 @@ function validate() {
     document.querySelector('#first-name-error')?.classList.remove('show-error');
     document.querySelector('#second-name-error')?.classList.remove('show-error');
     document.querySelector('#phone-error')?.classList.remove('show-error');
+    document.querySelector('#login-error')?.classList.remove('show-error');
 
     if (login.value === '') {
         triggerValidateError(login, '#login-empty');
         result = false;
     }
 
-    if (login.value !== '' && !login.value.match(FIO_MASK)) {
+    if (login.value !== '' && !login.value.match(LOGIN_MASK)) {
         triggerValidateError(login, '#login-error');
         result = false;
     }
