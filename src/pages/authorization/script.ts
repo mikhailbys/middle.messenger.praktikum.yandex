@@ -1,7 +1,11 @@
-import {PASSWORD_REGEXP} from "./utils/Masks";
-import {triggerValidateError} from "./utils/FormValidation";
-import Button from "./components/button/button.component";
-import {render} from "./utils/RenderDOM";
+import {triggerValidateError} from "../../utils/FormValidation";
+import {PASSWORD_REGEXP} from "../../utils/Masks";
+import AuthPage from './authorization.view';
+import {render} from "../../utils/RenderDOM";
+
+const authPage = new AuthPage({ attributes: {}});
+
+render('#root', authPage);
 
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
 
@@ -55,9 +59,3 @@ function onSubmit(event: Event) {
 if (authForm) {
     authForm.onsubmit = onSubmit;
 }
-
-const authButton = new Button({
-    className: 'enter',
-    label: 'Авторизоваться'
-});
-render('.button-group', authButton);

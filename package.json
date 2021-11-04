@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "PORT=3000 parcel src/index.pug",
+    "start": "PORT=3000 parcel src/pages/authorization/index.html",
     "build": "parcel build src/index.pug -d docs --public-url ./",
     "server": "node src/server/server.js",
     "lint": "node_modules/.bin/eslint . ",
@@ -28,10 +28,13 @@
   "homepage": "https://github.com/mikhailbys/middle.messenger.praktikum.yandex#readme",
   "dependencies": {},
   "devDependencies": {
+    "@parcel/transformer-pug": "^2.0.0",
+    "parcel": "^2.0.0",
+    "parcel-transformer-pug-precompile": "^1.0.6",
+    "@parcel/transformer-sass": "^2.0.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
-    "parcel-bundler": "^1.12.5",
     "pug": "^3.0.2",
     "sass": "^1.42.1",
     "stylelint": "^14.0.1",

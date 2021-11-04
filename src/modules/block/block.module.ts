@@ -12,8 +12,9 @@ interface Props {
     onClick?: () => void
 }
 
-class Block {
+const ACCESS_ERROR_MESSAGE = 'Нет доступа';
 
+class Block {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -21,92 +22,118 @@ class Block {
         FLOW_CDU: 'flow:component-did-update'
     };
 
-    _element: HTMLElement | null = null;
-    _meta: Meta | null = null;
-
-    props: any;
-    private eventBus: () => EventBus;
-
-    constructor(tagName = 'div', props = {}) {
-        const eventBus = new EventBus();
-        this._meta = {
-            tagName,
-            props
-        };
-
-        this.props = this._makePropsProxy(props);
-
-        this.eventBus = () => eventBus;
-
-
-        this._registerEvents(eventBus);
-
-        eventBus.emit(Block.EVENTS.INIT);
-    }
-
-    _registerEvents(eventBus) {
-        eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-    }
-
-    _createResources() {
-        const { tagName, props } = this._meta!;
-        this._element = this._createDocumentElement(tagName);
-        props.className && this._element?.classList.add(props.className);
-        if (props.label) {
-            // @ts-ignore
-            this._element?.innerHTML = props.label;
-        }
-        props.buttonType && this._element?.setAttribute('type', props.buttonType);
-    }
-
-    init() {
-        this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-    }
-
-    _componentDidMount() {
-        this.componentDidMount();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    }
-
-    // Может переопределять пользователь, необязательно трогать
-    componentDidMount() {}
-
-    _componentDidUpdate(oldProps, newProps) {
-        const response = this.componentDidUpdate(oldProps, newProps);
-        response && this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    }
-
-    // Может переопределять пользователь, необязательно трогать
-    componentDidUpdate(oldProps, newProps) {
-        return oldProps !== newProps;//todo
-    }
-
-    setProps = nextProps => {
-        if (!nextProps) {
-            return;
-        }
-        const oldProps = this.props;
-        Object.assign(this.props, nextProps);
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
-    };
+    _element: HTMLElement;
+    _meta: Meta;
+    props: { attributes?: { string: string }, name?: string };
+    eventBus: EventBus;
+    children: Record<string, Block>;
 
     get element() {
         return this._element;
     }
 
-    _render() {
-        const block = this.render();
-        // Удалить старые события через removeEventListener
-        // Навесить новые события через addEventListener
-        this.props.onClick && this._element?.addEventListener('click', this.props.onClick)
+    constructor(tagName = 'div', props = {}, children = {}) {
+        this.eventBus = new EventBus();
+        this._meta = { tagName, props };
+        this.props = this._makePropsProxy(props);
+        this.children = children;
+        this._registerEvents();
+        this.eventBus.emit(Block.EVENTS.INIT);
     }
 
-    render(): string {
-        return ''
+    _registerEvents() {
+        this.eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+        this.eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+        this.eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+        this.eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    }
+
+    _setAttributes(element: HTMLElement, attributes: Record<string, string> = {}) {
+        Object.keys(attributes).forEach((attr: string) => {
+            element.setAttribute(attr, attributes[attr]);
+        });
+    }
+
+    _createDocumentElement(tagName: string, attributes = {}) {
+        const element = document.createElement(tagName);
+        this._setAttributes(element, attributes);
+        return element;
+    }
+
+    _createResources() {
+        const { tagName } = this._meta;
+        this._element = this._createDocumentElement(tagName, this.props.attributes);
+    }
+
+    init() {
+        this._createResources();
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    }
+
+    _componentDidMount() {
+        this.componentDidMount(this.props);
+    }
+
+    componentDidMount(_oldProps: any): void | boolean {
+        return false;
+    }
+
+    _updateResources(newProps: { attributes?: {}; }) {
+        const { attributes = {} } = newProps;
+        this._setAttributes(this.element, attributes);
+    }
+
+    _componentDidUpdate(newProps: any, oldProps: any) {
+        this.componentDidUpdate(newProps, oldProps);
+        this._updateResources(newProps);
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    }
+
+    componentDidUpdate(_newProps: any, _oldProps: any): void | boolean {
+        return true; // todo
+    }
+
+    setProps = (nextProps: any) => {
+        if (nextProps) {
+            Object.assign(this.props, nextProps);
+        }
+    };
+
+    stringToDocumentFragment(string: string) {
+        const template = document.createElement('template');
+        template.innerHTML = string;
+        return template.content;
+    }
+
+    replaceChildren() {
+        if (!Object.values(this.children).length) return;
+        const childrenToReplace = this.element.querySelectorAll('[data-component]');
+        childrenToReplace.forEach((childrenToReplace) => {
+            // @ts-ignore
+            const componentName = childrenToReplace.dataset.component; //todo
+            const parentBlock = childrenToReplace.parentNode;
+            const child = this.children[componentName];
+            if (parentBlock !== null) {
+                parentBlock.replaceChild(child.getContent(), childrenToReplace);
+            }
+        });
+    }
+
+    _render() {
+        this.element.innerHTML = '';
+        const block = this.render();
+        console.log('block', block);
+        if (typeof block === 'string') {
+            const fragment = this.stringToDocumentFragment(block);
+            console.log('fragment', fragment.textContent);
+            this.element.append(fragment);
+        }
+        this.replaceChildren();
+        this.eventBus.emit(Block.EVENTS.FLOW_CDM);
+    }
+
+    render() {
+        return false;
     }
 
     getContent() {
@@ -125,14 +152,9 @@ class Block {
                 return true;
             },
             deleteProperty() {
-                throw new Error('Нет доступа');
+                throw new Error(ACCESS_ERROR_MESSAGE);
             },
         });
-    }
-
-    _createDocumentElement(tagName) {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        return document.createElement(tagName);
     }
 
     show() {

@@ -1,6 +1,6 @@
 import Block from '../../modules/block';
 // @ts-ignore
-import templateCompile from './button.template.pug';
+import templateCompile from './authorization.template.pug';
 
 type Props = {
     label?: string,
@@ -12,19 +12,15 @@ type Props = {
     },
 }
 
-class Button extends Block {
-    _label: string;
-
-    constructor(props: Props, label?: string) {
+class Page extends Block {
+    constructor(props: Props) {
         super('div', props);
     }
 
-
     render() {
-        const template = templateCompile({ label: 'Label!' });
-        console.log('template', template);
+        const template = templateCompile();
         return template;
     }
 }
 
-export default Button;
+export default Page;

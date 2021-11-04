@@ -1,5 +1,11 @@
 import {triggerValidateError} from '../../utils/FormValidation';
 import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from '../../utils/Masks';
+import {render} from '../../utils/RenderDOM';
+import RegistryPage from "./registyr.view";
+
+const registryPage = new RegistryPage({ attributes: {}});
+
+render('#root', registryPage);
 
 const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
 
@@ -144,7 +150,4 @@ if (registryForm) {
     };
 }
 
-/*const registryButton = new Button({
-    label: 'Зарегистрироваться'
-});
-render('.submit-container', registryButton);*/
+console.log('SECOND!!');
