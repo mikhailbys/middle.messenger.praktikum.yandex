@@ -1,7 +1,7 @@
-import {triggerValidateError} from "../../../utils/FormValidation";
-import {PASSWORD_REGEXP} from "../../../utils/Masks";
-import Button from "../../../components/button";
-import {render} from "../../../utils/RenderDOM";
+import {triggerValidateError} from '../../../utils/FormValidation';
+import {PASSWORD_REGEXP} from '../../../utils/Masks';
+import Button from '../../../components/button';
+import {render} from '../../../utils/RenderDOM';
 
 const passwordForm: HTMLFormElement | null = document.querySelector('#password_form');
 

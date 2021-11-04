@@ -1,7 +1,7 @@
-import {triggerValidateError} from "../../utils/FormValidation";
-import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
-import Button from "../../components/button";
-import {render} from "../../utils/RenderDOM";
+import {triggerValidateError} from '../../utils/FormValidation';
+import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from '../../utils/Masks';
+import Button from '../../components/button';
+import {render} from '../../utils/RenderDOM';
 
 const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
 

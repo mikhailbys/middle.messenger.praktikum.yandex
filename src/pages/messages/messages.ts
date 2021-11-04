@@ -1,5 +1,5 @@
-import Button from "../../components/button";
-import {render} from "../../utils/RenderDOM";
+import Button from '../../components/button';
+import {render} from '../../utils/RenderDOM';
 
 const chats = document.querySelectorAll('.single-chat-container');
 const messageContainer = document.querySelector('.new-message-container');

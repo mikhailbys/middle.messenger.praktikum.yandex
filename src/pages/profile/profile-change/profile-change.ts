@@ -1,7 +1,7 @@
-import {triggerValidateError} from "../../../utils/FormValidation";
-import Button from "../../../components/button";
-import {render} from "../../../utils/RenderDOM";
-import {FIO_MASK, LOGIN_MASK} from "../../../utils/Masks";
+import {triggerValidateError} from '../../../utils/FormValidation';
+import Button from '../../../components/button';
+import {render} from '../../../utils/RenderDOM';
+import {FIO_MASK, LOGIN_MASK} from '../../../utils/Masks';
 
 const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
 
