@@ -7,7 +7,8 @@ type Props = {
         className?: string,
         label?: string,
         type?: string,
-        name?: string
+        name?: string,
+        id?: string
     },
 }
 
@@ -20,7 +21,7 @@ class Input extends Block {
 
     render() {
         const template = templateCompile();
-        console.log('template', template);
+        console.log('inputTemplate', template);
         return template;
     }
 }

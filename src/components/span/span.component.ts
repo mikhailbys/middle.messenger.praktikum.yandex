@@ -5,8 +5,8 @@ import templateCompile from './span.template.pug';
 type Props = {
     label?: string,
     attributes: {
-        className?: string,
-        label?: string
+        class?: string,
+        id?: string
     },
 }
 
@@ -19,7 +19,7 @@ class Label extends Block {
 
 
     render() {
-        const template = templateCompile({ label: 'Label!' });
+        const template = templateCompile({label: 'Введи'});
         console.log('template', template);
         return template;
     }

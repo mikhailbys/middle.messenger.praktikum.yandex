@@ -1,12 +1,36 @@
 import {triggerValidateError} from "../../utils/FormValidation";
 import {PASSWORD_REGEXP} from "../../utils/Masks";
+
 import AuthPage from './authorization.view';
+import Input from '../../components/input/input.component';
+import Label from '../../components/label/label.component';
+import Span from '../../components/span/span.component';
+
 import {render} from "../../utils/RenderDOM";
 
+// шаблон страницы
 const authPage = new AuthPage({ attributes: {}});
-
 render('#root', authPage);
 
+const loginLabel = new Label({ attributes: {}});
+render('.input-group', loginLabel);
+const loginInput = new Input({ attributes: { type: 'text', name: 'login', id: 'login' }});
+render('.input-group', loginInput);
+const loginEmpty = new Span({ attributes: { class: 'hide', id: 'login-empty' }});
+render('.input-group', loginEmpty);
+
+const passwordLabel = new Label({ attributes: {}});
+render('.input-group', passwordLabel);
+const passwordInput = new Input({ attributes: { type: 'password', name: 'password', id: 'password' }});
+render('.input-group', passwordInput);
+//Пароль должен соответствовать определенному шаблону
+const passwordEmpty = new Span({ attributes: { class: 'hide', id: 'password-error' }});
+render('.input-group', passwordEmpty);
+//Введите пароль
+const passwordError = new Span({ attributes: { class: 'hide', id: 'password-empty' }});
+render('.input-group', passwordError);
+
+// Работа с формой
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
 
 function validate() {
@@ -59,3 +83,5 @@ function onSubmit(event: Event) {
 if (authForm) {
     authForm.onsubmit = onSubmit;
 }
+
+console.log('adasdas')
