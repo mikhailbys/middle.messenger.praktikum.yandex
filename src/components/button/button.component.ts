@@ -19,8 +19,6 @@ class Button extends Block {
 
     render() {
         return  templateCompile({ innerText: this.props.innerText});
-        //console.log('template', template);
-        //return template;
     }
 }
 
