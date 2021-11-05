@@ -1,5 +1,9 @@
 import EventBus from '../eventBus';
 
+// Короче, я не понимаю, зачем делать элемент, а потом блок-шаблон аппендить внутрь каждый раз
+// Поэтому по этому флажку либо засовываю шаблон (в страницах)
+// Иначе только достаю внутренности шаблона в качестве innertext (компоненты типа кнопки)
+
 interface Meta {
     tagName: string;
     props: Props;
@@ -9,7 +13,7 @@ interface Props {
     className?: string,
     label?: string,
     buttonType?: 'button' | 'submit' | 'reset',
-    onClick?: () => void
+    onClick?: () => void,
 }
 
 const ACCESS_ERROR_MESSAGE = 'Нет доступа';
@@ -24,7 +28,12 @@ class Block {
 
     _element: HTMLElement;
     _meta: Meta;
-    props: { attributes?: { string: string }, name?: string, innerText?: string };
+    props: {
+        templateBase?: boolean,
+        attributes?: { string: string },
+        name?: string,
+        innerText?: string,
+    };
     eventBus: EventBus;
     children: Record<string, Block>;
 
@@ -122,18 +131,16 @@ class Block {
     _render() {
         this.element.innerHTML = '';
         const block = this.render();
-        console.log('block', block);
-        if (typeof block === 'string') {
-            const fragment = this.stringToDocumentFragment(block);
-            console.log('fragment', fragment.textContent);
-            this.element.append(fragment);
-        }
+        const fragment = this.stringToDocumentFragment(block);
+        this.props.templateBase ?
+            this.element.append(fragment) :
+            this.element.innerText = fragment.textContent ?? '';
         this.replaceChildren();
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
     render() {
-        return false;
+        return '';
     }
 
     getContent() {

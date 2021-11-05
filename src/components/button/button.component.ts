@@ -9,7 +9,7 @@ type Props = {
         label?: string,
         type?: 'button' | 'submit' | 'reset',
         onClick?: Function
-    },
+    }
 }
 
 class Button extends Block {

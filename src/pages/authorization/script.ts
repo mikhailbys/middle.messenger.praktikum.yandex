@@ -11,7 +11,7 @@ import {render} from '../../utils/RenderDOM';
 import constants from "../../constants";
 
 // шаблон страницы
-const authPage = new AuthPage({});
+const authPage = new AuthPage();
 
 const loginLabel = new Label(
     { innerText: 'Логин'});
@@ -27,7 +27,7 @@ const passwordError = new Span(
 const passwordEmpty = new Span(
     { attributes: { class: 'hide', id: 'password-empty' }, innerText: constants.clues.enterPassword });
 
-const authButton = new Button({ innerText: 'Войти', attributes: { class: 'enter' }});
+const authButton = new Button({ innerText: 'Войти', attributes: { class: 'enter' } });
 
 render('#root', authPage);
 render('.input-group', loginLabel);
