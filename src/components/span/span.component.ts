@@ -8,20 +8,17 @@ type Props = {
         class?: string,
         id?: string
     },
+    innerText: string
 }
 
 class Label extends Block {
-    _label: string;
 
-    constructor(props: Props, label?: string) {
+    constructor(props: Props) {
         super('span', props);
     }
 
-
     render() {
-        const template = templateCompile({label: 'Введи'});
-        console.log('template', template);
-        return template;
+        return templateCompile({ innerText: this.props.innerText });
     }
 }
 

@@ -9,25 +9,25 @@ import Span from '../../components/span/span.component';
 import {render} from "../../utils/RenderDOM";
 
 // шаблон страницы
-const authPage = new AuthPage({ attributes: {}});
+const authPage = new AuthPage({});
 render('#root', authPage);
 
-const loginLabel = new Label({ attributes: {}});
+const loginLabel = new Label({ innerText: 'Логин'});
 render('.input-group', loginLabel);
 const loginInput = new Input({ attributes: { type: 'text', name: 'login', id: 'login' }});
 render('.input-group', loginInput);
-const loginEmpty = new Span({ attributes: { class: 'hide', id: 'login-empty' }});
+const loginEmpty = new Span({ attributes: { class: 'hide', id: 'login-empty' }, innerText: 'Введите логин'});
 render('.input-group', loginEmpty);
 
-const passwordLabel = new Label({ attributes: {}});
+const passwordLabel = new Label({ innerText: 'Пароль'});
 render('.input-group', passwordLabel);
 const passwordInput = new Input({ attributes: { type: 'password', name: 'password', id: 'password' }});
 render('.input-group', passwordInput);
 //Пароль должен соответствовать определенному шаблону
-const passwordEmpty = new Span({ attributes: { class: 'hide', id: 'password-error' }});
+const passwordEmpty = new Span({ attributes: { class: 'hide', id: 'password-error' }, innerText: 'Пароль должен соответствовать определенному шаблону'});
 render('.input-group', passwordEmpty);
 //Введите пароль
-const passwordError = new Span({ attributes: { class: 'hide', id: 'password-empty' }});
+const passwordError = new Span({ attributes: { class: 'hide', id: 'password-empty' }, innerText: 'Введите пароль'});
 render('.input-group', passwordError);
 
 // Работа с формой

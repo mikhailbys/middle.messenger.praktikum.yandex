@@ -2,15 +2,7 @@ import Block from '../../modules/block';
 // @ts-ignore
 import templateCompile from './authorization.template.pug';
 
-type Props = {
-    label?: string,
-    attributes: {
-        className?: string,
-        label?: string,
-        buttonType?: 'button' | 'submit' | 'reset',
-        onClick?: Function
-    },
-}
+type Props = {}
 
 class Page extends Block {
     constructor(props: Props) {
@@ -18,8 +10,7 @@ class Page extends Block {
     }
 
     render() {
-        const template = templateCompile();
-        return template;
+        return templateCompile();
     }
 }
 

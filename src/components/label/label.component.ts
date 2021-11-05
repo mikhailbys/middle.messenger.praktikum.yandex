@@ -3,9 +3,10 @@ import Block from '../../modules/block';
 import templateCompile from './label.template.pug';
 
 type Props = {
-    attributes: {
+    attributes?: {
         className?: string
     },
+    innerText: string
 }
 
 class Label extends Block {
@@ -14,11 +15,8 @@ class Label extends Block {
         super('label', props);
     }
 
-
     render() {
-        const template = templateCompile({label: 'Логин'});
-        console.log('labelTemp', template);
-        return template;
+        return templateCompile({ innerText: this.props.innerText });
     }
 }
 

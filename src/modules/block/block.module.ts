@@ -24,7 +24,7 @@ class Block {
 
     _element: HTMLElement;
     _meta: Meta;
-    props: { attributes?: { string: string }, name?: string };
+    props: { attributes?: { string: string }, name?: string, innerText?: string };
     eventBus: EventBus;
     children: Record<string, Block>;
 
