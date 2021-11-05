@@ -5,8 +5,10 @@ import AuthPage from './authorization.view';
 import Input from '../../components/input/input.component';
 import Label from '../../components/label/label.component';
 import Span from '../../components/span/span.component';
+import Button from '../../components/button/button.component';
 
 import {render} from '../../utils/RenderDOM';
+import constants from "../../constants";
 
 // шаблон страницы
 const authPage = new AuthPage({});
@@ -16,14 +18,16 @@ const loginLabel = new Label(
 const loginInput = new Input(
     { attributes: { type: 'text', name: 'login', id: 'login' }});
 const loginEmpty = new Span(
-    { attributes: { class: 'hide', id: 'login-empty' }, innerText: 'Введите логин'});
+    { attributes: { class: 'hide', id: 'login-empty' }, innerText: constants.clues.enterLogin});
 const passwordLabel = new Label({ innerText: 'Пароль'});
 const passwordInput = new Input(
     { attributes: { type: 'password', name: 'password', id: 'password' }});
-const passwordEmpty = new Span(
-    { attributes: { class: 'hide', id: 'password-error' }, innerText: 'Пароль должен соответствовать определенному шаблону'});
 const passwordError = new Span(
-    { attributes: { class: 'hide', id: 'password-empty' }, innerText: 'Введите пароль'});
+    { attributes: { class: 'hide', id: 'password-error' }, innerText: constants.clues.passwordRule });
+const passwordEmpty = new Span(
+    { attributes: { class: 'hide', id: 'password-empty' }, innerText: constants.clues.enterPassword });
+
+const authButton = new Button({ innerText: 'Войти', attributes: { class: 'enter' }});
 
 render('#root', authPage);
 render('.input-group', loginLabel);
@@ -33,6 +37,7 @@ render('.input-group', passwordLabel);
 render('.input-group', passwordInput);
 render('.input-group', passwordEmpty);
 render('.input-group', passwordError);
+render('.button-group', authButton);
 
 // Работа с формой
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');

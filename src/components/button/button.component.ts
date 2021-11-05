@@ -3,27 +3,24 @@ import Block from '../../modules/block';
 import templateCompile from './button.template.pug';
 
 type Props = {
-    label?: string,
+    innerText?: string,
     attributes: {
-        className?: string,
+        class?: string,
         label?: string,
-        buttonType?: 'button' | 'submit' | 'reset',
+        type?: 'button' | 'submit' | 'reset',
         onClick?: Function
     },
 }
 
 class Button extends Block {
-    _label: string;
-
-    constructor(props: Props, label?: string) {
-        super('div', props);
+    constructor(props: Props) {
+        super('button', props);
     }
 
-
     render() {
-        const template = templateCompile({ label: 'Label!' });
-        console.log('template', template);
-        return template;
+        return  templateCompile({ innerText: this.props.innerText});
+        //console.log('template', template);
+        //return template;
     }
 }
 
