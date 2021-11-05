@@ -1,33 +1,37 @@
 import {triggerValidateError} from "../../utils/FormValidation";
-import {PASSWORD_REGEXP} from "../../utils/Masks";
+import {PASSWORD_REGEXP} from '../../utils/Masks';
 
 import AuthPage from './authorization.view';
 import Input from '../../components/input/input.component';
 import Label from '../../components/label/label.component';
 import Span from '../../components/span/span.component';
 
-import {render} from "../../utils/RenderDOM";
+import {render} from '../../utils/RenderDOM';
 
 // шаблон страницы
 const authPage = new AuthPage({});
-render('#root', authPage);
 
-const loginLabel = new Label({ innerText: 'Логин'});
-render('.input-group', loginLabel);
-const loginInput = new Input({ attributes: { type: 'text', name: 'login', id: 'login' }});
-render('.input-group', loginInput);
-const loginEmpty = new Span({ attributes: { class: 'hide', id: 'login-empty' }, innerText: 'Введите логин'});
-render('.input-group', loginEmpty);
-
+const loginLabel = new Label(
+    { innerText: 'Логин'});
+const loginInput = new Input(
+    { attributes: { type: 'text', name: 'login', id: 'login' }});
+const loginEmpty = new Span(
+    { attributes: { class: 'hide', id: 'login-empty' }, innerText: 'Введите логин'});
 const passwordLabel = new Label({ innerText: 'Пароль'});
+const passwordInput = new Input(
+    { attributes: { type: 'password', name: 'password', id: 'password' }});
+const passwordEmpty = new Span(
+    { attributes: { class: 'hide', id: 'password-error' }, innerText: 'Пароль должен соответствовать определенному шаблону'});
+const passwordError = new Span(
+    { attributes: { class: 'hide', id: 'password-empty' }, innerText: 'Введите пароль'});
+
+render('#root', authPage);
+render('.input-group', loginLabel);
+render('.input-group', loginInput);
+render('.input-group', loginEmpty);
 render('.input-group', passwordLabel);
-const passwordInput = new Input({ attributes: { type: 'password', name: 'password', id: 'password' }});
 render('.input-group', passwordInput);
-//Пароль должен соответствовать определенному шаблону
-const passwordEmpty = new Span({ attributes: { class: 'hide', id: 'password-error' }, innerText: 'Пароль должен соответствовать определенному шаблону'});
 render('.input-group', passwordEmpty);
-//Введите пароль
-const passwordError = new Span({ attributes: { class: 'hide', id: 'password-empty' }, innerText: 'Введите пароль'});
 render('.input-group', passwordError);
 
 // Работа с формой
@@ -83,5 +87,3 @@ function onSubmit(event: Event) {
 if (authForm) {
     authForm.onsubmit = onSubmit;
 }
-
-console.log('adasdas')
