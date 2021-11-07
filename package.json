@@ -2,14 +2,13 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "Приложение-Мессенджер",
-  "main": "index.js",
   "engines": {
     "node": "12.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "PORT=3000 parcel src/pages/authorization/index.html",
-    "build": "parcel build src/pages/authorization/index.html docs --public-url ./",
+    "build": "parcel build src/pages/authorization/index.html",
     "server": "node src/server/server.js",
     "lint": "node_modules/.bin/eslint . ",
     "lint: fix": "node_modules/.bin/eslint . --fix",
