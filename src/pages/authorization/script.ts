@@ -9,6 +9,7 @@ import Button from '../../components/button/button.component';
 
 import {render} from '../../utils/RenderDOM';
 import constants from "../../constants";
+import {addFocusEventOnInput} from "../../utils/FormEvents";
 
 // шаблон страницы
 const authPage = new AuthPage();
@@ -41,19 +42,9 @@ render('.button-group', authButton);
 
 // Работа с формой
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
-const login = authForm?.login;
-const password = authForm?.password;
 
-login.addEventListener('focus', () => {
-    login.classList.remove('input-error');
-    document.querySelector('#login-empty')?.classList.remove('show-error');
-});
-
-password.addEventListener('focus', () => {
-    password.classList.remove('input-error');
-    document.querySelector('#password-empty')?.classList.remove('show-error');
-    document.querySelector('#password-error')?.classList.remove('show-error');
-});
+addFocusEventOnInput(authForm?.login, ['login-empty']);
+addFocusEventOnInput(authForm?.password, ['password-empty', 'password-error']);
 
 function validate() {
     let result = true;
