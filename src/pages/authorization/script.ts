@@ -41,6 +41,19 @@ render('.button-group', authButton);
 
 // Работа с формой
 const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
+const login = authForm?.login;
+const password = authForm?.password;
+
+login.addEventListener('focus', () => {
+    login.classList.remove('input-error');
+    document.querySelector('#login-empty')?.classList.remove('show-error');
+});
+
+password.addEventListener('focus', () => {
+    password.classList.remove('input-error');
+    document.querySelector('#password-empty')?.classList.remove('show-error');
+    document.querySelector('#password-error')?.classList.remove('show-error');
+});
 
 function validate() {
     let result = true;
