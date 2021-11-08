@@ -2,7 +2,7 @@ import {triggerValidateError} from '../../utils/FormValidation';
 import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from '../../utils/Masks';
 import {render} from '../../utils/RenderDOM';
 
-import RegistryPage from "./registyr.view";
+import RegistryPage from "./registry.view";
 import Input from '../../components/input/input.component';
 import Label from '../../components/label/label.component';
 import Span from '../../components/span/span.component';
