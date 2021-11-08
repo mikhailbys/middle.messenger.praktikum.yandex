@@ -151,6 +151,8 @@ input:focus {
   border-top: 1px solid variables.$secondary;
   padding: variables.$spacing_x2;
 
+  align-items: center;
+
   margin-top: auto;
 
   background-color: lighten(variables.$default_dark, 30%);
@@ -165,6 +167,8 @@ input:focus {
 
   border-radius: 15px;
   border: none;
+
+  margin-right: variables.$spacing_x2;
 }
 
 .send-button-container {
@@ -179,7 +183,7 @@ input:focus {
   background-color: variables.$primary;
   border: none;
   border-radius: 50px;
-  height: 50px;
+  height: 42px;
   width: 50px;
   color: white;
 }

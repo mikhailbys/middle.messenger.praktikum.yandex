@@ -27,7 +27,7 @@ render('.info', time);
 render('.choose-chat', chooseChat);
 render('.new-message-container', messInput);
 
-render('.send-button-container', sendButton);
+render('.new-message-container', sendButton);
 
 const chats = document.querySelectorAll('.single-chat-container');
 const messageContainer = document.querySelector('.new-message-container');
