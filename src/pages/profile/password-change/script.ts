@@ -1,9 +1,23 @@
 import {triggerValidateError} from '../../../utils/FormValidation';
 import {PASSWORD_REGEXP} from '../../../utils/Masks';
 import Button from '../../../components/button';
+import PasswordChangePage from './password-change.view';
 import {render} from '../../../utils/RenderDOM';
+import {addFocusEventOnInput} from "../../../utils/FormEvents";
+
+const passwordChangePage = new PasswordChangePage();
+render('#root', passwordChangePage);
+const saveButton = new Button({ attributes: {
+        class: 'submit',
+        type: 'submit'
+    }, innerText: 'Сохранить'});
+render('.row-data-action', saveButton);
 
 const passwordForm: HTMLFormElement | null = document.querySelector('#password_form');
+
+addFocusEventOnInput(passwordForm?.oldPassword, ['old-password-empty']);
+addFocusEventOnInput(passwordForm?.newPassword, ['new-password-empty', 'new-password-error', 'new-password-equality']);
+addFocusEventOnInput(passwordForm?.newPasswordRepeat, ['new-password-repeat-empty', 'new-password-repeat-error', 'new-password-repeat-equality']);
 
 function validate() {
     let result = true;
@@ -85,10 +99,3 @@ if (passwordForm) {
         validate() ? console.log({ oldPassword, newPassword, newPasswordRepeat }) : null;
     };
 }
-
-const saveButton = new Button({
-    className: 'submit',
-    label: 'Сохранить',
-    buttonType: 'submit'
-});
-render('.row-data-action', saveButton);

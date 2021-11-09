@@ -1,5 +1,5 @@
 // @ts-ignore
-import templateCompile from './profile-change.template.pug';
+import templateCompile from './password-change.template.pug';
 import Block from "../../../modules/block";
 
 class Page extends Block {
