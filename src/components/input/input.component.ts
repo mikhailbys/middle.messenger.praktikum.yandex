@@ -4,10 +4,11 @@ import templateCompile from './input.template.pug';
 
 type Props = {
     attributes: {
-        className?: string,
+        class?: string,
         label?: string,
         type?: string,
         name?: string,
+        placeholder?: string,
         id?: string
     },
 }
