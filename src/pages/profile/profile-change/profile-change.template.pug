@@ -1,0 +1,65 @@
+div(class='container')
+    div(class='profile_image')
+        img(src='../../../../public/svg/image.svg' class='empty-image')
+
+    div(class='form-container')
+        form(id='profile_form')
+
+            div(class='form-row-data')
+                div(class='legend')
+                    span Почта
+                div(class='value')
+                    input(type='email' name='mail' value='pochta@mail.ru' class='field-input')
+
+            span(class='hide' id='mail-empty') Введите почту
+
+            div(class='form-row-data')
+                div(class='legend')
+                    span Логин
+                div(class='value')
+                    input(type='text' name='login' value='loggin' class='field-input')
+
+            span(class='hide' id='login-empty') Введите логин
+            span(class='hide' id='login-error') Допустимая длинна логина 3-20 символов, латинские буквы, цифры, без пробелов, без спецсимволов (кроме "-", "_").
+
+            div(class='form-row-data')
+                div(class='legend')
+                    span Имя
+                div(class='value')
+                    input(type='text' name='firstName' value='Михаил' class='field-input')
+
+            span(class='hide' id='first-name-empty') Введите имя
+            span(class='hide' id='first-name-error') Убедитесь в отсутствии пробелов, спецсимволов (кроме "-"), имя должно начинаться с прописной буквы
+
+
+            div(class='form-row-data')
+                div(class='legend')
+                    span Фамилия
+                div(class='value')
+                    input(type='text' name='secondName' value='Иванов' class='field-input')
+
+            span(class='hide' id='second-name-empty') Введите фамилия
+            span(class='hide' id='second-name-error') Убедитесь в отсутствии пробелов, спецсимволов (кроме "-"), имя должно начинаться с прописной буквы
+
+
+            div(class='form-row-data')
+                div(class='legend')
+                    span Имя в чате
+                div(class='value')
+                    input(type='text' name='displayName' value='Михаил' class='field-input')
+
+            span(class='hide' id='display-name-empty') Введите имя в чате
+
+            div(class='form-row-data')
+                div(class='legend')
+                    span Телефон
+                div(class='value')
+                    input(type='tel' name='phone' value='8-999-172-54-48' class='field-input')
+
+            span(class='hide' id='phone-empty') Введите телефон
+
+
+            div(class='row-data-action')
+
+            div(class='center-text')
+                a(href='../profile.template.pug') Назад

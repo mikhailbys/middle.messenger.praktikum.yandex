@@ -1,9 +1,23 @@
 import {triggerValidateError} from '../../../utils/FormValidation';
 import Button from '../../../components/button';
+import ProfileChangePage from './profile-change.view';
 import {render} from '../../../utils/RenderDOM';
 import {FIO_MASK, LOGIN_MASK} from '../../../utils/Masks';
+import {addFocusEventOnInput} from "../../../utils/FormEvents";
+
+const profileChangePage = new ProfileChangePage();
+render('#root', profileChangePage);
+const saveButton = new Button({ attributes: { class: 'submit', type: 'submit'}, innerText: 'Сохранить'});
+render('.row-data-action', saveButton);
 
 const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
+
+addFocusEventOnInput(profileForm?.mail, ['mail-empty']);
+addFocusEventOnInput(profileForm?.login, ['login-empty', 'login-error']);
+addFocusEventOnInput(profileForm?.firstName, ['first-name-empty', 'first-name-error']);
+addFocusEventOnInput(profileForm?.secondName, ['second-name-empty', 'second-name-error']);
+addFocusEventOnInput(profileForm?.displayName, ['display-name-empty']);
+addFocusEventOnInput(profileForm?.phone, ['phone-empty']);
 
 function validate() {
     let result = true;
@@ -92,10 +106,3 @@ function onSubmit(e: Event) {
 if (profileForm) {
     profileForm.onsubmit = onSubmit
 }
-
-const saveButton = new Button({
-    className: 'submit',
-    label: 'Сохранить',
-    buttonType: 'submit'
-});
-render('.row-data-action', saveButton);
