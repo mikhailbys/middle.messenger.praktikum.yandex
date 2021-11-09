@@ -1,9 +1,9 @@
-import {triggerValidateError} from '../../../utils/FormValidation';
-import {PASSWORD_REGEXP} from '../../../utils/Masks';
-import Button from '../../../components/button';
+import {triggerValidateError} from '../../utils/FormValidation';
+import {PASSWORD_REGEXP} from '../../utils/Masks';
+import Button from '../../components/button';
 import PasswordChangePage from './password-change.view';
-import {render} from '../../../utils/RenderDOM';
-import {addFocusEventOnInput} from "../../../utils/FormEvents";
+import {render} from '../../utils/RenderDOM';
+import {addFocusEventOnInput} from "../../utils/FormEvents";
 
 const passwordChangePage = new PasswordChangePage();
 render('#root', passwordChangePage);

@@ -1,9 +1,9 @@
-import {triggerValidateError} from '../../../utils/FormValidation';
-import Button from '../../../components/button';
+import {triggerValidateError} from '../../utils/FormValidation';
+import Button from '../../components/button';
 import ProfileChangePage from './profile-change.view';
-import {render} from '../../../utils/RenderDOM';
-import {FIO_MASK, LOGIN_MASK} from '../../../utils/Masks';
-import {addFocusEventOnInput} from "../../../utils/FormEvents";
+import {render} from '../../utils/RenderDOM';
+import {FIO_MASK, LOGIN_MASK} from '../../utils/Masks';
+import {addFocusEventOnInput} from "../../utils/FormEvents";
 
 const profileChangePage = new ProfileChangePage();
 render('#root', profileChangePage);
