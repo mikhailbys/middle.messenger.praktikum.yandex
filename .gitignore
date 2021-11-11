@@ -10,6 +10,13 @@
 dist
 dist/**
 
+docs
+docs/**
+
 node_modules
 
 ./package-lock.json
+
+**/.DS_Store
+
+.parcel-cache

@@ -33,6 +33,15 @@ html {
   border-bottom: 0.5px solid variables.$default;
 }
 
+.form-row-data {
+  @include mixins.flex-space-between;
+
+  width: 100%;
+  padding: 8px;
+
+  border-bottom: 0.5px solid variables.$default;
+}
+
 .legend {
   font-weight: bold;
 }
@@ -114,4 +123,42 @@ h3 {
 
 .field-input {
   text-align: end;
+}
+
+.form-container {
+  @include mixins.flex-column-align-center;
+  width: 100%;
+}
+
+.submit {
+  display: block;
+  margin-bottom: variables.$spacing_x1;
+
+
+  background-color: variables.$primary;
+  color: white;
+  box-sizing: border-box;
+  border: 0 solid variables.$primary;
+  box-shadow: none;
+  border-radius: 10px;
+
+  width: 100%;
+  height: 40px;
+  padding: 10px 5px;
+
+  font-size: variables.$medium;
+}
+
+.hide {
+  display: none;
+}
+
+.show-error {
+  font-size: variables.$small;
+  color: variables.$error;
+  display: block;
+}
+
+.center-text {
+  text-align: center;
 }

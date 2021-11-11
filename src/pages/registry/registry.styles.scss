@@ -18,7 +18,7 @@ h3 {
 
 .form-container {
   border: 0.5px solid variables.$secondary;
-  border-radius: 5%;
+  border-radius: 15px;
 
   padding: variables.$spacing_x2;
 
@@ -61,6 +61,8 @@ input {
 }
 
 button {
+  margin-top: variables.$spacing_x1;
+
   display: block;
   margin-bottom: variables.$spacing_x1;
 
@@ -84,12 +86,28 @@ a {
   color: variables.$primary;
 }
 
-.button-group {
-  @include mixins.flex-column-center;
-
-  margin-top: variables.$spacing_x3;
-}
-
 .input-group {
   margin-top: 0;
+}
+
+.input-error {
+  border-color: variables.$error;
+}
+
+.hide {
+  display: none;
+}
+
+.show-error {
+  font-size: variables.$small;
+  color: variables.$error;
+  display: block;
+}
+
+.submit-container {
+  @include mixins.flex-column
+}
+
+.center-text {
+  text-align: center;
 }

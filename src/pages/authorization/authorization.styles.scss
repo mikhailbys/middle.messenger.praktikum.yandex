@@ -1,5 +1,5 @@
-@use 'styles/variables' as variables;
-@use 'styles/mixins' as mixins;
+@use '../../styles/variables' as variables;
+@use '../../styles/mixins' as mixins;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 html {
@@ -58,6 +58,20 @@ input {
   border-color: variables.$primary;
 }
 
+.input-error {
+  border-color: variables.$error;
+}
+
+.hide {
+  display: none;
+}
+
+.show-error {
+  font-size: variables.$small;
+  color: variables.$error;
+  display: block;
+}
+
 button {
   display: block;
   margin-bottom: variables.$spacing_x1;
@@ -90,4 +104,8 @@ a {
 
 .input-group {
   margin-top: 0;
+}
+
+.a-group {
+  @include mixins.flex-column;
 }
