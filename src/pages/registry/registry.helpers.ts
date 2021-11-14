@@ -5,6 +5,8 @@ import {addFocusEventOnInput} from "../../utils/FormEvents";
 
 export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
     registryForm.onsubmit = (event) => {
+        event.preventDefault();
+
         const formData = new FormData(registryForm);
 
         const login = formData.get('login');
@@ -24,8 +26,6 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
             secondName,
             phone,
         }) : null;
-
-        event.preventDefault();
     }
 }
 
