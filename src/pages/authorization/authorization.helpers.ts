@@ -1,7 +1,9 @@
 import {triggerValidateError} from "../../utils/FormValidation";
 import {PASSWORD_REGEXP} from "../../utils/Masks";
+import {addFocusEventOnInput} from "../../utils/FormEvents";
+import Router from "../../modules/router";
 
-export const addFormSubmitEvent = (authForm: HTMLFormElement) => {
+const addFormSubmitEvent = (authForm: HTMLFormElement) => {
     authForm.onsubmit = (event) => {
         const formData = new FormData(authForm);
 
@@ -14,7 +16,7 @@ export const addFormSubmitEvent = (authForm: HTMLFormElement) => {
     }
 }
 
-export const validateForm = (authForm: HTMLFormElement) => {
+const validateForm = (authForm: HTMLFormElement) => {
     let result = true;
 
     // select inputs
@@ -46,4 +48,19 @@ export const validateForm = (authForm: HTMLFormElement) => {
     }
 
     return result;
+}
+
+export const prepareAuthForm = (authForm: HTMLFormElement, router: Router) => {
+    addFocusEventOnInput(authForm?.login, ['login-empty']);
+    addFocusEventOnInput(authForm?.password, ['password-empty', 'password-error']);
+
+    if (authForm) {
+        addFormSubmitEvent(authForm);
+    }
+
+    const registrationHref = document.querySelector('#reg');
+    registrationHref?.addEventListener('click', (e) => {
+        e.preventDefault();
+        router.go('/sign-up')
+    })
 }

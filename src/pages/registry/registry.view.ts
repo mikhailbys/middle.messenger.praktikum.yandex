@@ -1,4 +1,5 @@
 import Block from '../../modules/block';
+import './registry.styles.scss';
 // @ts-ignore
 import templateCompile from './registry.template.pug';
 import Label from "../../components/label";

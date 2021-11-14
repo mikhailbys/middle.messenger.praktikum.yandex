@@ -7,8 +7,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel build src/pages/**/*.html && PORT=3000 parcel src/pages/authorization/index.html",
-    "build": "parcel build src/pages/**/*.html",
+    "start": "parcel build src/index.html && PORT=3000 parcel src/index.html",
+    "build": "parcel build src/index.html",
     "server": "node src/server/server.js",
     "lint": "node_modules/.bin/eslint . ",
     "lint: fix": "node_modules/.bin/eslint . --fix",

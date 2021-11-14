@@ -1,4 +1,5 @@
 import Block from '../../modules/block';
+import './authorization.styles.scss';
 // @ts-ignore
 import templateCompile from './authorization.template.pug';
 import Label from "../../components/label";
