@@ -65,7 +65,8 @@ const passwordRepeatEquality = new Span(
 
 const registrationButton = new Button({ innerText: 'Зарегистрироваться', attributes: { class: 'enter', type: 'submit' } });
 
-render('#root', registryPage);
+
+/*render('#root', registryPage);
 
 render('.registry_form', mailLabel);
 render('.registry_form', mailInput);
@@ -95,7 +96,7 @@ render('.registry_form', passwordRepeatInput);
 render('.registry_form', passwordRepeatEmpty);
 render('.registry_form', passwordRepeatError);
 render('.registry_form', passwordRepeatEquality);
-render('.submit-container', registrationButton);
+render('.submit-container', registrationButton);*/
 
 // Работа с формой
 const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');

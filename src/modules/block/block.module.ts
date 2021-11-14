@@ -1,9 +1,5 @@
 import EventBus from '../eventBus';
 
-// Короче, я не понимаю, зачем делать элемент, а потом блок-шаблон аппендить внутрь каждый раз
-// Поэтому по этому флажку либо засовываю шаблон (в страницах)
-// Иначе только достаю внутренности шаблона в качестве innertext (компоненты типа кнопки)
-
 interface Meta {
     tagName: string;
     props: Props;
@@ -37,10 +33,6 @@ class Block {
     eventBus: EventBus;
     children: Record<string, Block>;
 
-    get element() {
-        return this._element;
-    }
-
     constructor(tagName = 'div', props = {}, children = {}) {
         this.eventBus = new EventBus();
         this._meta = { tagName, props };
@@ -57,10 +49,14 @@ class Block {
         this.eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     }
 
-    _setAttributes(element: HTMLElement, attributes: Record<string, string> = {}) {
-        Object.keys(attributes).forEach((attr: string) => {
-            element.setAttribute(attr, attributes[attr]);
-        });
+    init() {
+        this._createResources();
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    }
+
+    _createResources() {
+        const { tagName } = this._meta;
+        this._element = this._createDocumentElement(tagName, this.props.attributes);
     }
 
     _createDocumentElement(tagName: string, attributes = {}) {
@@ -69,27 +65,38 @@ class Block {
         return element;
     }
 
-    _createResources() {
-        const { tagName } = this._meta;
-        this._element = this._createDocumentElement(tagName, this.props.attributes);
-    }
-
-    init() {
-        this._createResources();
-        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    _setAttributes(element: HTMLElement, attributes: Record<string, string> = {}) {
+        Object.keys(attributes).forEach((attr: string) => {
+            element.setAttribute(attr, attributes[attr]);
+        });
     }
 
     _componentDidMount() {
         this.componentDidMount(this.props);
     }
 
-    componentDidMount(_oldProps: any): void | boolean {
-        return false;
+    // Переопределяемый
+    componentDidMount(_oldProps: any): void {}
+
+    _render() {
+        this._element.innerHTML = '';
+        const html = this.render();
+        const dom = this._htmlToDocumentFragment(html);
+        debugger
+        this._replaceChildren(dom);
+
+        this.props.templateBase ?
+            this._element.append(dom) :
+            this._element.innerText = dom.textContent ?? '';
+
+        //this._element.append(dom);
+
+        this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
     _updateResources(newProps: { attributes?: {}; }) {
         const { attributes = {} } = newProps;
-        this._setAttributes(this.element, attributes);
+        this._setAttributes(this._element, attributes);
     }
 
     _componentDidUpdate(newProps: any, oldProps: any) {
@@ -108,35 +115,21 @@ class Block {
         }
     };
 
-    stringToDocumentFragment(string: string) {
+    _htmlToDocumentFragment(html) {
         const template = document.createElement('template');
-        template.innerHTML = string;
+        template.innerHTML = html;
         return template.content;
     }
 
-    replaceChildren() {
-        if (!Object.values(this.children).length) return;
-        const childrenToReplace = this.element.querySelectorAll('[data-component]');
-        childrenToReplace.forEach((childrenToReplace) => {
-            // @ts-ignore
-            const componentName = childrenToReplace.dataset.component; //todo
-            const parentBlock = childrenToReplace.parentNode;
+    _replaceChildren(dom) {
+        const childrenToReplace = dom.querySelectorAll("[data-component]");
+        for (const childToReplace of childrenToReplace) {
+            debugger
+            const componentName = childToReplace.dataset.component;
+            const parentBlock = childToReplace.parentElement;
             const child = this.children[componentName];
-            if (parentBlock !== null) {
-                parentBlock.replaceChild(child.getContent(), childrenToReplace);
-            }
-        });
-    }
-
-    _render() {
-        this.element.innerHTML = '';
-        const block = this.render();
-        const fragment = this.stringToDocumentFragment(block);
-        this.props.templateBase ?
-            this.element.append(fragment) :
-            this.element.innerText = fragment.textContent ?? '';
-        this.replaceChildren();
-        this.eventBus.emit(Block.EVENTS.FLOW_CDM);
+            parentBlock.replaceChild(child.getContent(), childToReplace);
+        }
     }
 
     render() {
@@ -144,11 +137,10 @@ class Block {
     }
 
     getContent() {
-        return this.element;
+        return this._element;
     }
 
     _makePropsProxy(props) {
-
         return new Proxy(props, {
             get(target, prop) {
                 const value = target[prop];

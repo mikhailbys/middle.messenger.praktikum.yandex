@@ -19,11 +19,8 @@ class Input extends Block {
         super('input', props);
     }
 
-
     render() {
-        const template = templateCompile();
-        console.log('inputTemplate', template);
-        return template;
+        return templateCompile();
     }
 }
 
