@@ -1,4 +1,5 @@
 import AuthPage from './authorization.view';
+import RegistrationPage from '../registry/registry.view';
 
 import {addFocusEventOnInput} from "../../utils/FormEvents";
 import {addFormSubmitEvent} from "./authorization.helpers";
@@ -8,7 +9,7 @@ const router = new Router('#root');
 
 router
     .use('/', AuthPage)
-    //.use('/sign-up', RegistrationPage)
+    .use('/sign-up', RegistrationPage)
     // todo
     .start();
 
@@ -17,7 +18,7 @@ router.go('/auth');
 const registrationHref = document.querySelector('#reg');
 registrationHref?.addEventListener('click', (e) => {
     e.preventDefault();
-    router.go('/registration')
+    router.go('/sign-up')
 })
 
 // Работа с формой

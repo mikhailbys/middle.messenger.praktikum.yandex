@@ -82,7 +82,6 @@ class Block {
         this._element.innerHTML = '';
         const html = this.render();
         const dom = this._htmlToDocumentFragment(html);
-        debugger
         this._replaceChildren(dom);
 
         this.props.templateBase ?
@@ -124,7 +123,6 @@ class Block {
     _replaceChildren(dom) {
         const childrenToReplace = dom.querySelectorAll("[data-component]");
         for (const childToReplace of childrenToReplace) {
-            debugger
             const componentName = childToReplace.dataset.component;
             const parentBlock = childToReplace.parentElement;
             const child = this.children[componentName];

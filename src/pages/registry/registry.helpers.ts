@@ -1,9 +1,33 @@
-import {triggerValidateError} from '../../utils/FormValidation';
-import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from '../../utils/Masks';
+import {triggerValidateError} from "../../utils/FormValidation";
+import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
 
-const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
+export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
+    registryForm.onsubmit = (event) => {
+        const formData = new FormData(registryForm);
 
-function validate() {
+        const login = formData.get('login');
+        const mail = formData.get('mail');
+        const firstName = formData.get('first_name');
+        const secondName = formData.get('second_name');
+        const phone = formData.get('phone');
+        const password = formData.get('password');
+        const passwordRepeat = formData.get('password-repeat');
+
+        validate(registryForm) ? console.log({
+            login,
+            password,
+            passwordRepeat,
+            mail,
+            firstName,
+            secondName,
+            phone,
+        }) : null;
+
+        event.preventDefault();
+    }
+}
+
+const validate = (registryForm: HTMLFormElement) => {
     let result = true;
 
     // select inputs
@@ -117,34 +141,3 @@ function validate() {
 
     return result;
 }
-
-if (registryForm) {
-    registryForm.onsubmit = (e) => {
-        const formData = new FormData(registryForm);
-
-        const login = formData.get('login');
-        const mail = formData.get('mail');
-        const firstName = formData.get('first_name');
-        const secondName = formData.get('second_name');
-        const phone = formData.get('phone');
-        const password = formData.get('password');
-        const passwordRepeat = formData.get('password-repeat');
-
-        validate() ? console.log({
-            login,
-            password,
-            passwordRepeat,
-            mail,
-            firstName,
-            secondName,
-            phone,
-        }) : null;
-
-        e.preventDefault();
-    };
-}
-
-/*const registryButton = new Button({
-    label: 'Зарегистрироваться'
-});
-render('.submit-container', registryButton);*/
