@@ -18,7 +18,7 @@ export const prepareMessagesPage = (router: Router) => {
         validateMessageInput(messageInput) ? console.log({ message: messageInput?.value}) : null;
     });
 
-    const profileHref = document.querySelector('.profile');
+    const profileHref = document.querySelector('#profile');
     profileHref?.addEventListener('click', (e) => {
         e.preventDefault();
         router.go(constants.routes.settings);

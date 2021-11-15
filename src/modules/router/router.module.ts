@@ -1,4 +1,5 @@
 import Route from "./route";
+import {callPageScript} from "../../utils/CallPageScript";
 
 class Router {
 
@@ -35,7 +36,6 @@ class Router {
     }
 
     _onRoute(pathname) {
-        debugger
         const route = this.getRoute(pathname);
         if (!route) {
             return;
@@ -47,6 +47,7 @@ class Router {
 
         this._currentRoute = route;
         route.render();
+        callPageScript(route._pathname, this);
     }
 
     go(pathname) {

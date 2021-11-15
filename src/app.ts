@@ -7,10 +7,6 @@ import RegistrationPage from "./pages/registry/registry.view";
 import MessagesPage from "./pages/messages/messages.view";
 import SettingsPage from "./pages/profile/profile.view";
 
-import {prepareAuthForm} from "./pages/authorization/authorization.helpers";
-import {prepareRegistrationForm} from "./pages/registry/registry.helpers";
-import {prepareMessagesPage} from "./pages/messages/messages.helpers";
-
 const router = new Router('#root');
 const routes = constants.routes;
 
@@ -23,17 +19,3 @@ router
     .start();
 
 router.go(routes.main);
-
-switch (router._currentRoute?._pathname) {
-    case (routes.main):
-        const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
-        if (authForm) prepareAuthForm(authForm, router);
-        break;
-    case (routes.signUp):
-        const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
-        if (registryForm) prepareRegistrationForm(registryForm, router);
-        break;
-    case (routes.messages):
-        prepareMessagesPage(router);
-        break;
-}
