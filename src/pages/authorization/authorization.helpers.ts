@@ -2,6 +2,7 @@ import {triggerValidateError} from "../../utils/FormValidation";
 import {PASSWORD_REGEXP} from "../../utils/Masks";
 import {addFocusEventOnInput} from "../../utils/FormEvents";
 import Router from "../../modules/router";
+import constants from "../../constants";
 
 const addFormSubmitEvent = (authForm: HTMLFormElement) => {
     authForm.onsubmit = (event) => {
@@ -61,6 +62,12 @@ export const prepareAuthForm = (authForm: HTMLFormElement, router: Router) => {
     const registrationHref = document.querySelector('#reg');
     registrationHref?.addEventListener('click', (e) => {
         e.preventDefault();
-        router.go('/sign-up')
+        router.go(constants.routes.signUp)
+    });
+
+    const chatHref = document.querySelector('#chat');
+    chatHref?.addEventListener('click', (e) => {
+        e.preventDefault();
+        router.go(constants.routes.messages);
     })
 }

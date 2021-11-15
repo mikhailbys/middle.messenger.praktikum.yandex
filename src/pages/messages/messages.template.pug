@@ -1,23 +1,28 @@
 div(class='container')
     div(class='list-container')
         div(class='list-header')
+            template(data-component="searchInput")
             div(class='profile-container')
-                a(href='../profile/index.html' class='profile') Профиль >
+                a(href='' class='profile') Профиль >
 
         div(class='single-chat-container')
             div(class='avatar-container')
                 div(class='avatar')
 
             div(class='message')
+                template(data-component="img")
                 h4(class='messenger-name') Ирина
 
             div(class='info')
+                template(data-component="time")
                 div(class='counter') 2
 
     div(class='chat-container')
         div(class='choose-chat')
+            template(data-component="chooseChat")
 
         div(class='new-message-container hide')
+            template(data-component="messInput")
 
 
 

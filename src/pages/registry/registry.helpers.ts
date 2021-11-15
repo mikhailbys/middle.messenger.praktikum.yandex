@@ -2,6 +2,7 @@ import {triggerValidateError} from "../../utils/FormValidation";
 import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
 import Router from "../../modules/router";
 import {addFocusEventOnInput} from "../../utils/FormEvents";
+import constants from "../../constants";
 
 export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
     registryForm.onsubmit = (event) => {
@@ -163,6 +164,6 @@ export const prepareRegistrationForm = (registryForm: HTMLFormElement, router: R
     const authHref = document.querySelector('#enterHref');
     authHref?.addEventListener('click', (e) => {
         e.preventDefault();
-        router.go('/')
+        router.go(constants.routes.main)
     })
 }

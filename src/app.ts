@@ -1,21 +1,37 @@
 import Router from "./modules/router";
+
+import constants from "./constants";
+
 import AuthPage from "./pages/authorization/authorization.view";
 import RegistrationPage from "./pages/registry/registry.view";
+import MessagesPage from "./pages/messages/messages.view";
+
 import {prepareAuthForm} from "./pages/authorization/authorization.helpers";
 import {prepareRegistrationForm} from "./pages/registry/registry.helpers";
+import {prepareMessagesPage} from "./pages/messages/messages.helpers";
 
 const router = new Router('#root');
+const routes = constants.routes;
 
 router
-    .use('/', AuthPage)
-    .use('/sign-up', RegistrationPage)
+    .use(routes.main, AuthPage)
+    .use(routes.signUp, RegistrationPage)
+    .use(routes.messages, MessagesPage)
     // todo
     .start();
 
-router.go('/auth');
+router.go(routes.main);
 
-const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
-const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
-
-if (authForm) prepareAuthForm(authForm, router);
-if (registryForm) prepareRegistrationForm(registryForm, router);
+switch (router._currentRoute?._pathname) {
+    case (routes.main):
+        const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
+        if (authForm) prepareAuthForm(authForm, router);
+        break;
+    case (routes.signUp):
+        const registryForm: HTMLFormElement | null = document.querySelector('#registry_form');
+        if (registryForm) prepareRegistrationForm(registryForm, router);
+        break;
+    case (routes.messages):
+        prepareMessagesPage(router);
+        break;
+}
