@@ -25,7 +25,8 @@ class Page extends Block {
             img: img,
             time: time,
             chooseChat: chooseChat,
-            messInput: messInput
+            messInput: messInput,
+            sendButton: sendButton
         }) {
         super('div', props, children);
     }
