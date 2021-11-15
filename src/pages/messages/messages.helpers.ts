@@ -1,4 +1,5 @@
 import Router from "../../modules/router";
+import constants from "../../constants";
 
 export const prepareMessagesPage = (router: Router) => {
     const chats = document.querySelectorAll('.single-chat-container');
@@ -20,7 +21,7 @@ export const prepareMessagesPage = (router: Router) => {
     const profileHref = document.querySelector('.profile');
     profileHref?.addEventListener('click', (e) => {
         e.preventDefault();
-        router.go('/') // todo settings
+        router.go(constants.routes.settings);
     })
 }
 

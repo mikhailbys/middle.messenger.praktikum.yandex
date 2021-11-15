@@ -17,6 +17,7 @@ const constants = {
         main: '/',
         signUp: '/sign-up',
         messages: '/messenger',
+        settings: '/settings'
     }
 }
 
