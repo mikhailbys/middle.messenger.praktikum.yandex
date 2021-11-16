@@ -1,8 +1,8 @@
-div(class='container')
-    div(class='form-container')
-        form(id='registry_form')
+div(class='reg-container')
+    div(class='reg-form-container')
+        form(id='registry_form' class='reg-form')
             div(class='registry_form')
-                h3 Регистрация
+                h3(class='reg-header') Регистрация
                 template(data-component="mailLabel")
                 template(data-component="mailInput")
                 template(data-component="mailEmpty")
@@ -33,7 +33,7 @@ div(class='container')
                 template(data-component="passwordRepeatEquality")
                 template(data-component="registrationButton")
 
-            div(class='submit-container')
+            div(class='reg-submit-container')
                 template(data-component="registrationButton")
-            div(class='center-text')
-                a(href='' id='enterHref') Войти
+            div(class='reg-a-group')
+                a(href='' id='enterHref' class='reg-a') Войти

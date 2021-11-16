@@ -1,15 +1,25 @@
-import {triggerValidateError} from "../../utils/FormValidation";
 import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
 import Router from "../../modules/router";
-import {addFocusEventOnInput} from "../../utils/FormEvents";
+import {
+    addFocusEventOnInputBySelectors,
+    triggerValidateErrorBySelectors
+} from "../../utils/FormEvents";
 import constants from "../../constants";
+
+const REG_ERROR_SELECTORS = ['reg-input-error', 'reg-show-error'];
+const ERROR_IDS = [
+    '#reg-login-empty', '#reg-phone-empty', '#reg-first-name-empty',
+    '#reg-second-name-empty', '#reg-mail-empty', '#reg-password-empty',
+    '#reg-password-error', '#reg-password-repeat-empty', '#reg-password-repeat-error',
+    '#reg-password-repeat-equality', '#reg-first-name-error', '#reg-second-name-error',
+    '#reg-phone-error', '#reg-login-error',
+];
 
 export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
     registryForm.onsubmit = (event) => {
         event.preventDefault();
 
         const formData = new FormData(registryForm);
-
         const login = formData.get('login');
         const mail = formData.get('mail');
         const firstName = formData.get('first_name');
@@ -32,7 +42,6 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
 
 const validate = (registryForm: HTMLFormElement) => {
     let result = true;
-
     // select inputs
     const login = registryForm?.login;
     const password = registryForm?.password;
@@ -41,128 +50,98 @@ const validate = (registryForm: HTMLFormElement) => {
     const firstName = registryForm?.firstName;
     const phone = registryForm?.phone;
     const secondName = registryForm?.secondName;
-
     // hide input errors
     password.classList.remove('input-error');
     passwordRepeat.classList.remove('input-error');
-
     login.classList.remove('input-error');
     firstName.classList.remove('input-error');
     secondName.classList.remove('input-error');
     mail.classList.remove('input-error');
     phone.classList.remove('input-error');
-
     // hide clues
-    document.querySelector('#login-empty')?.classList.remove('show-error');
-    document.querySelector('#phone-empty')?.classList.remove('show-error');
-    document.querySelector('#first-name-empty')?.classList.remove('show-error');
-    document.querySelector('#second-name-empty')?.classList.remove('show-error');
-    document.querySelector('#mail-empty')?.classList.remove('show-error');
-    document.querySelector('#password-empty')?.classList.remove('show-error');
-    document.querySelector('#password-error')?.classList.remove('show-error');
-    document.querySelector('#password-repeat-empty')?.classList.remove('show-error');
-    document.querySelector('#password-repeat-error')?.classList.remove('show-error');
-    document.querySelector('#password-repeat-equality')?.classList.remove('show-error');
-    document.querySelector('#first-name-error')?.classList.remove('show-error');
-    document.querySelector('#second-name-error')?.classList.remove('show-error');
-    document.querySelector('#phone-error')?.classList.remove('show-error');
-    document.querySelector('#login-error')?.classList.remove('show-error');
-
+    ERROR_IDS.forEach(id => {
+        document.querySelector(id)?.classList.remove('show-error');
+    });
+    // check values
     if (login.value === '') {
-        triggerValidateError(login, '#login-empty');
+        triggerValidateErrorBySelectors(login, '#reg-login-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (login.value !== '' && !login.value.match(LOGIN_MASK)) {
-        triggerValidateError(login, '#login-error');
+        triggerValidateErrorBySelectors(login, '#reg-login-error', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (mail.value === '') {
-        triggerValidateError(mail, '#mail-empty');
+        triggerValidateErrorBySelectors(mail, '#reg-mail-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (firstName.value === '') {
-        triggerValidateError(firstName, '#first-name-empty');
+        triggerValidateErrorBySelectors(firstName, '#reg-first-name-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (firstName.value !== '' && !firstName.value.match(FIO_MASK)) {
-        triggerValidateError(firstName, '#first-name-error');
+        triggerValidateErrorBySelectors(firstName, '#reg-first-name-error', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (secondName.value === '') {
-        triggerValidateError(secondName, '#second-name-empty');
+        triggerValidateErrorBySelectors(secondName, '#reg-second-name-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (secondName.value !== '' && !secondName.value.match(FIO_MASK)) {
-        triggerValidateError(secondName, '#second-name-error');
+        triggerValidateErrorBySelectors(secondName, '#reg-second-name-error', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (phone.value === '') {
-        triggerValidateError(phone, '#phone-empty');
+        triggerValidateErrorBySelectors(phone, '#reg-phone-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (phone.value !== '' && !phone.value.match(PHONE_MASK)) {
-        triggerValidateError(phone, '#phone-error');
+        triggerValidateErrorBySelectors(phone, '#reg-phone-error', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (password.value === '') {
-        triggerValidateError(password, '#password-empty');
+        triggerValidateErrorBySelectors(password, '#reg-password-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (passwordRepeat.value === '') {
-        triggerValidateError(passwordRepeat, '#password-repeat-empty');
+        triggerValidateErrorBySelectors(passwordRepeat, '#reg-password-repeat-empty', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (password.value !== '' && !password.value.match(PASSWORD_REGEXP)) {
-        triggerValidateError(password, '#password-error');
+        triggerValidateErrorBySelectors(password, '#reg-password-error', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (passwordRepeat.value !== '' && !passwordRepeat.value.match(PASSWORD_REGEXP)) {
-        triggerValidateError(passwordRepeat, '#password-repeat-error');
+        triggerValidateErrorBySelectors(passwordRepeat, '#reg-password-repeat-error', REG_ERROR_SELECTORS);
         result = false;
     }
-
     if (password.value !== ''
         && passwordRepeat !== ''
         && password.value.match(PASSWORD_REGEXP)
         && passwordRepeat.value.match(PASSWORD_REGEXP)
         && password.value !== passwordRepeat.value) {
-        triggerValidateError(passwordRepeat, '#password-repeat-equality');
+        triggerValidateErrorBySelectors(passwordRepeat, '#password-repeat-equality', REG_ERROR_SELECTORS);
         result = false;
     }
-
     return result;
 }
 
 export const prepareRegistrationForm = (registryForm: HTMLFormElement, router: Router) => {
-
     // события на фокус
-    addFocusEventOnInput(registryForm?.login, ['login-empty', 'login-error']);
-    addFocusEventOnInput(registryForm?.mail, ['mail-empty']);
-    addFocusEventOnInput(registryForm?.firstName, ['first-name-empty', 'first-name-error']);
-    addFocusEventOnInput(registryForm?.secondName, ['second-name-empty', 'second-name-error']);
-    addFocusEventOnInput(registryForm?.phone, ['phone-empty', 'phone-error']);
-    addFocusEventOnInput(registryForm?.password, ['password-empty', 'password-error']);
-    addFocusEventOnInput(registryForm?.passwordRepeat,
-        ['password-repeat-empty', 'password-repeat-error', 'password-repeat-equality']);
+    addFocusEventOnInputBySelectors(registryForm?.login, ['reg-login-empty', 'reg-login-error'], REG_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(registryForm?.mail, ['reg-mail-empty'], REG_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(registryForm?.firstName, ['reg-first-name-empty', 'reg-first-name-error'], REG_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(registryForm?.secondName, ['reg-second-name-empty', 'reg-second-name-error'], REG_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(registryForm?.phone, ['reg-phone-empty', 'reg-phone-error'], REG_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(registryForm?.password, ['reg-password-empty', 'reg-password-error'], REG_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(registryForm?.passwordRepeat,
+        ['reg-password-repeat-empty', 'reg-password-repeat-error', 'reg-password-repeat-equality'], REG_ERROR_SELECTORS);
 
     if(registryForm) {
         addFormSubmitEvent(registryForm);
     }
 
-    const authHref = document.querySelector('#enterHref');
-    authHref?.addEventListener('click', (e) => {
+    document.querySelector('#enterHref')?.addEventListener('click', (e) => {
         e.preventDefault();
         router.go(constants.routes.main)
     })
