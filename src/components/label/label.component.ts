@@ -4,7 +4,7 @@ import templateCompile from './label.template.pug';
 
 type Props = {
     attributes?: {
-        className?: string
+        class?: string
     },
     innerText: string
 }

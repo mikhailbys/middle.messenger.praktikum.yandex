@@ -1,9 +1,9 @@
-div(class='container')
-    div(class='form-container')
-        form(id='auth_form')
-            h3 Вход
-            div(class='element-container')
-                div(class='input-group')
+div(class='auth-container')
+    div(class='auth-form-container')
+        form(id='auth_form' class='auth-form')
+            h3(class='auth-header') Вход
+            div(class='auth-element-container')
+                div(class='auth-input-group')
                     template(data-component="loginLabel")
                     template(data-component="loginInput")
                     template(data-component="loginEmpty")
@@ -12,9 +12,9 @@ div(class='container')
                     template(data-component="passwordError")
                     template(data-component="passwordEmpty")
 
-                div(class='button-group')
+                div(class='auth-button-group')
                     template(data-component="authButton")
 
-                div(class='a-group')
-                    a(href='' id='reg') Нет аккаунта?
-                    a(href='' id='chat') В чат
+                div(class='auth-a-group')
+                    a(href='' id='reg' class='auth-a') Нет аккаунта?
+                    a(href='' id='chat' class='auth-a') В чат

@@ -1,17 +1,18 @@
-import {triggerValidateError} from "../../utils/FormValidation";
 import {PASSWORD_REGEXP} from "../../utils/Masks";
-import {addFocusEventOnInput} from "../../utils/FormEvents";
+import {addFocusEventOnInputBySelectors, triggerValidateErrorBySelectors} from "../../utils/FormEvents";
 import Router from "../../modules/router";
 import constants from "../../constants";
 
+const AUTH_ERROR_SELECTORS = ['auth-input-error', 'auth-show-error'];
+const ERROR_IDS = ['#auth-login-empty', '#auth-password-empty', '#auth-password-error'];
+
 const addFormSubmitEvent = (authForm: HTMLFormElement) => {
     authForm.onsubmit = (event) => {
-        const formData = new FormData(authForm);
+        event.preventDefault();
 
+        const formData = new FormData(authForm);
         const login = formData.get('login');
         const password = formData.get('password');
-
-        event.preventDefault();
 
         validateForm(authForm) ? console.log({login, password}) : null;
     }
@@ -19,54 +20,48 @@ const addFormSubmitEvent = (authForm: HTMLFormElement) => {
 
 const validateForm = (authForm: HTMLFormElement) => {
     let result = true;
-
     // select inputs
     const login = authForm?.login;
     const password = authForm?.password;
-
     // hide input errors
-    password.classList.remove('input-error');
-    login.classList.remove('input-error');
-
+    password.classList.remove('auth-input-error');
+    login.classList.remove('auth-input-error');
     // hide clues
-    document.querySelector('#login-empty')?.classList.remove('show-error');
-    document.querySelector('#password-empty')?.classList.remove('show-error');
-    document.querySelector('#password-error')?.classList.remove('show-error');
-
+    ERROR_IDS.forEach(id => {
+        document.querySelector(id)?.classList.remove('auth-show-error');
+    });
+    // check
     if (login.value === '') {
-        triggerValidateError(login, '#login-empty');
+        triggerValidateErrorBySelectors(login, '#auth-login-empty', AUTH_ERROR_SELECTORS);
         result = false;
     }
-
     if (password.value === '') {
-        triggerValidateError(password, '#password-empty');
+        triggerValidateErrorBySelectors(password, '#auth-password-empty', AUTH_ERROR_SELECTORS);
         result = false;
     }
-
     if (password.value !== '' && !password.value.match(PASSWORD_REGEXP)) {
-        triggerValidateError(password, '#password-error');
+        triggerValidateErrorBySelectors(password, '#auth-password-error', AUTH_ERROR_SELECTORS);
         result = false;
     }
-
     return result;
 }
 
 export const prepareAuthForm = (authForm: HTMLFormElement, router: Router) => {
-    addFocusEventOnInput(authForm?.login, ['login-empty']);
-    addFocusEventOnInput(authForm?.password, ['password-empty', 'password-error']);
+    addFocusEventOnInputBySelectors(
+        authForm?.login, ['auth-login-empty'], AUTH_ERROR_SELECTORS);
+    addFocusEventOnInputBySelectors(
+        authForm?.password, ['auth-password-empty', 'auth-password-error'], AUTH_ERROR_SELECTORS);
 
     if (authForm) {
         addFormSubmitEvent(authForm);
     }
 
-    const registrationHref = document.querySelector('#reg');
-    registrationHref?.addEventListener('click', (e) => {
+    document.querySelector('#reg')?.addEventListener('click', (e) => {
         e.preventDefault();
         router.go(constants.routes.signUp)
     });
 
-    const chatHref = document.querySelector('#chat');
-    chatHref?.addEventListener('click', (e) => {
+    document.querySelector('#chat')?.addEventListener('click', (e) => {
         e.preventDefault();
         router.go(constants.routes.messages);
     })

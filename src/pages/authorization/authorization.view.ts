@@ -12,18 +12,39 @@ interface Props {
     templateBase: boolean
 }
 
-const loginLabel = new Label({ innerText: 'Логин'});
-const loginInput = new Input({ attributes: { type: 'text', name: 'login', id: 'login' }});
-const loginEmpty = new Span(
-    { attributes: { class: 'hide', id: 'login-empty' }, innerText: constants.clues.enterLogin});
-const passwordLabel = new Label({ innerText: 'Пароль'});
-const passwordInput = new Input(
-    { attributes: { type: 'password', name: 'password', id: 'password' }});
-const passwordError = new Span(
-    { attributes: { class: 'hide', id: 'password-error' }, innerText: constants.clues.passwordRule });
-const passwordEmpty = new Span(
-    { attributes: { class: 'hide', id: 'password-empty' }, innerText: constants.clues.enterPassword });
-const authButton = new Button({ innerText: 'Войти', attributes: { class: 'enter' } });
+const loginLabel = new Label({
+        attributes: { class: 'auth-label'},
+        innerText: 'Логин'
+});
+const passwordLabel = new Label({
+    attributes: { class: 'auth-label'},
+    innerText: 'Пароль'
+});
+
+const loginInput = new Input({
+    attributes: { type: 'text', name: 'login', id: 'login', class: 'auth-input'}
+});
+const passwordInput = new Input({
+    attributes: { type: 'password', name: 'password', id: 'password', class: 'auth-input' }
+});
+
+const loginEmpty = new Span({
+    attributes: { class: 'auth-hide', id: 'auth-login-empty' },
+    innerText: constants.clues.enterLogin
+});
+const passwordError = new Span({
+    attributes: { class: 'auth-hide', id: 'auth-password-error' },
+    innerText: constants.clues.passwordRule
+});
+const passwordEmpty = new Span({
+    attributes: { class: 'auth-hide', id: 'auth-password-empty' },
+    innerText: constants.clues.enterPassword
+});
+
+const authButton = new Button({
+    innerText: 'Войти',
+    attributes: { class: 'auth-button' }
+});
 
 class Page extends Block {
     constructor(

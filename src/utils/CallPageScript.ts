@@ -9,7 +9,6 @@ import Router from "../modules/router";
 const routes = constants.routes;
 
 export const callPageScript = (pathname: string, router: Router): void => {
-    debugger
     switch (pathname) {
         case (routes.main):
             const authForm: HTMLFormElement | null = document.querySelector('#auth_form');
