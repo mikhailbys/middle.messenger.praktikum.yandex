@@ -2,6 +2,7 @@ import {PASSWORD_REGEXP} from "../../utils/Masks";
 import {addFocusEventOnInputBySelectors, triggerValidateErrorBySelectors} from "../../utils/FormEvents";
 import Router from "../../modules/router";
 import constants from "../../constants";
+import {signIn} from "./authorization.service";
 
 const AUTH_ERROR_SELECTORS = ['auth-input-error', 'auth-show-error'];
 const ERROR_IDS = ['#auth-login-empty', '#auth-password-empty', '#auth-password-error'];
@@ -14,7 +15,7 @@ const addFormSubmitEvent = (authForm: HTMLFormElement) => {
         const login = formData.get('login');
         const password = formData.get('password');
 
-        validateForm(authForm) ? console.log({login, password}) : null;
+        validateForm(authForm) ? signIn({login: login as string, password: password as string}) : null;
     }
 }
 

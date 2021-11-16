@@ -1,5 +1,5 @@
 type XHROptions = {
-    data?: any, // :(
+    data?: any,
     headers?: {[key: string]:string},
     method: keyof typeof METHODS,
     timeout?: number
@@ -13,6 +13,8 @@ enum METHODS {
     DELETE = 'DELETE'
 }
 
+const root_url  = 'https://ya-praktikum.tech/api/v2';
+
 function queryStringify(data: XMLHttpRequestBodyInit): string {
     let result = '?';
     Object.keys(data).forEach(key => {
@@ -24,48 +26,44 @@ function queryStringify(data: XMLHttpRequestBodyInit): string {
 }
 
 class HTTPTransport {
-    get = (url, options: XHROptions = { method: METHODS.GET }) => {
-        return this.request(
-            options.data ? `${url}${queryStringify(options.data)}` : url,
-            {
-                headers: options.headers,
-                method: METHODS.GET
-            },
-            options.timeout);
+    get = (url, options: Omit<XHROptions, 'method'> = {}) => {
+        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
     };
 
-    put = (url, options: XHROptions = { method: METHODS.PUT }) => {
-        return this.request(
-            url,
-            {
-                data: options.data ?? {},
-                headers: options.headers,
-                method: METHODS.PUT
-            },
-            options.timeout);
+    post = (url, options: Omit<XHROptions, 'method'> = {}) => {
+        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
     };
 
-    post = (url, options: XHROptions = { method: METHODS.POST }) => {
-        return this.request(
-            url,
-            {
-                data: options.data ?? {},
-                headers: options.headers,
-                method: METHODS.POST
-            },
-            options.timeout);
+    put = (url, options: Omit<XHROptions, 'method'> = {}) => {
+        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
     };
 
-    delete = (url, options: XHROptions = { method: METHODS.DELETE }) => {
+    delete = (url, options: Omit<XHROptions, 'method'> = {}) => {
         return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
-    request = (url, options: XHROptions = { method: METHODS.GET }, timeout = 5000) => {
-        const {method, data} = options;
+    request = (url: string, options: XHROptions, timeout = 5000) => {
+        const {headers = {}, method, data} = options;
 
-        return new Promise((resolve, reject) => {
+        return new Promise(function(resolve, reject) {
+            if (!method) {
+                reject('No method');
+                return;
+            }
+
             const xhr = new XMLHttpRequest();
-            xhr.open(method, url);
+            const isGet = method === METHODS.GET;
+
+            xhr.open(
+                method,
+                isGet && !!data
+                    ? `${root_url}${url}${queryStringify(data)}`
+                    : `${root_url}${url}`,
+            );
+
+            Object.keys(headers).forEach(key => {
+                xhr.setRequestHeader(key, headers[key]);
+            });
 
             xhr.onload = function() {
                 resolve(xhr);
@@ -73,9 +71,11 @@ class HTTPTransport {
 
             xhr.onabort = reject;
             xhr.onerror = reject;
+
+            xhr.timeout = timeout;
             xhr.ontimeout = reject;
 
-            if (method === METHODS.GET || !data) {
+            if (isGet || !data) {
                 xhr.send();
             } else {
                 xhr.send(data);

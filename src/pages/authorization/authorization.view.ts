@@ -22,10 +22,10 @@ const passwordLabel = new Label({
 });
 
 const loginInput = new Input({
-    attributes: { type: 'text', name: 'login', id: 'login', class: 'auth-input'}
+    attributes: { type: 'text', name: 'login', id: 'auth-login', class: 'auth-input'}
 });
 const passwordInput = new Input({
-    attributes: { type: 'password', name: 'password', id: 'password', class: 'auth-input' }
+    attributes: { type: 'password', name: 'password', id: 'auth-password', class: 'auth-input' }
 });
 
 const loginEmpty = new Span({
