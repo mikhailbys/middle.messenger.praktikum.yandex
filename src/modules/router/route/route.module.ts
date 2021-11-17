@@ -36,9 +36,9 @@ class Route {
         return isEqual(pathname, this._pathname);
     }
 
-    render() {
+    render(props?: any) {
         if (!this._block) {
-            this._block = new this._blockClass();
+            this._block = props ? new this._blockClass() : new this._blockClass();
             render(this._props.rootQuery, this._block!);
             return;
         }

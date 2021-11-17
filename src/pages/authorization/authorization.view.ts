@@ -12,8 +12,6 @@ interface Props {
     templateBase: boolean
 }
 
-export const AUTH_PAGE = 'AUTH_PAGE';
-
 const loginLabel = new Label({
         attributes: { class: 'auth-label'},
         innerText: 'Логин'

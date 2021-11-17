@@ -2,7 +2,7 @@ import Router from "./modules/router";
 
 import constants from "./constants";
 
-import AuthPage, {AUTH_PAGE} from "./pages/authorization/authorization.view";
+import AuthPage from "./pages/authorization/authorization.view";
 import RegistrationPage from "./pages/registry/registry.view";
 import MessagesPage from "./pages/messages/messages.view";
 import SettingsPage from "./pages/profile/profile.view";
@@ -13,7 +13,7 @@ const routes = constants.routes;
 const router = new Router('#root');
 const store = new Store();
 
-store.init([AUTH_PAGE]);
+store.init([routes.main], router.routes);
 
 router
     .use(routes.main, AuthPage)

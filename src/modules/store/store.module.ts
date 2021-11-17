@@ -1,4 +1,5 @@
 import EventBus from "../eventBus";
+import Route from "../router/route";
 
 type StorePage = {
     pageName: string,
@@ -16,6 +17,7 @@ class Store {
     };
     eventBus: EventBus;
     pages: StorePage[];
+    routes: Route[];
 
     constructor() {
         if (Store.__instance) {
@@ -24,6 +26,7 @@ class Store {
         this.eventBus = new EventBus();
         this._registerEvents();
         this.pages = [];
+        this.routes = [];
 
         Store.__instance = this;
     }
@@ -33,19 +36,27 @@ class Store {
         this.eventBus.on(Store.EVENTS.UPDATE, this.update.bind(this));
     }
 
-    init(pageNames: string[]) {
+    init(pageNames: string[], routes: Route[]) {
         pageNames.forEach(name => {
             this.pages.push({ pageName: name, props: {}});
         })
+        this.routes = routes;
     }
 
     update(props: any, pageName: string) {
         const currentPage = this.pages.find(page => page.pageName === pageName);
         if (!currentPage) {
-            throw Error('Page is not initialized')
+            throw Error('Page is not initialized');
         }
-        console.log('update:', props);
-        // todo update props with router
+
+        const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
+        if (routeToUpdate) {
+            // todo update props with router
+            console.log('update:', props);
+            routeToUpdate.render(props);
+        } else {
+            throw Error('Route is not found');
+        }
     }
 }
 

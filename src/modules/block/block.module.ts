@@ -109,6 +109,7 @@ class Block {
     }
 
     setProps = (nextProps: any) => {
+        debugger
         if (nextProps) {
             Object.assign(this.props, nextProps);
         }

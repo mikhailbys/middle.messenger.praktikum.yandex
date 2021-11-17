@@ -1,6 +1,6 @@
 import AuthAPI from "../../api/auth-api";
 import Store from "../../modules/store";
-import {AUTH_PAGE} from "./authorization.view";
+import constants from "../../constants";
 
 interface Data {
     login: string,
@@ -9,12 +9,12 @@ interface Data {
 
 const api = new AuthAPI();
 const store = new Store();
+const currentPage = constants.routes.main;
 
 export const signIn = async (data: Data) => {
     const response = await api.request(data);
-    debugger
     if (response?.status === 400) {
-        store.update({ login: '', password: '' }, AUTH_PAGE);
+        store.update({ login: '', password: '' }, currentPage);
     } else {
         // todo process values
     }
