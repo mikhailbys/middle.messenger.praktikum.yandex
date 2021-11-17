@@ -10,12 +10,10 @@ class AuthAPI extends BaseAPI {
     async request(data: any): Promise<any> {
         const response = await authAPIInstance.post(`${root}/signin`, { data: data });
         const message = processResponseStatus(response);
-        if (!message) {
-            return response;
-        } else {
+        if (message) {
             alert(message);
         }
-        return null;
+        return response;
     }
 }
 
