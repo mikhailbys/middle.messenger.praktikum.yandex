@@ -38,7 +38,8 @@ class Route {
 
     render(props?: any) {
         if (!this._block) {
-            this._block = props ? new this._blockClass() : new this._blockClass();
+            // todo
+            this._block = props ? new this._blockClass(props) : new this._blockClass();
             render(this._props.rootQuery, this._block!);
             return;
         }

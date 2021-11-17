@@ -10,6 +10,11 @@ interface Props {
     label?: string,
     buttonType?: 'button' | 'submit' | 'reset',
     onClick?: () => void,
+    templateBase?: boolean,
+    attributes?: { string: string },
+    name?: string,
+    innerText?: string,
+    values?: {[k: string]: string}
 }
 
 const ACCESS_ERROR_MESSAGE = 'Нет доступа';
@@ -28,7 +33,10 @@ class Block {
         templateBase?: boolean,
         attributes?: { string: string },
         name?: string,
+        // todo вынести в отдельный {}
         innerText?: string,
+        value?: string,
+        values?: {[k: string]: string}
     };
     eventBus: EventBus;
     children: Record<string, Block>;
@@ -71,6 +79,13 @@ class Block {
         });
     }
 
+    // todo in children
+    _setValues(element: HTMLElement, values: any) {
+        Object.keys(values).forEach(key => {
+
+        })
+    }
+
     _componentDidMount() {
         this.componentDidMount(this.props);
     }
@@ -93,12 +108,14 @@ class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
-    _updateResources(newProps: { attributes?: {}; }) {
+    // todo
+    _updateResources(newProps: { attributes?: {}; values?: {[k: string]: string} }) {
         const { attributes = {} } = newProps;
         this._setAttributes(this._element, attributes);
     }
 
     _componentDidUpdate(newProps: any, oldProps: any) {
+        debugger
         this.componentDidUpdate(newProps, oldProps);
         this._updateResources(newProps);
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
@@ -108,10 +125,12 @@ class Block {
         return true; // todo
     }
 
+    // todo
     setProps = (nextProps: any) => {
         debugger
         if (nextProps) {
             Object.assign(this.props, nextProps);
+            this.eventBus.emit(Block.EVENTS.FLOW_CDU);
         }
     };
 

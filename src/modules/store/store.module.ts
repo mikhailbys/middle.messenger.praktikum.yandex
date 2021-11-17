@@ -48,12 +48,14 @@ class Store {
         if (!currentPage) {
             throw Error('Page is not initialized');
         }
+        currentPage.props = props;
 
         const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
         if (routeToUpdate) {
             // todo update props with router
             console.log('update:', props);
-            routeToUpdate.render(props);
+            //routeToUpdate.render(props);
+            routeToUpdate._block?.render()
         } else {
             throw Error('Route is not found');
         }
