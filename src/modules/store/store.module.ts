@@ -52,10 +52,7 @@ class Store {
 
         const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
         if (routeToUpdate) {
-            // todo update props with router
-            console.log('update:', props);
-            //routeToUpdate.render(props);
-            routeToUpdate._block?.render()
+            routeToUpdate.render(props)
         } else {
             throw Error('Route is not found');
         }

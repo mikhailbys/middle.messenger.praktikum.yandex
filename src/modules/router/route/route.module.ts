@@ -36,14 +36,21 @@ class Route {
         return isEqual(pathname, this._pathname);
     }
 
-    render(props?: any) {
+    render(props?: { [blockName: string]: string }) {
+
         if (!this._block) {
-            // todo
-            this._block = props ? new this._blockClass(props) : new this._blockClass();
+            this._block = new this._blockClass();
             render(this._props.rootQuery, this._block!);
             return;
         }
 
+        if (this._block && props) {
+            Object.keys(props).forEach(block => {
+                this._block!.children[block].setProps({ value: props[block]})
+            });
+            render(this._props.rootQuery, this._block!);
+            return;
+        }
         this._block.show();
     }
 }

@@ -2,7 +2,6 @@ import Block from '../../modules/block';
 import './authorization.styles.scss';
 // @ts-ignore
 import templateCompile from './authorization.template.pug';
-import Store from "../../modules/store";
 import {initializeInnerComponents} from "./authorization.components";
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 class Page extends Block {
     constructor(
         props: Props = { templateBase: true },
-        children = initializeInnerComponents(new Store())
+        children = initializeInnerComponents()
     ) {
         super('div', props, children);
     }

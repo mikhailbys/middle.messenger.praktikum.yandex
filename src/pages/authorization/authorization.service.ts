@@ -14,7 +14,7 @@ const currentPage = constants.routes.main;
 export const signIn = async (data: Data) => {
     const response = await api.request(data);
     if (response?.status === 400) {
-        store.update({ login: '', password: '' }, currentPage);
+        store.update({ loginInput: '', passwordInput: ''}, currentPage);
     } else {
         // todo process values
     }

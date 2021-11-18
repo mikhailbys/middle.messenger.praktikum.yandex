@@ -3,9 +3,8 @@ import Input from "../../components/input";
 import Span from "../../components/span/span.component";
 import constants from "../../constants";
 import Button from "../../components/button";
-import Store from "../../modules/store";
 
-export const initializeInnerComponents = (store: Store) => {
+export const initializeInnerComponents = () => {
 
     const loginLabel = new Label({
         attributes: { class: 'auth-label'},

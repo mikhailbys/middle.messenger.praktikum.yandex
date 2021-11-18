@@ -6,15 +6,10 @@ interface Meta {
 }
 
 interface Props {
-    className?: string,
-    label?: string,
-    buttonType?: 'button' | 'submit' | 'reset',
-    onClick?: () => void,
     templateBase?: boolean,
     attributes?: { string: string },
-    name?: string,
     innerText?: string,
-    values?: {[k: string]: string}
+    value?: string
 }
 
 const ACCESS_ERROR_MESSAGE = 'Нет доступа';
@@ -29,15 +24,7 @@ class Block {
 
     _element: HTMLElement;
     _meta: Meta;
-    props: {
-        templateBase?: boolean,
-        attributes?: { string: string },
-        name?: string,
-        // todo вынести в отдельный {}
-        innerText?: string,
-        value?: string,
-        values?: {[k: string]: string}
-    };
+    props: Props;
     eventBus: EventBus;
     children: Record<string, Block>;
 
@@ -79,11 +66,9 @@ class Block {
         });
     }
 
-    // todo in children
-    _setValues(element: HTMLElement, values: any) {
-        Object.keys(values).forEach(key => {
-
-        })
+    _setValue(element: HTMLElement, value: string) {
+        //@ts-ignore
+        element.value = value;
     }
 
     _componentDidMount() {
@@ -108,26 +93,24 @@ class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
-    // todo
-    _updateResources(newProps: { attributes?: {}; values?: {[k: string]: string} }) {
-        const { attributes = {} } = newProps;
-        this._setAttributes(this._element, attributes);
+    _updateResources() {
+        const { value } = this.props
+        if (value === '' || value) {
+            this._setValue(this._element, value)
+        }
     }
 
     _componentDidUpdate(newProps: any, oldProps: any) {
-        debugger
         this.componentDidUpdate(newProps, oldProps);
-        this._updateResources(newProps);
+        this._updateResources();
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
 
     componentDidUpdate(_newProps: any, _oldProps: any): void | boolean {
-        return true; // todo
+        return true;
     }
 
-    // todo
-    setProps = (nextProps: any) => {
-        debugger
+    setProps = (nextProps?: {[block: string]: string}) => {
         if (nextProps) {
             Object.assign(this.props, nextProps);
             this.eventBus.emit(Block.EVENTS.FLOW_CDU);
