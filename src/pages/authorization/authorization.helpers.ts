@@ -15,7 +15,9 @@ const addFormSubmitEvent = (authForm: HTMLFormElement) => {
         const login = formData.get('login');
         const password = formData.get('password');
 
-        validateForm(authForm) ? signIn({login: login as string, password: password as string}) : null;
+        if (validateForm(authForm)) {
+            signIn({login: login as string, password: password as string})
+        }
     }
 }
 

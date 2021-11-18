@@ -5,6 +5,7 @@ import {
     triggerValidateErrorBySelectors
 } from "../../utils/FormEvents";
 import constants from "../../constants";
+import {signUp} from "./registry.service";
 
 const REG_ERROR_SELECTORS = ['reg-input-error', 'reg-show-error'];
 const ERROR_IDS = [
@@ -15,7 +16,7 @@ const ERROR_IDS = [
     '#reg-phone-error', '#reg-login-error',
 ];
 
-export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
+export const addFormSubmitEvent = (registryForm: HTMLFormElement, router: Router) => {
     registryForm.onsubmit = (event) => {
         event.preventDefault();
 
@@ -28,7 +29,7 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
         const password = formData.get('password');
         const passwordRepeat = formData.get('password-repeat');
 
-        validate(registryForm) ? console.log({
+        console.log({
             login,
             password,
             passwordRepeat,
@@ -36,7 +37,20 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement) => {
             firstName,
             secondName,
             phone,
-        }) : null;
+        });
+
+        // todo
+        /*if (validate(registryForm)) {
+            signUp({
+                login: login!,
+                password,
+                passwordRepeat,
+                mail,
+                firstName,
+                secondName,
+                phone,
+            }, router);
+        }*/
     }
 }
 
@@ -138,7 +152,7 @@ export const prepareRegistrationForm = (registryForm: HTMLFormElement, router: R
         ['reg-password-repeat-empty', 'reg-password-repeat-error', 'reg-password-repeat-equality'], REG_ERROR_SELECTORS);
 
     if(registryForm) {
-        addFormSubmitEvent(registryForm);
+        addFormSubmitEvent(registryForm, router);
     }
 
     document.querySelector('#enterHref')?.addEventListener('click', (e) => {
