@@ -8,12 +8,11 @@ const root = '/user'
 
 class ProfileAPI extends BaseAPI {
     async password(data: Data): Promise<any> {
-        const response = await authAPIInstance.put(`${root}/password`, {
+        return await authAPIInstance.put(`${root}/password`, {
             credentials: 'include',
             mode: 'cors',
             data: data
         });
-        return response;
     }
 }
 

@@ -22,7 +22,7 @@ router
     .use(routes.messages, MessagesPage)
     .use(routes.settings, SettingsPage)
     .use(routes.passwordSettings, PasswordSettingsPage)
-    // todo
+    // todo profileSettings
     .start();
 
 router.go(routes.main);

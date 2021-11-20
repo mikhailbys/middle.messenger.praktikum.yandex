@@ -2,7 +2,6 @@ import Span from "../../components/span/span.component";
 import Input from "../../components/input";
 import constants from "../../constants";
 import Button from "../../components/button";
-import {render} from "../../utils/RenderDOM";
 
 export const initializeInnerComponents = () => {
     const oldPassSpan = new Span({ attributes: {}, innerText: 'Старый пароль'});
