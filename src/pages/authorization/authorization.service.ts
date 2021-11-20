@@ -21,11 +21,12 @@ const messagePage = constants.routes.messages;
 export const signIn = async (data: SignInData, router: Router) => {
     const response = await api.signIn(data);
     if (response?.status === 400 || response?.status === 401) {
-        store.update(DEFAULT_PARAMS, currentPage);
+        store.update({
+            type: 'value',
+            props: {DEFAULT_PARAMS}
+        }, currentPage);
     }
     if (response?.status === 200) {
-        const userData = await api.user();
-        console.log(userData);
         router.go(messagePage);
     }
 }

@@ -94,7 +94,7 @@ class Block {
     }
 
     _updateResources() {
-        const { value } = this.props
+        const { value } = this.props;
         if (value === '' || value) {
             this._setValue(this._element, value)
         }

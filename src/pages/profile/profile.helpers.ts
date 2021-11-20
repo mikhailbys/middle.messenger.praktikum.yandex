@@ -1,8 +1,9 @@
 import Router from "../../modules/router";
 import constants from "../../constants";
-import {logOut} from "./profile.service";
+import {getUserData, logOut} from "./profile.service";
 
 export const prepareSettingsPage = (router: Router) => {
+    getUserData();
 
     const logoutButton = document.querySelector('#logout-button');
     logoutButton?.addEventListener('click', async (e) => {

@@ -1,6 +1,11 @@
 import EventBus from "../eventBus";
 import Route from "../router/route";
 
+type Props = {
+    type: 'value' | 'innerText',
+    props: any
+}
+
 type StorePage = {
     pageName: string,
     props: {}
@@ -43,15 +48,16 @@ class Store {
         this.routes = routes;
     }
 
-    update(props: any, pageName: string) {
+    update(props: Props, pageName: string) {
+        debugger
         const currentPage = this.pages.find(page => page.pageName === pageName);
         if (!currentPage) {
             throw Error('Page is not initialized');
         }
-        currentPage.props = props;
 
         const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
         if (routeToUpdate) {
+            currentPage.props = props;
             routeToUpdate.render(props)
         } else {
             throw Error('Route is not found');

@@ -29,7 +29,14 @@ function queryStringify(data: XMLHttpRequestBodyInit): string {
 
 class HTTPTransport {
     get = (url, options: Omit<XHROptions, 'method'> = {}) => {
-        return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+        return this.request(url, {
+            ...options,
+            method: METHODS.GET,
+            headers: {
+                'content-type': 'application/json',
+                Accept: 'application/json'
+            }
+        }, options.timeout);
     };
 
     post = (url, options: Omit<XHROptions, 'method'> = {}) => {
@@ -37,9 +44,9 @@ class HTTPTransport {
             {...options,
                 method: METHODS.POST,
                 headers: {
-                ['content-type']: 'application/json',
+                'content-type': 'application/json',
                     Accept: 'application/json'
-            }
+                }
             }, options.timeout);
     };
 

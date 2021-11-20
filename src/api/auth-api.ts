@@ -32,7 +32,7 @@ class AuthAPI extends BaseAPI {
         return response;
     };
 
-    async user() {
+    async user(): Promise<any> {
         const response = await authAPIInstance.get(`${root}/user`, {
             credentials: 'include',
             mode: 'cors',

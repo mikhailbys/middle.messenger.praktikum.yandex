@@ -36,7 +36,10 @@ class Route {
         return isEqual(pathname, this._pathname);
     }
 
-    render(props?: { [blockName: string]: string }) {
+    render(props?: {
+        type: 'value' | 'innerText'
+        props: { [blockName: string]: string }
+    }) {
 
         if (!this._block) {
             this._block = new this._blockClass();
@@ -45,12 +48,23 @@ class Route {
         }
 
         if (this._block && props) {
-            Object.keys(props).forEach(block => {
-                this._block!.children[block].setProps({ value: props[block]})
-            });
-            render(this._props.rootQuery, this._block!);
+            switch (props.type) {
+                case "value":
+                    Object.keys(props.props).forEach(block => {
+                        this._block!.children[block].setProps({ value: props.props[block]})
+                    });
+                    render(this._props.rootQuery, this._block!);
+                    return;
+                case "innerText":
+                    Object.keys(props.props).forEach(block => {
+                        this._block!.children[block].setProps({ innerText: props.props[block]})
+                    });
+                    render(this._props.rootQuery, this._block!);
+                    break;
+            }
             return;
         }
+
         this._block.show();
     }
 }

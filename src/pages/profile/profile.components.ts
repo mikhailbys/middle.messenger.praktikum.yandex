@@ -1,6 +1,7 @@
 import Span from "../../components/span/span.component";
 
 export const initializeInnerComponents = () => {
+
     const mailLabel = new Span({
         attributes: {},
         innerText: 'Почта'
