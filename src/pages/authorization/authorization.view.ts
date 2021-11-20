@@ -17,7 +17,6 @@ class Page extends Block {
     }
 
     render() {
-        debugger
         return templateCompile();
     }
 }
