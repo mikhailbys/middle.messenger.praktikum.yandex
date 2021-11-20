@@ -13,7 +13,7 @@ const routes = constants.routes;
 const router = new Router('#root');
 const store = new Store();
 
-store.init([routes.main], router.routes);
+store.init([routes.main, routes.settings], router.routes);
 
 router
     .use(routes.main, AuthPage)

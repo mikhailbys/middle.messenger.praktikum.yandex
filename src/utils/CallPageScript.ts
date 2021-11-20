@@ -5,6 +5,7 @@ import {prepareRegistrationForm} from "../pages/registry/registry.helpers";
 import {prepareMessagesPage} from "../pages/messages/messages.helpers";
 
 import Router from "../modules/router";
+import {prepareSettingsPage} from "../pages/profile/profile.helpers";
 
 const routes = constants.routes;
 
@@ -20,6 +21,9 @@ export const callPageScript = (pathname: string, router: Router): void => {
             break;
         case (routes.messages):
             prepareMessagesPage(router);
+            break;
+        case (routes.settings):
+            prepareSettingsPage(router);
             break;
     }
 };
