@@ -1,5 +1,5 @@
 import {BaseAPI} from "./base-api";
-import HTTPTransport from "../services/api";
+import HTTPTransport from "../services/api.service";
 import {processResponseStatus} from "../utils/ApiUtils";
 import {SignInData} from "../pages/authorization/authorization.service";
 import {SignUpData} from "../pages/registry/registry.service";

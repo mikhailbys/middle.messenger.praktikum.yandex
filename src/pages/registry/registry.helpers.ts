@@ -29,16 +29,6 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement, router: Router
         const password = formData.get('password');
         const passwordRepeat = formData.get('passwordRepeat');
 
-        console.log({
-            login,
-            password,
-            passwordRepeat,
-            mail,
-            firstName,
-            secondName,
-            phone,
-        });
-
         if (validate(registryForm)) {
             signUp({
                 login: login as string,

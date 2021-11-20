@@ -2,8 +2,8 @@ import {triggerValidateError} from '../../utils/FormValidation';
 import {PASSWORD_REGEXP} from '../../utils/Masks';
 import {addFocusEventOnInput} from "../../utils/FormEvents";
 import Router from "../../modules/router";
-import {logOut} from "../profile/profile.service";
 import constants from "../../constants";
+import {changePassword} from "./password-change.service";
 
 export const preparePasswordSettingsPage = (router: Router) => {
     const passwordForm: HTMLFormElement | null = document.querySelector('#password_form');
@@ -21,9 +21,14 @@ export const preparePasswordSettingsPage = (router: Router) => {
 
             const oldPassword = formData.get('oldPassword');
             const newPassword = formData.get('newPassword');
-            const newPasswordRepeat = formData.get('newPasswordRepeat');
 
-            validate(passwordForm) ? console.log({ oldPassword, newPassword, newPasswordRepeat }) : null;
+            if (validate(passwordForm)) {
+                changePassword({
+                    newPassword: newPassword as string,
+                    oldPassword: oldPassword as string
+                }, router)
+                    .then((response) => response && router.go(constants.routes.settings));
+            }
         };
     }
 
@@ -31,8 +36,7 @@ export const preparePasswordSettingsPage = (router: Router) => {
     back?.addEventListener('click', async (e) => {
         e.preventDefault();
         router.go(constants.routes.settings);
-    })
-    //todo роуты
+    });
 }
 
 function validate(passwordForm: HTMLFormElement) {
