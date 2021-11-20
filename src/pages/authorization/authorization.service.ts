@@ -2,6 +2,7 @@ import AuthAPI from "../../api/auth-api";
 import Store from "../../modules/store";
 import constants from "../../constants";
 import Router from "../../modules/router";
+import {setAccess} from "../../utils/Access";
 
 export interface SignInData {
     login: string,
@@ -27,6 +28,7 @@ export const signIn = async (data: SignInData, router: Router) => {
         }, currentPage);
     }
     if (response?.status === 200) {
+        setAccess(true);
         router.go(messagePage);
     }
 }

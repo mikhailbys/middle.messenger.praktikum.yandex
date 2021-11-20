@@ -1,5 +1,9 @@
 import Route from "./route";
 import {callPageScript} from "../../utils/CallPageScript";
+import constants from "../../constants";
+
+const mainPath = constants.routes.main;
+const accessErrorPath = constants.routes.accessError;
 
 class Router {
 
@@ -20,6 +24,10 @@ class Router {
         this._rootQuery = rootQuery;
 
         Router.__instance = this;
+    }
+
+    hasAccess() {
+        return Boolean(localStorage.getItem('isLogged'));
     }
 
     use(pathname, blockClass) {
@@ -45,9 +53,17 @@ class Router {
             this._currentRoute.leave();
         }
 
-        this._currentRoute = route;
-        route.render();
-        callPageScript(route._pathname, this);
+        if (this.hasAccess() || route._pathname === mainPath) {
+            this._currentRoute = route;
+            route.render();
+        } else {
+            this._currentRoute = this.routes.find(route =>
+                route._pathname === accessErrorPath) ?? null;
+            this._currentRoute?.render();
+        }
+        if (this._currentRoute) {
+            callPageScript(route._pathname, this);
+        }
     }
 
     go(pathname) {

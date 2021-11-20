@@ -1,6 +1,7 @@
 import Router from "../../modules/router";
 import constants from "../../constants";
 import {getUserData, logOut} from "./profile.service";
+import {setAccess} from "../../utils/Access";
 
 export const prepareSettingsPage = (router: Router) => {
     getUserData();
@@ -15,6 +16,9 @@ export const prepareSettingsPage = (router: Router) => {
     logoutButton?.addEventListener('click', async (e) => {
         e.preventDefault();
         const result = await logOut();
-        result && router.go(constants.routes.main);
+        if (result) {
+            setAccess(false);
+            router.go(constants.routes.main);
+        }
     })
 }
