@@ -6,7 +6,7 @@ html {
   @include mixins.fonts;
 }
 
-.container {
+.mess-container {
   display: flex;
 
   width: 100%;
@@ -15,7 +15,7 @@ html {
   height: 100vh;
 }
 
-.list-container {
+.mess-list-container {
   border-right: 1px solid variables.$secondary;
 
   height: 100vh;
@@ -24,7 +24,7 @@ html {
   background-color: lighten(variables.$default_dark, 30%);
 }
 
-.chat-container {
+.mess-chat-container {
   @include mixins.flex-column;
   text-align: center;
 
@@ -32,13 +32,13 @@ html {
   width: 70%;
 }
 
-.choose-chat {
+.mess-choose-chat-clue {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.list-header {
+.mess-list-header {
   @include mixins.flex-column;
   align-items: baseline;
 
@@ -48,7 +48,7 @@ html {
   border-bottom: 0.5px solid variables.$default;
 }
 
-.search-input {
+.mess-search-input {
   margin: 0 10px;
   width: 90%;
   height: 25px;
@@ -66,7 +66,7 @@ input:focus {
   outline: none;
 }
 
-.single-chat-container {
+.mess-single-chat-container {
   display: flex;
 
   width: 100%;
@@ -77,11 +77,11 @@ input:focus {
   margin-right: 5px;
 }
 
-.avatar-container {
+.mess-avatar-container {
   padding: 8px 8px;
 }
 
-.avatar{
+.mess-avatar{
   border: 1px solid variables.$secondary;
   background-color: variables.$secondary;
   border-radius: 50%;
@@ -90,30 +90,30 @@ input:focus {
   height: 55px;
 }
 
-.messenger-name {
+.mess-messenger-name {
   margin: 8px 0;
 }
 
-.messenger-text {
+.mess-messenger-text {
   color: variables.$default;
 }
 
-.message {
+.mess-message {
   @include mixins.flex-column;
 
   margin-right: 140px;
 }
 
-.info {
+.mess-info {
   @include mixins.flex-column;
 }
 
-.time {
+.mess-time {
   color: variables.$default;
   padding: 8px 5px;
 }
 
-.counter {
+.mess-counter {
   border: 1px solid variables.$primary;
   background-color: variables.$primary;
   color: white;
@@ -130,23 +130,23 @@ input:focus {
   margin-top: 3px;
 }
 
-.profile-container {
+.mess-profile-container {
   display: flex;
   align-self: flex-end;
 }
 
-.profile {
+.mess-profile {
   color: variables.$default;
   margin: 10px 5px;
   text-decoration: none;
   font-size: variables.$medium;
 }
 
-.hide {
+.mess-hide {
   display: none !important;
 }
 
-.new-message-container {
+.mess-new-message-container {
   display: flex;
   border-top: 1px solid variables.$secondary;
   padding: variables.$spacing_x2;
@@ -158,7 +158,7 @@ input:focus {
   background-color: lighten(variables.$default_dark, 30%);
 }
 
-.message-input {
+.mess-message-input {
   width: 100%;
   height: 5vh;
 
@@ -171,19 +171,20 @@ input:focus {
   margin-right: variables.$spacing_x2;
 }
 
-.send-button-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 20%;
-  margin-left: 12px;
-}
-
-.send-button {
+.mess-send-button {
   background-color: variables.$primary;
   border: none;
   border-radius: 50px;
   height: 42px;
   width: 50px;
   color: white;
+}
+
+// todo
+.send-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  margin-left: 12px;
 }

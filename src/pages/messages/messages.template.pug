@@ -1,27 +1,27 @@
-div(class='container')
-    div(class='list-container')
-        div(class='list-header')
+div(class='mess-container')
+    div(class='mess-list-container')
+        div(class='mess-list-header')
             template(data-component="searchInput")
-            div(class='profile-container')
-                a(href='' class='profile' id='profile') Профиль >
+            div(class='mess-profile-container')
+                a(href='' class='mess-profile' id='profile') Профиль >
 
-        div(class='single-chat-container')
-            div(class='avatar-container')
-                div(class='avatar')
+        div(class='mess-single-chat-container')
+            div(class='mess-avatar-container')
+                div(class='mess-avatar')
 
-            div(class='message')
+            div(class='mess-message')
                 template(data-component="img")
-                h4(class='messenger-name') Ирина
+                h4(class='mess-messenger-name') Ирина
 
-            div(class='info')
+            div(class='mess-info')
                 template(data-component="time")
-                div(class='counter') 2
+                div(class='mess-counter') 2
 
-    div(class='chat-container')
-        div(class='choose-chat')
+    div(class='mess-chat-container')
+        div(class='mess-choose-chat')
             template(data-component="chooseChat")
 
-        div(class='new-message-container hide')
+        div(class='mess-new-message-container hide')
             template(data-component="messInput")
             template(data-component="sendButton")
 

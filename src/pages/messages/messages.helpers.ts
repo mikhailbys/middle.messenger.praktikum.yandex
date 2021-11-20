@@ -2,16 +2,16 @@ import Router from "../../modules/router";
 import constants from "../../constants";
 
 export const prepareMessagesPage = (router: Router) => {
-    const chats = document.querySelectorAll('.single-chat-container');
-    const messageContainer = document.querySelector('.new-message-container');
-    const clue = document.querySelector('.choose-chat-clue');
-    const send = document.querySelector('.send-button');
-    const messageInput: HTMLInputElement | null = document.querySelector('.message-input');
+    const chats = document.querySelectorAll('.mess-single-chat-container');
+    const messageContainer = document.querySelector('.mess-new-message-container');
+    const clue = document.querySelector('.mess-choose-chat-clue');
+    const send = document.querySelector('.mess-send-button');
+    const messageInput: HTMLInputElement | null = document.querySelector('.mess-message-input');
 
     chats.forEach(chat => {
         chat.addEventListener('click', () => {
-            messageContainer?.classList.remove('hide');
-            clue?.classList.add('hide');
+            messageContainer?.classList.remove('mess-hide');
+            clue?.classList.add('mess-hide');
         })
     });
     send?.addEventListener('click', () => {
