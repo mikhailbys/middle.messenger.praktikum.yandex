@@ -31,7 +31,14 @@ class HTTPTransport {
     };
 
     post = (url, options: Omit<XHROptions, 'method'> = {}) => {
-        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+        return this.request(url,
+            {...options,
+                method: METHODS.POST,
+                headers: {
+                ['content-type']: 'application/json',
+                    Accept: 'application/json'
+            }
+            }, options.timeout);
     };
 
     put = (url, options: Omit<XHROptions, 'method'> = {}) => {

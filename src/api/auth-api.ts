@@ -19,13 +19,22 @@ class AuthAPI extends BaseAPI {
     };
 
     async signUp(data: SignUpData): Promise<any> {
-        const response = await authAPIInstance.post(`${root}/signun`, { data: data });
+        const response = await authAPIInstance.post(`${root}/signup`, { data: data });
         const message = processResponseStatus(response);
         if (message) {
             alert(message);
         }
         return response;
     };
+
+    async logOut(): Promise<any> {
+        const response = await authAPIInstance.post(`${root}/logout`);
+        const message = processResponseStatus(response);
+        if (message) {
+            alert(message);
+        }
+        return response;
+    }
 }
 
 export default AuthAPI;

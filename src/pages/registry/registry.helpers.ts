@@ -23,11 +23,11 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement, router: Router
         const formData = new FormData(registryForm);
         const login = formData.get('login');
         const mail = formData.get('mail');
-        const firstName = formData.get('first_name');
-        const secondName = formData.get('second_name');
+        const firstName = formData.get('firstName');
+        const secondName = formData.get('secondName');
         const phone = formData.get('phone');
         const password = formData.get('password');
-        const passwordRepeat = formData.get('password-repeat');
+        const passwordRepeat = formData.get('passwordRepeat');
 
         console.log({
             login,
@@ -39,18 +39,16 @@ export const addFormSubmitEvent = (registryForm: HTMLFormElement, router: Router
             phone,
         });
 
-        // todo
-        /*if (validate(registryForm)) {
+        if (validate(registryForm)) {
             signUp({
-                login: login!,
-                password,
-                passwordRepeat,
-                mail,
-                firstName,
-                secondName,
-                phone,
+                login: login as string,
+                password: password as string,
+                email: mail as string,
+                first_name: firstName as string,
+                second_name: secondName as string,
+                phone: phone as string,
             }, router);
-        }*/
+        }
     }
 }
 

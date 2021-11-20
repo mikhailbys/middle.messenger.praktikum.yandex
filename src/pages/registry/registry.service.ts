@@ -1,5 +1,4 @@
 import AuthAPI from "../../api/auth-api";
-import Store from "../../modules/store";
 import constants from "../../constants";
 import Router from "../../modules/router";
 
@@ -13,26 +12,25 @@ export interface SignUpData {
 }
 
 const DEFAULT_PARAMS = {
-    first_name: '',
-    second_name: '',
-    login: '',
-    email: '',
-    password: '',
-    phone: ''
+    firstNameInput: '',
+    secondNameInput: '',
+    loginInput: '',
+    mailInput: '',
+    passwordInput: '',
+    phoneInput: '',
+    passwordRepeatInput: ''
 };
 
 const api = new AuthAPI();
-const store = new Store();
-const currentPage = constants.routes.signUp;
 
 export const signUp = async (data: SignUpData, router: Router) => {
-    const response = await api.signIn(data);
+    const response = await api.signUp(data);
     if (response?.status === 400) {
-        //store.update(DEFAULT_PARAMS, currentPage);
-    } else {
-        console.log(response);
+        alert(response?.message);
+    }
+
+    if (response?.status === 200) {
         alert('Регистрация прошла успешно, выполните вход');
         router.go(constants.routes.main);
-        // todo process values
     }
 }
