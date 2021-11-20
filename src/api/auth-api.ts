@@ -9,14 +9,6 @@ const authAPIInstance = new HTTPTransport();
 const root = '/auth'
 
 class AuthAPI extends BaseAPI {
-    async signIn(data: SignInData): Promise<any> {
-        const response = await authAPIInstance.post(`${root}/signin`, { data: data });
-        const message = processResponseStatus(response);
-        if (message) {
-            alert(message);
-        }
-        return response;
-    };
 
     async signUp(data: SignUpData): Promise<any> {
         const response = await authAPIInstance.post(`${root}/signup`, { data: data });
@@ -27,8 +19,32 @@ class AuthAPI extends BaseAPI {
         return response;
     };
 
+    async signIn(data: SignInData): Promise<any> {
+        const response = await authAPIInstance.post(`${root}/signin`, {
+            credentials: 'include',
+            mode: 'cors',
+            data: data
+        });
+        const message = processResponseStatus(response);
+        if (message) {
+            alert(message);
+        }
+        return response;
+    };
+
+    async user() {
+        const response = await authAPIInstance.get(`${root}/user`, {
+            credentials: 'include',
+            mode: 'cors',
+        });
+        return response ? response : null;
+    }
+
     async logOut(): Promise<any> {
-        const response = await authAPIInstance.post(`${root}/logout`);
+        const response = await authAPIInstance.post(`${root}/logout`, {
+            credentials: 'include',
+            mode: 'cors'
+        });
         const message = processResponseStatus(response);
         if (message) {
             alert(message);

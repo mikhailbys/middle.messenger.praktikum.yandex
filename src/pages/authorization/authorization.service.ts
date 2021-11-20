@@ -24,7 +24,8 @@ export const signIn = async (data: SignInData, router: Router) => {
         store.update(DEFAULT_PARAMS, currentPage);
     }
     if (response?.status === 200) {
-        // todo в сторе хранить токен? или в локалсторедже
+        const userData = await api.user();
+        console.log(userData);
         router.go(messagePage);
     }
 }

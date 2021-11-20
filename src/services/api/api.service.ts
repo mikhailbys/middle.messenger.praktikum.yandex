@@ -3,6 +3,8 @@ type XHROptions = {
     headers?: {[key: string]:string},
     method: keyof typeof METHODS,
     timeout?: number
+    credentials?: string,
+    mode?: string,
 }
 
 enum METHODS {
@@ -81,6 +83,8 @@ class HTTPTransport {
 
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
+
+            xhr.withCredentials = true;
 
             if (isGet || !data) {
                 xhr.send();
