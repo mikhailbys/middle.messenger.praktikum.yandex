@@ -49,7 +49,6 @@ class Store {
     }
 
     update(props: Props, pageName: string) {
-        debugger
         const currentPage = this.pages.find(page => page.pageName === pageName);
         if (!currentPage) {
             throw Error('Page is not initialized');

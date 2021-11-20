@@ -22,6 +22,7 @@ html {
   width: 30%;
 
   background-color: lighten(variables.$default_dark, 30%);
+  min-width: fit-content;
 }
 
 .mess-chat-container {
@@ -50,8 +51,8 @@ html {
 
 .mess-search-input {
   margin: 0 10px;
-  width: 90%;
-  height: 25px;
+  width: 85%;
+  height: 15px;
 
   border: 0.5px solid variables.$default;
   border-radius: 5px;
@@ -75,6 +76,7 @@ input:focus {
   border-bottom: 0.5px solid variables.$default;
 
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .mess-avatar-container {
