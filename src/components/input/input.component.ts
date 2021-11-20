@@ -11,6 +11,7 @@ type Props = {
         placeholder?: string,
         id?: string
     },
+    value?: string
 }
 
 class Input extends Block {

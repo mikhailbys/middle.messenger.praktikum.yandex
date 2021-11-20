@@ -23,7 +23,7 @@ export const signIn = async (data: SignInData, router: Router) => {
     if (response?.status === 400 || response?.status === 401) {
         store.update({
             type: 'value',
-            props: {DEFAULT_PARAMS}
+            props: {...DEFAULT_PARAMS}
         }, currentPage);
     }
     if (response?.status === 200) {

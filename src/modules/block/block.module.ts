@@ -66,11 +66,6 @@ class Block {
         });
     }
 
-    _setValue(element: HTMLElement, value: string) {
-        //@ts-ignore
-        element.value = value;
-    }
-
     _componentDidMount() {
         this.componentDidMount(this.props);
     }
@@ -96,7 +91,8 @@ class Block {
     _updateResources() {
         const { value } = this.props;
         if (value === '' || value) {
-            this._setValue(this._element, value)
+            //@ts-ignore
+            this._element.value = value;
         }
     }
 
