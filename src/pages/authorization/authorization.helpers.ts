@@ -7,7 +7,7 @@ import {signIn} from "./authorization.service";
 const AUTH_ERROR_SELECTORS = ['auth-input-error', 'auth-show-error'];
 const ERROR_IDS = ['#auth-login-empty', '#auth-password-empty', '#auth-password-error'];
 
-const addFormSubmitEvent = (authForm: HTMLFormElement) => {
+const addFormSubmitEvent = (authForm: HTMLFormElement, router: Router) => {
     authForm.onsubmit = (event) => {
         event.preventDefault();
 
@@ -16,7 +16,7 @@ const addFormSubmitEvent = (authForm: HTMLFormElement) => {
         const password = formData.get('password');
 
         if (validateForm(authForm)) {
-            signIn({login: login as string, password: password as string})
+            signIn({login: login as string, password: password as string}, router)
         }
     }
 }
@@ -56,7 +56,7 @@ export const prepareAuthForm = (authForm: HTMLFormElement, router: Router) => {
         authForm?.password, ['auth-password-empty', 'auth-password-error'], AUTH_ERROR_SELECTORS);
 
     if (authForm) {
-        addFormSubmitEvent(authForm);
+        addFormSubmitEvent(authForm, router);
     }
 
     document.querySelector('#reg')?.addEventListener('click', (e) => {

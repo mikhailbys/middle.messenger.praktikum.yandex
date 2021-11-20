@@ -5,6 +5,9 @@ export const processResponseStatus = (response: { status: number } | any) => {
         case (400):
             message = 'Отправленные данные не корректны';
             break;
+        case (401):
+            message = 'Неверная пара логин/пароль';
+            break;
         case (500):
             message = 'Произошла непредвиденная ошибка';
             break;
