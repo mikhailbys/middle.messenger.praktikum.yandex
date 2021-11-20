@@ -5,6 +5,12 @@ import {getUserData, logOut} from "./profile.service";
 export const prepareSettingsPage = (router: Router) => {
     getUserData();
 
+    const passwordButton = document.querySelector('#pro-a-password');
+    passwordButton?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        router.go(constants.routes.passwordSettings);
+    })
+
     const logoutButton = document.querySelector('#logout-button');
     logoutButton?.addEventListener('click', async (e) => {
         e.preventDefault();

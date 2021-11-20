@@ -1,25 +1,41 @@
 import {triggerValidateError} from '../../utils/FormValidation';
 import {PASSWORD_REGEXP} from '../../utils/Masks';
-import Button from '../../components/button';
-import PasswordChangePage from './password-change.view';
-import {render} from '../../utils/RenderDOM';
 import {addFocusEventOnInput} from "../../utils/FormEvents";
+import Router from "../../modules/router";
+import {logOut} from "../profile/profile.service";
+import constants from "../../constants";
 
-const passwordChangePage = new PasswordChangePage();
-render('#root', passwordChangePage);
-const saveButton = new Button({ attributes: {
-        class: 'submit',
-        type: 'submit'
-    }, innerText: 'Сохранить'});
-render('.row-data-action', saveButton);
+export const preparePasswordSettingsPage = (router: Router) => {
+    const passwordForm: HTMLFormElement | null = document.querySelector('#password_form');
 
-const passwordForm: HTMLFormElement | null = document.querySelector('#password_form');
+    addFocusEventOnInput(passwordForm?.oldPassword, ['old-password-empty']);
+    addFocusEventOnInput(passwordForm?.newPassword,
+        ['new-password-empty', 'new-password-error', 'new-password-equality']);
+    addFocusEventOnInput(passwordForm?.newPasswordRepeat,
+        ['new-password-repeat-empty', 'new-password-repeat-error', 'new-password-repeat-equality']);
 
-addFocusEventOnInput(passwordForm?.oldPassword, ['old-password-empty']);
-addFocusEventOnInput(passwordForm?.newPassword, ['new-password-empty', 'new-password-error', 'new-password-equality']);
-addFocusEventOnInput(passwordForm?.newPasswordRepeat, ['new-password-repeat-empty', 'new-password-repeat-error', 'new-password-repeat-equality']);
+    if (passwordForm) {
+        passwordForm.onsubmit = (e) => {
+            e.preventDefault();
+            const formData = new FormData(passwordForm);
 
-function validate() {
+            const oldPassword = formData.get('oldPassword');
+            const newPassword = formData.get('newPassword');
+            const newPasswordRepeat = formData.get('newPasswordRepeat');
+
+            validate(passwordForm) ? console.log({ oldPassword, newPassword, newPasswordRepeat }) : null;
+        };
+    }
+
+    const back = document.querySelector('#pass-change-back');
+    back?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        router.go(constants.routes.settings);
+    })
+    //todo роуты
+}
+
+function validate(passwordForm: HTMLFormElement) {
     let result = true;
 
     // select inputs
@@ -87,15 +103,4 @@ function validate() {
     return result;
 }
 
-if (passwordForm) {
-    passwordForm.onsubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(passwordForm);
 
-        const oldPassword = formData.get('oldPassword');
-        const newPassword = formData.get('newPassword');
-        const newPasswordRepeat = formData.get('newPasswordRepeat');
-
-        validate() ? console.log({ oldPassword, newPassword, newPasswordRepeat }) : null;
-    };
-}

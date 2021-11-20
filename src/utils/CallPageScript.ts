@@ -6,6 +6,7 @@ import {prepareMessagesPage} from "../pages/messages/messages.helpers";
 
 import Router from "../modules/router";
 import {prepareSettingsPage} from "../pages/profile/profile.helpers";
+import {preparePasswordSettingsPage} from "../pages/password-change/password-change.helpers";
 
 const routes = constants.routes;
 
@@ -24,6 +25,9 @@ export const callPageScript = (pathname: string, router: Router): void => {
             break;
         case (routes.settings):
             prepareSettingsPage(router);
+            break;
+        case (routes.passwordSettings):
+            preparePasswordSettingsPage(router);
             break;
     }
 };
