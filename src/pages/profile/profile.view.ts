@@ -1,5 +1,5 @@
 import Block from '../../modules/block';
-import './profile.styles.scss';
+import './profile1.styles.scss';
 // @ts-ignore
 import templateCompile from './profile.template.pug';
 import {initializeInnerComponents} from "./profile.components";

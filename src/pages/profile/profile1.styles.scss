@@ -1,0 +1,75 @@
+@use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+html {
+  @include mixins.fonts;
+  font-size: variables.$small;
+}
+
+h3 {
+  text-align: center;
+}
+
+.pro-container {
+  @include mixins.flex-column-align-center;
+
+  margin-top: 10vh;
+}
+
+.pro-profile_image{
+  border: 1px solid variables.$secondary;
+  background-color: variables.$secondary;
+  border-radius: 50%;
+
+  width: 125px;
+  height: 125px;
+}
+
+.pro-empty-image {
+  width: 60px;
+  height: 60px;
+  margin: 32px;
+
+  color: variables.$default;
+}
+
+.pro-row-data {
+  @include mixins.flex-space-between;
+
+  width: 40%;
+  padding: 8px;
+
+  border-bottom: 0.5px solid variables.$default;
+}
+
+.pro-legend {
+  font-weight: bold;
+}
+
+.pro-value {
+  color: variables.$default;
+  font-weight: bold;
+}
+
+.pro-row-data-action {
+  @include mixins.flex-column-align-center;
+
+  width: 100%;
+  margin-top: 30px;
+}
+
+.pro-change-data, .pro-change-password {
+  color: variables.$primary;
+}
+
+.pro-log-out {
+  color: variables.$error !important;
+}
+
+.pro-a {
+  text-align: center;
+  text-decoration: none;
+  color: variables.$primary;
+}
+
