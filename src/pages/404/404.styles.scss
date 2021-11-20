@@ -33,7 +33,7 @@ html {
     width: 12%;
 }
 
-.back {
+.err-back {
     display: block;
     margin-top: variables.$spacing_x1;
 
@@ -47,5 +47,6 @@ html {
     border-radius: 3%;
     border: 0 solid variables.$primary;
     box-shadow: none;
+    cursor: pointer;
 }
 

@@ -56,13 +56,12 @@ class Router {
         if (this.hasAccess() || route._pathname === mainPath) {
             this._currentRoute = route;
             route.render();
+            callPageScript(route._pathname, this);
         } else {
             this._currentRoute = this.routes.find(route =>
                 route._pathname === accessErrorPath) ?? null;
             this._currentRoute?.render();
-        }
-        if (this._currentRoute) {
-            callPageScript(route._pathname, this);
+            callPageScript(constants.routes.accessError, this);
         }
     }
 
