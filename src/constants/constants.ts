@@ -19,7 +19,10 @@ const constants = {
         signUp: '/sign-up',
         messages: '/messenger',
         settings: '/settings',
-        passwordSettings: '/settings/password'
+        passwordSettings: '/settings/password',
+        notFound: '/404',
+        internalError: '/500',
+        accessError: '/401'
     }
 }
 
