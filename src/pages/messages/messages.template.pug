@@ -11,12 +11,14 @@ div(class='mess-container')
                 div(class='mess-avatar')
 
             div(class='mess-message')
-                template(data-component="img")
-                h4(class='mess-messenger-name') Ирина
+                template(data-component="messengerName")
+                template(data-component="lastText")
+                span(class='hide chat-id-container') 673
+                span(class='hide user-id-container') 143276
 
             div(class='mess-info')
                 template(data-component="time")
-                div(class='mess-counter') 2
+                template(data-component="messageCounter")
 
     div(class='mess-chat-container')
         div(class='mess-choose-chat')

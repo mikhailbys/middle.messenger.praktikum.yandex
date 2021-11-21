@@ -4,6 +4,7 @@ import constants from "../../constants";
 import {checkAccess} from "../../utils/access";
 
 const mainPath = constants.routes.main;
+const registryPath = constants.routes.signUp;
 const accessErrorPath = constants.routes.accessError;
 
 class Router {
@@ -54,7 +55,7 @@ class Router {
             this._currentRoute.leave();
         }
 
-        if (this.hasAccess() || route._pathname === mainPath) {
+        if (this.hasAccess() || route._pathname === mainPath || route._pathname === registryPath) {
             this._currentRoute = route;
             route.render();
             callPageScript(route._pathname, this);

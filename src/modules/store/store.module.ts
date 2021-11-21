@@ -9,6 +9,7 @@ type Props = {
 type StorePage = {
     pageName: string,
     props: {}
+    nonRenderInfo?: {[key: string]: string}
 }
 
 class Store {
@@ -53,7 +54,6 @@ class Store {
         if (!currentPage) {
             throw Error('Page is not initialized');
         }
-        // todo перезаписывать в существующий пейдж новые пропы, иначе дублируются пейджы
 
         const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
         if (routeToUpdate) {
@@ -61,6 +61,17 @@ class Store {
             routeToUpdate.render(props)
         } else {
             throw Error('Route is not found');
+        }
+    }
+
+    updateNoRender(prop: {[key: string]: string}, pageName) {
+        const currentPage = this.pages.find(page => page.pageName === pageName);
+        if (!currentPage) {
+            throw Error('Page is not initialized');
+        }
+        const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
+        if (routeToUpdate) {
+            currentPage.nonRenderInfo = prop;
         }
     }
 }

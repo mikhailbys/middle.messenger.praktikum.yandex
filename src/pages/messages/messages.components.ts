@@ -1,11 +1,12 @@
 import Input from "../../components/input";
 import Span from "../../components/span/span.component";
 import Button from "../../components/button";
+import Div from "../../components/div";
 import Modal from "./create-chat/create-chat.view";
 
 export const initializeInnerComponents = () => {
 
-    const img = new Span({ attributes: { class: 'mess-messenger-text'}, innerText: 'Изображение'});
+    const lastText = new Span({ attributes: { class: 'mess-messenger-text'}, innerText: '...'});
     const time = new Span({ attributes: { class: 'mess-time'}, innerText: '10:10'});
     const chooseChat = new Span({ attributes:
             { class: 'mess-choose-chat-clue'}, innerText: 'Выберите чат, чтобы начать общение'});
@@ -20,13 +21,18 @@ export const initializeInnerComponents = () => {
 
     const createChatModal = new Modal();
 
+    const messengerName = new Div({ attributes: { class:'mess-messenger-name' }, innerText: '' });
+    const messageCounter = new Div({ attributes: { class:'mess-counter' }, innerText: '' });
+
     return {
         searchInput,
-        img,
+        lastText,
         time,
         chooseChat,
         messInput,
         sendButton,
-        createChatModal
+        createChatModal,
+        messengerName,
+        messageCounter
     }
 }
