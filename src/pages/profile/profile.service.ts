@@ -19,8 +19,9 @@ const applyUserData = (data: User) =>
         phoneValue: data.phone
     });
 
-export const logOut = async () => {
+export const logOut = async (router: Router) => {
     const response = await api.logOut();
+    processResponseStatus(response.status, router)
     return response?.status === 200;
 };
 

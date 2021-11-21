@@ -21,7 +21,7 @@ export const prepareSettingsPage = (router: Router) => {
     const logoutButton = document.querySelector('#logout-button');
     logoutButton?.addEventListener('click', async (e) => {
         e.preventDefault();
-        const result = await logOut();
+        const result = await logOut(router);
         if (result) {
             setAccess(false);
             router.go(constants.routes.main);
