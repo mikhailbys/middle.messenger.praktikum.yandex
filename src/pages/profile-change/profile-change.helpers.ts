@@ -3,7 +3,7 @@ import {FIO_MASK, LOGIN_MASK} from '../../utils/masks';
 import {addFocusEventOnInput} from "../../utils/formEvents";
 import constants from "../../constants";
 import Router from "../../modules/router";
-import {getUserData} from "./profile-change.service";
+import {changeProfileData, getUserData} from "./profile-change.service";
 
 export const prepareProfileChangePage = (router: Router) => {
     getUserData();
@@ -29,9 +29,17 @@ export const prepareProfileChangePage = (router: Router) => {
             const displayName = formData.get('displayName');
             const phone = formData.get('phone');
 
-            validate(profileForm) ?
-                console.log({ mail, login, firstName, secondName, displayName, phone })
-                : null;
+            validate(profileForm) &&
+                changeProfileData(
+                    {
+                        first_name: firstName as string,
+                        second_name: secondName as string,
+                        display_name: displayName as string,
+                        login: login as string,
+                        email: mail as string,
+                        phone: phone as string,
+                        avatar: ''
+                    }, router);
         }
     }
 
