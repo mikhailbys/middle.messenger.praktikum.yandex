@@ -1,9 +1,6 @@
 import ChatsAPI from "../../api/chats/chats.api";
 import Store from "../../modules/store";
 import constants from "../../constants";
-import {SignIn} from "../../models/signIn.model";
-import Router from "../../modules/router";
-import {Chat} from "../../models/chat";
 
 const api = new ChatsAPI();
 const store = new Store();
@@ -14,5 +11,12 @@ export const getChats = async () => {
     if (response.status === 200 && response.response) {
         const data = JSON.parse(response.response);
         console.log(data);
+        // todo update store
     }
-}
+};
+
+export const createChat = async (title: string) => {
+    const response = await api.createChat(title);
+    return response.status === 200 && response.response;
+
+};

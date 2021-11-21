@@ -1,3 +1,5 @@
+import {createChat, getChats} from "../messages.service";
+
 export const prepareCreateChatModal = () => {
     const modal = document.querySelector('#create-modal');
     const createButton = document.querySelector('#create-chat');
@@ -15,9 +17,18 @@ export const prepareCreateChatModal = () => {
         }
     };
 
-    button?.addEventListener('click', (e) => {
-        const name = (input as HTMLInputElement)?.value;
-        //todo api
-        console.log('name:', name)
-    });
+    async function onSave(e: Event){
+        const title = (input as HTMLInputElement)?.value;
+        if (title !== '') {
+            const result = await createChat(title);
+            if (result) {
+                (modal as HTMLFormElement).style.display = "none";
+                alert('чат создан!');
+                getChats();
+            }
+        }
+    }
+
+    //  todo отправляет дважды
+    button?.addEventListener('click', onSave);
 };
