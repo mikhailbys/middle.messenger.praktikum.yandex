@@ -1,7 +1,10 @@
 import Router from "../../modules/router";
 import constants from "../../constants";
+import {getChats} from "./messages.service";
 
 export const prepareMessagesPage = (router: Router) => {
+    getChats();
+
     const chats = document.querySelectorAll('.mess-single-chat-container');
     const messageContainer = document.querySelector('.mess-new-message-container');
     const clue = document.querySelector('.mess-choose-chat-clue');
