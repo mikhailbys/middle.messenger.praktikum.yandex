@@ -3,8 +3,11 @@ import {FIO_MASK, LOGIN_MASK} from '../../utils/masks';
 import {addFocusEventOnInput} from "../../utils/formEvents";
 import constants from "../../constants";
 import Router from "../../modules/router";
+import {getUserData} from "./profile-change.service";
 
 export const prepareProfileChangePage = (router: Router) => {
+    getUserData();
+
     const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
 
     addFocusEventOnInput(profileForm?.mail, ['mail-empty']);
