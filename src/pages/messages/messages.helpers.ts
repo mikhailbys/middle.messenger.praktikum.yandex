@@ -1,6 +1,7 @@
 import Router from "../../modules/router";
 import constants from "../../constants";
 import {getChats} from "./messages.service";
+import {prepareCreateChatModal} from "./create-chat/create-chat.helpers";
 
 export const prepareMessagesPage = (router: Router) => {
     getChats();
@@ -36,25 +37,4 @@ const validateMessageInput = (messageInput: HTMLInputElement | null) => {
         return false;
     }
     return true;
-}
-
-//todo
-const prepareCreateChatModal = () => {
-    const modal = document.querySelector('#create-modal');
-    const createButton = document.querySelector('#create-chat');
-    //const input = document.querySelector('');
-    //const button = document.querySelector('');
-
-    createButton?.addEventListener('click', (e) => {
-        e.preventDefault();
-        // @ts-ignore
-        modal.style.display = "block";
-    });
-
-    window.onclick = (event) => {
-        if (event.target === modal) {
-            // @ts-ignore
-            modal.style.display = "none";
-        }
-    }
 }

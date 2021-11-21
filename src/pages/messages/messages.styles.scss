@@ -145,6 +145,10 @@ input:focus {
   font-size: variables.$medium;
 }
 
+.mess-profile:hover {
+  color: darken(variables.$default, 30%);
+}
+
 .mess-hide {
   display: none !important;
 }
