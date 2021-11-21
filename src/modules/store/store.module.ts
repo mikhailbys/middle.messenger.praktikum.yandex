@@ -53,6 +53,7 @@ class Store {
         if (!currentPage) {
             throw Error('Page is not initialized');
         }
+        // todo перезаписывать в существующий пейдж новые пропы, иначе дублируются пейджы
 
         const routeToUpdate = this.routes.find(route => route._pathname === currentPage.pageName);
         if (routeToUpdate) {
