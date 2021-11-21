@@ -25,7 +25,7 @@ export const getUserData = async () => {
         const userData = applyUserData(data);
         store.update({
             type: 'value',
-            props: { ...userData }
+            props: userData
         }, currentPage);
     }
 };
