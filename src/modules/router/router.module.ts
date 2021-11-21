@@ -1,6 +1,7 @@
 import Route from "./route";
 import {callPageScript} from "../../utils/callPageScript";
 import constants from "../../constants";
+import {checkAccess} from "../../utils/access";
 
 const mainPath = constants.routes.main;
 const accessErrorPath = constants.routes.accessError;
@@ -27,7 +28,7 @@ class Router {
     }
 
     hasAccess() {
-        return Boolean(localStorage.getItem('isLogged'));
+        return checkAccess();
     }
 
     use(pathname, blockClass) {
