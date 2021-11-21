@@ -1,6 +1,7 @@
 import Input from "../../components/input";
 import Span from "../../components/span/span.component";
 import Button from "../../components/button";
+import Modal from "./create-chat/create-chat.view";
 
 export const initializeInnerComponents = () => {
 
@@ -17,12 +18,15 @@ export const initializeInnerComponents = () => {
 
     const sendButton = new Button({ innerText: '>', attributes: { class: 'mess-send-button' } });
 
+    const createChatModal = new Modal();
+
     return {
         searchInput,
         img,
         time,
         chooseChat,
         messInput,
-        sendButton
+        sendButton,
+        createChatModal
     }
 }

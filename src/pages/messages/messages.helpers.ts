@@ -25,7 +25,9 @@ export const prepareMessagesPage = (router: Router) => {
     profileHref?.addEventListener('click', (e) => {
         e.preventDefault();
         router.go(constants.routes.settings);
-    })
+    });
+
+    prepareCreateChatModal();
 }
 
 const validateMessageInput = (messageInput: HTMLInputElement | null) => {
@@ -34,4 +36,25 @@ const validateMessageInput = (messageInput: HTMLInputElement | null) => {
         return false;
     }
     return true;
+}
+
+//todo
+const prepareCreateChatModal = () => {
+    const modal = document.querySelector('#create-modal');
+    const createButton = document.querySelector('#create-chat');
+    //const input = document.querySelector('');
+    //const button = document.querySelector('');
+
+    createButton?.addEventListener('click', (e) => {
+        e.preventDefault();
+        // @ts-ignore
+        modal.style.display = "block";
+    });
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            // @ts-ignore
+            modal.style.display = "none";
+        }
+    }
 }

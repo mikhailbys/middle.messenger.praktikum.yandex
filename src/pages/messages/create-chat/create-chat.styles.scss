@@ -1,0 +1,67 @@
+@use 'src/styles/variables' as variables;
+@use 'src/styles/mixins' as mixins;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+html {
+    @include mixins.fonts;
+}
+
+.create-modal-container {
+    @include mixins.flex-column;
+    padding: variables.$spacing_x2;
+    text-align: center;
+    align-items: center;
+    width: 350px;
+    border-radius: 15px;
+    border: 0.5px solid variables.$secondary;
+    background-color: #fefefe;
+
+    margin: 0 auto;
+
+    > * {
+        width:80%;
+    }
+}
+
+.create-chat-input {
+    margin-bottom: variables.$spacing_x1;
+    height: variables.$spacing_x2;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: variables.$primary;
+}
+
+.create-chat-label {
+    margin-bottom: variables.$spacing_x1;
+}
+
+.create-chat-button {
+    display: block;
+    margin-bottom: variables.$spacing_x1;
+
+    background-color: variables.$primary;
+    color: white;
+    box-sizing: border-box;
+    border: 0 solid variables.$primary;
+    box-shadow: none;
+    border-radius: 10px;
+
+    height: 35px;
+    padding: 10px 5px;
+
+    font-size: variables.$medium;
+    cursor: pointer;
+}
+
+.create-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
