@@ -3,23 +3,14 @@ import Store from "../../modules/store";
 import constants from "../../constants";
 import Router from "../../modules/router";
 import {setAccess} from "../../utils/Access";
-
-export interface SignInData {
-    login: string,
-    password: string,
-}
-
-const DEFAULT_PARAMS = {
-    loginInput: '',
-    passwordInput: ''
-};
+import {DEFAULT_PARAMS, SignIn} from "../../models/signIn.model";
 
 const api = new AuthAPI();
 const store = new Store();
 const currentPage = constants.routes.main;
 const messagePage = constants.routes.messages;
 
-export const signIn = async (data: SignInData, router: Router) => {
+export const signIn = async (data: SignIn, router: Router) => {
     const response = await api.signIn(data);
     if (response?.status === 400 || response?.status === 401) {
         store.update({

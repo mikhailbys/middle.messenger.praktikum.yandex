@@ -16,7 +16,10 @@ const addFormSubmitEvent = (authForm: HTMLFormElement, router: Router) => {
         const password = formData.get('password');
 
         if (validateForm(authForm)) {
-            signIn({login: login as string, password: password as string}, router)
+            signIn({
+                login: login as string,
+                password: password as string
+            }, router)
         }
     }
 }

@@ -1,8 +1,8 @@
 import {BaseAPI} from "./base-api";
 import HTTPTransport from "../services/api.service";
 import {processResponseStatus} from "../utils/ApiUtils";
-import {SignInData} from "../pages/authorization/authorization.service";
-import {SignUpData} from "../pages/registry/registry.service";
+import {SignIn} from "../models/signIn.model";
+import {SignUp} from "../models/signUp.model";
 
 const authAPIInstance = new HTTPTransport();
 
@@ -10,7 +10,7 @@ const root = '/auth'
 
 class AuthAPI extends BaseAPI {
 
-    async signUp(data: SignUpData): Promise<any> {
+    async signUp(data: SignUp): Promise<any> {
         const response = await authAPIInstance.post(`${root}/signup`, { data: data });
         const message = processResponseStatus(response);
         if (message) {
@@ -19,7 +19,7 @@ class AuthAPI extends BaseAPI {
         return response;
     };
 
-    async signIn(data: SignInData): Promise<any> {
+    async signIn(data: SignIn): Promise<any> {
         const response = await authAPIInstance.post(`${root}/signin`, {
             credentials: 'include',
             mode: 'cors',

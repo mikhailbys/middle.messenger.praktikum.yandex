@@ -1,23 +1,13 @@
 import AuthAPI from "../../api/auth-api";
 import Store from "../../modules/store";
 import constants from "../../constants";
+import {User} from "../../models/user.model";
 
 const api = new AuthAPI();
 const store = new Store();
 const currentPage = constants.routes.settings;
 
-type UserData = {
-    id: string,
-    first_name: string,
-    second_name: string,
-    display_name: string,
-    login: string,
-    email: string,
-    phone: string,
-    avatar: string
-}
-
-const applyUserData = (data: UserData) =>
+const applyUserData = (data: User) =>
     ({
         mailValue: data.email,
         loginValue: data.login,
@@ -30,7 +20,7 @@ const applyUserData = (data: UserData) =>
 export const logOut = async () => {
     const response = await api.logOut();
     return response?.status === 200;
-}
+};
 
 export const getUserData = async () => {
     const response = await api.user();
@@ -44,4 +34,4 @@ export const getUserData = async () => {
             props: { ...userData }
             }, currentPage);
     }
-}
+};
