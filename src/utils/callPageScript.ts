@@ -8,6 +8,7 @@ import Router from "../modules/router";
 import {prepareSettingsPage} from "../pages/profile/profile.helpers";
 import {preparePasswordSettingsPage} from "../pages/password-change/password-change.helpers";
 import {prepareErrorPage} from "../pages/404/404.helpers";
+import {prepareProfileChangePage} from "../pages/profile-change/profile-change.helpers";
 
 const routes = constants.routes;
 
@@ -29,6 +30,9 @@ export const callPageScript = (pathname: string, router: Router): void => {
             break;
         case (routes.passwordSettings):
             preparePasswordSettingsPage(router);
+            break;
+        case (routes.profileSettings):
+            prepareProfileChangePage(router);
             break;
         case (routes.internalError):
         case (routes.accessError):

@@ -1,8 +1,10 @@
 import {triggerValidateError} from '../../utils/formValidation';
 import {FIO_MASK, LOGIN_MASK} from '../../utils/masks';
 import {addFocusEventOnInput} from "../../utils/formEvents";
+import constants from "../../constants";
+import Router from "../../modules/router";
 
-export const prepareProfileChangePage = () => {
+export const prepareProfileChangePage = (router: Router) => {
     const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
 
     addFocusEventOnInput(profileForm?.mail, ['mail-empty']);
@@ -29,6 +31,12 @@ export const prepareProfileChangePage = () => {
                 : null;
         }
     }
+
+    const back = document.querySelector('#pro-change-back');
+    back?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        router.go(constants.routes.settings);
+    });
 };
 
 function validate(profileForm: HTMLFormElement) {
