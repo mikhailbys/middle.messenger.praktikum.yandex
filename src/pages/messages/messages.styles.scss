@@ -50,7 +50,7 @@ html {
 }
 
 .mess-search-input {
-  margin: 0 10px;
+  margin: 10px 10px;
   width: 85%;
   height: 15px;
 
@@ -134,7 +134,8 @@ input:focus {
 
 .mess-profile-container {
   display: flex;
-  align-self: flex-end;
+  align-self: normal;
+  justify-content: space-between;
 }
 
 .mess-profile {
