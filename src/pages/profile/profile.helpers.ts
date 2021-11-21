@@ -10,7 +10,13 @@ export const prepareSettingsPage = (router: Router) => {
     passwordButton?.addEventListener('click', async (e) => {
         e.preventDefault();
         router.go(constants.routes.passwordSettings);
-    })
+    });
+
+    const profileButton = document.querySelector('#pro-a-profile');
+    profileButton?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        router.go(constants.routes.profileSettings);
+    });
 
     const logoutButton = document.querySelector('#logout-button');
     logoutButton?.addEventListener('click', async (e) => {
@@ -20,5 +26,5 @@ export const prepareSettingsPage = (router: Router) => {
             setAccess(false);
             router.go(constants.routes.main);
         }
-    })
+    });
 }

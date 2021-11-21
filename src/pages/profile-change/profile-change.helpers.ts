@@ -1,25 +1,37 @@
 import {triggerValidateError} from '../../utils/formValidation';
-import Button from '../../components/button';
-import ProfileChangePage from './profile-change.view';
-import {render} from '../../utils/renderDOM';
 import {FIO_MASK, LOGIN_MASK} from '../../utils/masks';
 import {addFocusEventOnInput} from "../../utils/formEvents";
 
-const profileChangePage = new ProfileChangePage();
-render('#root', profileChangePage);
-const saveButton = new Button({ attributes: { class: 'submit', type: 'submit'}, innerText: 'Сохранить'});
-render('.row-data-action', saveButton);
+export const prepareProfileChangePage = () => {
+    const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
 
-const profileForm: HTMLFormElement | null = document.querySelector('#profile_form');
+    addFocusEventOnInput(profileForm?.mail, ['mail-empty']);
+    addFocusEventOnInput(profileForm?.login, ['login-empty', 'login-error']);
+    addFocusEventOnInput(profileForm?.firstName, ['first-name-empty', 'first-name-error']);
+    addFocusEventOnInput(profileForm?.secondName, ['second-name-empty', 'second-name-error']);
+    addFocusEventOnInput(profileForm?.displayName, ['display-name-empty']);
+    addFocusEventOnInput(profileForm?.phone, ['phone-empty']);
 
-addFocusEventOnInput(profileForm?.mail, ['mail-empty']);
-addFocusEventOnInput(profileForm?.login, ['login-empty', 'login-error']);
-addFocusEventOnInput(profileForm?.firstName, ['first-name-empty', 'first-name-error']);
-addFocusEventOnInput(profileForm?.secondName, ['second-name-empty', 'second-name-error']);
-addFocusEventOnInput(profileForm?.displayName, ['display-name-empty']);
-addFocusEventOnInput(profileForm?.phone, ['phone-empty']);
+    if (profileForm) {
+        profileForm.onsubmit = (e: Event) => {
+            e.preventDefault();
 
-function validate() {
+            const formData = new FormData(profileForm!);
+            const mail = formData.get('mail');
+            const login = formData.get('login');
+            const firstName = formData.get('firstName');
+            const secondName = formData.get('secondName');
+            const displayName = formData.get('displayName');
+            const phone = formData.get('phone');
+
+            validate(profileForm) ?
+                console.log({ mail, login, firstName, secondName, displayName, phone })
+                : null;
+        }
+    }
+};
+
+function validate(profileForm: HTMLFormElement) {
     let result = true;
 
     // select inputs
@@ -89,20 +101,4 @@ function validate() {
     return result;
 }
 
-function onSubmit(e: Event) {
-    e.preventDefault();
 
-    const formData = new FormData(profileForm!);
-    const mail = formData.get('mail');
-    const login = formData.get('login');
-    const firstName = formData.get('firstName');
-    const secondName = formData.get('secondName');
-    const displayName = formData.get('displayName');
-    const phone = formData.get('phone');
-
-    validate() ? console.log({ mail, login, firstName, secondName, displayName, phone }) : null;
-}
-
-if (profileForm) {
-    profileForm.onsubmit = onSubmit
-}

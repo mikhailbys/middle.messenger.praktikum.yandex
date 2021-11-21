@@ -20,6 +20,7 @@ const constants = {
         messages: '/messenger',
         settings: '/settings',
         passwordSettings: '/settings/password',
+        profileSettings: '/settings/profile',
         notFound: '/404',
         internalError: '/500',
         accessError: '/401'

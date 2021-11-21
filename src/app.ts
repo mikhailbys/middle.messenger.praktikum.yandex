@@ -1,4 +1,5 @@
 import Router from "./modules/router";
+import Store from "./modules/store";
 
 import constants from "./constants";
 
@@ -10,10 +11,9 @@ import NotFoundPage from "./pages/404/404.view";
 import InternalPage from "./pages/500/500.view";
 import AccessPage from "./pages/401/401.view";
 import PasswordSettingsPage from "./pages/password-change/password-change.view";
-import Store from "./modules/store";
+import ProfileSettingsPage from "./pages/profile-change/profile-change.view";
 
 const routes = constants.routes;
-
 const router = new Router('#root');
 const store = new Store();
 
@@ -25,7 +25,7 @@ router
     .use(routes.messages, MessagesPage)
     .use(routes.settings, SettingsPage)
     .use(routes.passwordSettings, PasswordSettingsPage)
-    // todo profileSettings
+    .use(routes.profileSettings, ProfileSettingsPage)
     .use(routes.accessError, AccessPage)
     .use(routes.internalError, InternalPage)
     .use(routes.notFound, NotFoundPage)

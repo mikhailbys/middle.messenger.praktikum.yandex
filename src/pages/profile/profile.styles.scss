@@ -7,7 +7,17 @@ html {
   font-size: variables.$small;
 }
 
-.profile_image{
+h3 {
+  text-align: center;
+}
+
+.pro-container {
+  @include mixins.flex-column-align-center;
+
+  margin-top: 10vh;
+}
+
+.pro-profile_image{
   border: 1px solid variables.$secondary;
   background-color: variables.$secondary;
   border-radius: 50%;
@@ -16,7 +26,7 @@ html {
   height: 125px;
 }
 
-.empty-image {
+.pro-empty-image {
   width: 60px;
   height: 60px;
   margin: 32px;
@@ -24,7 +34,7 @@ html {
   color: variables.$default;
 }
 
-.row-data {
+.pro-row-data {
   @include mixins.flex-space-between;
 
   width: 40%;
@@ -33,132 +43,33 @@ html {
   border-bottom: 0.5px solid variables.$default;
 }
 
-.form-row-data {
-  @include mixins.flex-space-between;
-
-  width: 100%;
-  padding: 8px;
-
-  border-bottom: 0.5px solid variables.$default;
-}
-
-.legend {
+.pro-legend {
   font-weight: bold;
 }
 
-.value {
+.pro-value {
   color: variables.$default;
   font-weight: bold;
 }
 
-.row-data-action {
+.pro-row-data-action {
   @include mixins.flex-column-align-center;
 
   width: 100%;
   margin-top: 30px;
 }
 
-a {
+.pro-change-data, .pro-change-password {
+  color: variables.$primary;
+}
+
+.pro-log-out {
+  color: variables.$error !important;
+}
+
+.pro-a {
   text-align: center;
   text-decoration: none;
   color: variables.$primary;
 }
 
-.change-data, .change-password {
-  color: variables.$primary;
-}
-
-.log-out {
-  color: variables.$error;
-}
-
-h3 {
-  text-align: center;
-}
-
-.container {
-  @include mixins.flex-column-align-center;
-
-  margin-top: 10vh;
-}
-
-.button-group {
-  @include mixins.flex-column-center;
-
-  margin-top: variables.$spacing_x3;
-}
-
-.input-group {
-  margin-top: 0;
-}
-
-.save-button {
-  width: 20%;
-  height: 25px;
-  padding: 10px 5px;
-
-  border: 1px variables.$primary;
-  border-radius: 15px;
-  background-color: variables.$primary;
-  text-align: center;
-
-  a {
-    color: white;
-    font-size: variables.$medium;
-  }
-}
-
-.password-input, .field-input {
-  display: block;
-
-  height: variables.$spacing_x2;
-  width: 100%;
-
-  outline: 0;
-  border-width: 0 0 0;
-
-  font-size: variables.$small;
-  color: variables.$default;
-}
-
-.field-input {
-  text-align: end;
-}
-
-.form-container {
-  @include mixins.flex-column-align-center;
-  width: 100%;
-}
-
-.submit {
-  display: block;
-  margin-bottom: variables.$spacing_x1;
-
-
-  background-color: variables.$primary;
-  color: white;
-  box-sizing: border-box;
-  border: 0 solid variables.$primary;
-  box-shadow: none;
-  border-radius: 10px;
-
-  width: 100%;
-  height: 40px;
-  padding: 10px 5px;
-
-  font-size: variables.$medium;
-}
-
-.hide {
-  display: none;
-}
-
-.show-error {
-  font-size: variables.$small;
-  color: variables.$error;
-  display: block;
-}
-
-.center-text {
-  text-align: center;
-}
