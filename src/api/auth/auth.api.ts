@@ -1,4 +1,4 @@
-import {BaseAPI} from "../base-api";
+import {BaseAPI} from "../base.api";
 import HTTPTransport from "../../services/api.service";
 import {SignIn} from "../../models/signIn.model";
 import {SignUp} from "../../models/signUp.model";

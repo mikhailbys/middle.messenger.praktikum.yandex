@@ -1,22 +1,12 @@
-import ProfileAPI from "../../api/profile-api";
+import ProfileAPI from "../../api/profile/profile.api";
 import Router from "../../modules/router";
-
-export type Data = {
-    oldPassword: string,
-    newPassword: string
-}
+import {processResponseStatus} from "../../api/profile/profile.helpers";
+import {PasswordChange} from "../../models/passwordChange.model";
 
 const api = new ProfileAPI();
 
-export const changePassword = async (data: Data, router: Router) => {
+export const changePassword = async (data: PasswordChange, router: Router) => {
     const response = await api.password(data);
-    if (response?.status === 500) {
-        alert('Неизвестная ошибка');
-        return false;
-    }
-    if (response?.status === 400) {
-        alert('Неверные данные');
-        return false;
-    }
-    return true;
+    processResponseStatus(response.status, router);
+    return !(response.status === 500 || response.status === 400);
 }

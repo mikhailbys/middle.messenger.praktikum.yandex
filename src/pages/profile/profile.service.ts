@@ -2,6 +2,8 @@ import AuthApi from "../../api/auth/auth.api";
 import Store from "../../modules/store";
 import constants from "../../constants";
 import {User} from "../../models/user.model";
+import {processResponseStatus} from "../../api/profile/profile.helpers";
+import Router from "../../modules/router";
 
 const api = new AuthApi();
 const store = new Store();
@@ -22,12 +24,11 @@ export const logOut = async () => {
     return response?.status === 200;
 };
 
-export const getUserData = async () => {
+export const getUserData = async (router: Router) => {
     const response = await api.user();
-    // @ts-ignore
     if (response && response.response) {
         // @ts-ignore
-        const data = JSON.parse(response?.response);
+        const data = JSON.parse(response.response);
         const userData = applyUserData(data);
         store.update({
             type: 'innerText',
