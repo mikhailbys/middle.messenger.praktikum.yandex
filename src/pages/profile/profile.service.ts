@@ -1,9 +1,9 @@
-import AuthAPI from "../../api/auth-api";
+import AuthApi from "../../api/auth/auth.api";
 import Store from "../../modules/store";
 import constants from "../../constants";
 import {User} from "../../models/user.model";
 
-const api = new AuthAPI();
+const api = new AuthApi();
 const store = new Store();
 const currentPage = constants.routes.settings;
 

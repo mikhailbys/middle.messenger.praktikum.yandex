@@ -23,6 +23,11 @@ const constants = {
         notFound: '/404',
         internalError: '/500',
         accessError: '/401'
+    },
+    alerts: {
+        signIn400: 'Отправленные данные не корректны',
+        signIn401: 'Неверная пара логин/пароль',
+        signIn404: 'Неверная пара логин/пароль'
     }
 }
 

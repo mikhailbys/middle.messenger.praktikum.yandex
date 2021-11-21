@@ -1,7 +1,7 @@
 import Router from "../../modules/router";
 import constants from "../../constants";
 import {getUserData, logOut} from "./profile.service";
-import {setAccess} from "../../utils/Access";
+import {setAccess} from "../../utils/access";
 
 export const prepareSettingsPage = (router: Router) => {
     getUserData();

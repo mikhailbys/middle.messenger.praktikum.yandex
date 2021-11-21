@@ -1,5 +1,5 @@
 import Block from "../../block";
-import {render} from "../../../utils/RenderDOM";
+import {render} from "../../../utils/renderDOM";
 
 type Props = {
     type: 'value' | 'innerText'

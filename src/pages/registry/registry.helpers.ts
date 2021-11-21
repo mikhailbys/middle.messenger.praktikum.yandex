@@ -1,9 +1,9 @@
-import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/Masks";
+import {FIO_MASK, LOGIN_MASK, PASSWORD_REGEXP, PHONE_MASK} from "../../utils/masks";
 import Router from "../../modules/router";
 import {
     addFocusEventOnInputBySelectors,
     triggerValidateErrorBySelectors
-} from "../../utils/FormEvents";
+} from "../../utils/formEvents";
 import constants from "../../constants";
 import {signUp} from "./registry.service";
 

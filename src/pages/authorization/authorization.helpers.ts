@@ -1,5 +1,5 @@
-import {PASSWORD_REGEXP} from "../../utils/Masks";
-import {addFocusEventOnInputBySelectors, triggerValidateErrorBySelectors} from "../../utils/FormEvents";
+import {PASSWORD_REGEXP} from "../../utils/masks";
+import {addFocusEventOnInputBySelectors, triggerValidateErrorBySelectors} from "../../utils/formEvents";
 import Router from "../../modules/router";
 import constants from "../../constants";
 import {signIn} from "./authorization.service";

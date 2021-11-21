@@ -1,9 +1,9 @@
-import AuthAPI from "../../api/auth-api";
+import AuthApi from "../../api/auth/auth.api";
 import constants from "../../constants";
 import Router from "../../modules/router";
 import {SignUp} from "../../models/signUp.model";
 
-const api = new AuthAPI();
+const api = new AuthApi();
 
 export const signUp = async (data: SignUp, router: Router) => {
     const response = await api.signUp(data);

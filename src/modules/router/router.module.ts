@@ -1,5 +1,5 @@
 import Route from "./route";
-import {callPageScript} from "../../utils/CallPageScript";
+import {callPageScript} from "../../utils/callPageScript";
 import constants from "../../constants";
 
 const mainPath = constants.routes.main;
