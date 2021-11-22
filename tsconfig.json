@@ -6,5 +6,12 @@
     "module": "commonjs",
     "strictNullChecks": true,
     "sourceMap": true,
-  }
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*",
+    "src/test/*.spec.ts"
+  ],
+  "exclude": ["node_modules"]
 }
