@@ -23,6 +23,8 @@ html {
 
   background-color: lighten(variables.$default_dark, 30%);
   min-width: fit-content;
+
+  overflow: auto;
 }
 
 .mess-chat-container {
@@ -47,6 +49,10 @@ html {
   width: 100%;
 
   border-bottom: 0.5px solid variables.$default;
+
+  position: sticky;
+  top: 0;
+  background-color: variables.$default_dark;
 }
 
 .mess-search-input {
