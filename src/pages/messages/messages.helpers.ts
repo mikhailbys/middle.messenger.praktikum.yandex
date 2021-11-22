@@ -5,6 +5,7 @@ import {prepareCreateChatModal} from "./create-chat/create-chat.helpers";
 import Store from "../../modules/store";
 
 const handleChatClick = (event, store: Store) => {
+    event.stopImmediatePropagation();
     // todo в цикле по chatsData рисовать шаблоны с предзаполненными айдишниками
     const chatId = event.path[0].querySelector('.chat-id-container').innerText;
     const userId = event.path[0].querySelector('.user-id-container').innerText;

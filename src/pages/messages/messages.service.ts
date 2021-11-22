@@ -53,11 +53,12 @@ export const openChat = async (chatId: string, userId: string) => {
         return;
     }
 
+    console.log(token);
     // init socket
-    const socket = new WebSocketService(Number(userId), Number(chatId), token);
+    const wss = new WebSocketService(Number(userId), Number(chatId), token);
     // update store
     /*store.updateNoRender({
         currentChatId: chatId,
-        token: ''
+        token
     }, constants.routes.messages);*/
 };
