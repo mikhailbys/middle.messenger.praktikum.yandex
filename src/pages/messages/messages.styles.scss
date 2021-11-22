@@ -52,7 +52,7 @@ html {
 
   position: sticky;
   top: 0;
-  background-color: variables.$default_dark;
+  background-color: lighten(variables.$default_dark, 30%);
 }
 
 .mess-search-input {
@@ -182,6 +182,7 @@ input:focus {
   border: none;
 
   margin-right: variables.$spacing_x2;
+  overflow: auto;
 }
 
 .mess-send-button {
@@ -191,6 +192,31 @@ input:focus {
   height: 42px;
   width: 50px;
   color: white;
+  cursor: pointer;
+}
+
+.current-chat-container {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex-flow: column-reverse;
+}
+
+.my-message {
+  border: 1px solid;
+  min-width: 60px;
+  max-width: 280px;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: initial;
+
+  background-color: variables.$personal_messsage;
+  border-color: lighten(variables.$default_dark, 30%);
+
+  margin-top: variables.$spacing_x1;
+  word-break: break-word;
 }
 
 // todo

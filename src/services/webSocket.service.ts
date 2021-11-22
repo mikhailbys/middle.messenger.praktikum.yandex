@@ -20,7 +20,7 @@ class WebSocketService {
         return rootUrl
             .replace(':userId', userId.toString())
             .replace(':chatId', chatId.toString())
-            .replace(':token', token.toString())
+            .replace(':token', token)
     }
 
     init() {
