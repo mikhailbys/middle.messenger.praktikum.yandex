@@ -34,8 +34,7 @@ export const createChat = async (title: string) => {
 };
 
 export const addUserToChat = async (userId: number, chatId: number) => {
-    const response = await api.addUserToChat(userId, chatId);
-    return response;
+    return await api.addUserToChat(userId, chatId);
 };
 
 const getToken = async (chatId: string) => {
@@ -50,8 +49,6 @@ const getToken = async (chatId: string) => {
 export const openChat = async (chatId: string, userId: string) => {
     return getToken(chatId).then((token: string) =>
         new WebSocketService(Number(userId), Number(chatId), token));
-
-    // update store
     /*store.updateNoRender({
         currentChatId: chatId,
         token
@@ -71,7 +68,7 @@ export const handleChatClick = async (event, store: Store) => {
                 if (validateMessageInput(messageInput)) {
                     const message = messageInput?.value ?? '';
                     wss.send(message);
-
+                    // попробовать заменить на children для шаблона
                     const messageElement = document.createElement('div');
                     messageElement.className = 'my-message';
                     messageElement.innerText = message;
