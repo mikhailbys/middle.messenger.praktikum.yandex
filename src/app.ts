@@ -30,5 +30,3 @@ router
     .use(routes.internalError, InternalPage)
     .use(routes.notFound, NotFoundPage)
     .start();
-
-router.go(routes.main);
