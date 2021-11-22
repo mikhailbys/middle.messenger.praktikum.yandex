@@ -13,7 +13,6 @@ export const getChats = async () => {
     const response = await api.chats();
     if (response.status === 200 && response.response) {
         const data: Chat[] = JSON.parse(response.response);
-        console.log(data);
         if (data[0].last_message !== null) {
             store.update({
                 type: 'innerText',

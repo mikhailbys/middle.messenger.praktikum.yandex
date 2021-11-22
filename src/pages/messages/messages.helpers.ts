@@ -7,7 +7,6 @@ import Store from "../../modules/store";
 export const prepareMessagesPage = async (router: Router) => {
     const store = new Store();
     const chatsData = await getChats();
-    console.log(chatsData);
 
     const chats = document.querySelectorAll('.mess-single-chat-container');
     const messageContainer = document.querySelector('.mess-new-message-container');
