@@ -100,6 +100,8 @@ input:focus {
 
 .mess-messenger-name {
   margin: 8px 0;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .mess-messenger-text {
@@ -179,10 +181,11 @@ input:focus {
   font-size: variables.$medium;
 
   border-radius: 15px;
-  border: none;
 
   margin-right: variables.$spacing_x2;
   overflow: auto;
+
+  border: 1px solid variables.$secondary;
 }
 
 .mess-send-button {
@@ -193,6 +196,7 @@ input:focus {
   width: 50px;
   color: white;
   cursor: pointer;
+  font-size: 28px;
 }
 
 .current-chat-container {

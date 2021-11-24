@@ -56,7 +56,6 @@ export const openChat = async (chatId: string, userId: string) => {
 
 export const handleChatClick = async (event, store: Store) => {
     event.stopImmediatePropagation();
-    // todo
     const chatId = event.path[0].querySelector('.chat-id-container').innerText;
     const userId = event.path[0].querySelector('.user-id-container').innerText;
     openChat(chatId, userId).then(wss => {
