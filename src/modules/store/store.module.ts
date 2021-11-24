@@ -2,7 +2,7 @@ import EventBus from "../eventBus";
 import Route from "../router/route";
 
 type Props = {
-    type: 'value' | 'innerText',
+    type: 'value' | 'innerText' | 'childrenToUpdate',
     props: any
 }
 

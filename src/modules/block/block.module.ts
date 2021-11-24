@@ -1,4 +1,5 @@
 import EventBus from '../eventBus';
+import {Chat} from "../../models/chat";
 
 interface Meta {
     tagName: string;
@@ -9,7 +10,9 @@ interface Props {
     templateBase?: boolean,
     attributes?: { string: string },
     innerText?: string,
-    value?: string
+    value?: string,
+    chats?: Chat[],
+    childrenToUpdate?: Block;
 }
 
 const ACCESS_ERROR_MESSAGE = 'Нет доступа';
@@ -70,7 +73,6 @@ class Block {
         this.componentDidMount(this.props);
     }
 
-    // Переопределяемый
     componentDidMount(_oldProps: any): void {}
 
     _render() {
@@ -82,8 +84,6 @@ class Block {
         this.props.templateBase ?
             this._element.append(dom) :
             this._element.innerText = dom.textContent ?? '';
-
-        //this._element.append(dom);
 
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
@@ -112,6 +112,12 @@ class Block {
             this.eventBus.emit(Block.EVENTS.FLOW_CDU);
         }
     };
+
+    setChildren(nextProps?: {[block: string]: string}) {
+        // @ts-ignore
+        this.children = {...this.children, ...nextProps};
+        this.eventBus.emit(Block.EVENTS.FLOW_CDU);
+    }
 
     _htmlToDocumentFragment(html) {
         const template = document.createElement('template');

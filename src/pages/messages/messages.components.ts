@@ -3,6 +3,8 @@ import Span from "../../components/span/span.component";
 import Button from "../../components/button";
 import Div from "../../components/div";
 import Modal from "./create-chat/create-chat.view";
+import ChatElement from "./single-chat/single-chat.view";
+import {Chat} from "../../models/chat";
 
 export const initializeInnerComponents = () => {
 
@@ -24,6 +26,8 @@ export const initializeInnerComponents = () => {
     const messengerName = new Div({ attributes: { class:'mess-messenger-name' }, innerText: 'Васса' });
     const messageCounter = new Div({ attributes: { class:'mess-counter' }, innerText: '1' });
 
+    const chatComponent = new ChatElement();
+
     return {
         searchInput,
         lastText,
@@ -33,6 +37,39 @@ export const initializeInnerComponents = () => {
         sendButton,
         createChatModal,
         messengerName,
-        messageCounter
+        messageCounter,
+        chatComponent
+    }
+}
+
+export const initializeInne1rComponents = (chat: Chat) => {
+
+    const messengerName = new Div(
+        { attributes: { class:'mess-messenger-name' },
+            innerText: chat.title
+        });
+    const messageCounter = new Div(
+        { attributes: { class:'mess-counter' },
+            innerText: chat.unread_count?.toString() ?? ''
+        });
+
+    const chatId = new Span({ attributes: { class: 'chat-id-container'}, innerText: chat.id?.toString() ?? ''});
+    const userId = new Span({ attributes: { class: 'user-id-container'}, innerText: '143276'});
+
+    const lastText = new Span(
+        { attributes: { class: 'mess-messenger-text'},
+            innerText: chat.last_message?.content ?? ''
+        });
+    const time = new Span(
+        { attributes: { class: 'mess-time'},
+            innerText: chat.last_message?.time ?? ''
+        });
+    return {
+        messengerName,
+        messageCounter,
+        lastText,
+        chatId,
+        userId,
+        time
     }
 }

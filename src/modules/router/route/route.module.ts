@@ -2,7 +2,7 @@ import Block from "../../block";
 import {render} from "../../../utils/renderDOM";
 
 type Props = {
-    type: 'value' | 'innerText'
+    type: 'value' | 'innerText' | 'childrenToUpdate'
     props: { [blockName: string]: string }
 }
 
@@ -55,6 +55,12 @@ class Route {
                 });
                 render(this._props.rootQuery, this._block!);
                 break;
+            case "childrenToUpdate":
+                Object.keys(props.props).forEach(block => {
+                    this._block!.setChildren({ [block]: props.props[block]})
+                });
+                render(this._props.rootQuery, this._block!);
+                return;
         }
         return;
     }
