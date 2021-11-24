@@ -9,6 +9,14 @@ import SingleChats from "./single-chats/single-chats.view";
 
 export const prepareMessagesPage = async (router: Router) => {
     const store = new Store();
+    const chatsData = await getChats();
+    const chatComponent = createChatComponent(chatsData);
+    store.update({
+        type: 'childrenToUpdate',
+        props: {
+            chatComponent
+        }
+    }, constants.routes.messages);
 
     const chats = document.querySelectorAll('.mess-single-chat-container');
     const messageContainer = document.querySelector('.mess-new-message-container');
@@ -33,15 +41,6 @@ export const prepareMessagesPage = async (router: Router) => {
     });
 
     prepareCreateChatModal();
-
-    const chatsData = await getChats();
-    const chatComponent = createChatComponent(chatsData);
-    store.update({
-        type: 'childrenToUpdate',
-        props: {
-            chatComponent
-        }
-    }, constants.routes.messages)
 }
 
 export const validateMessageInput = (messageInput: HTMLInputElement | null) => {
@@ -53,8 +52,6 @@ export const validateMessageInput = (messageInput: HTMLInputElement | null) => {
 }
 
 const createChatComponent = (chats: Chat[]) => {
-    console.log('dada');
-    const fragment = document.createElement('fragment');
     let chatComponents = {};
     chats.forEach(chat => {
         const chatElement = new ChatElement(
@@ -65,6 +62,5 @@ const createChatComponent = (chats: Chat[]) => {
         );
         chatComponents = {...chatComponents, chatComponent: chatElement};
     });
-    //console.log(chatComponents);
     return new SingleChats({ attributes: {}, chats, templateBase: true });
 }
