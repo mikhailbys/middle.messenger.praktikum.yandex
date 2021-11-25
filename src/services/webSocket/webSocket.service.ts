@@ -8,10 +8,13 @@ class WebSocketService {
     store: Store;
 
     constructor(userId: number, chatId: number, token: string) {
-        const url = this.prepareUrl(userId, chatId, token);
-        this.socket = new WebSocket(url);
         this.store = new Store();
-        this.init();
+
+        this.socket = new WebSocket(this.prepareUrl(userId, chatId, token));
+        this.socket.addEventListener('open', this.onOpen.bind(this));
+        this.socket.addEventListener('message', this.onMessage.bind(this));
+        this.socket.addEventListener('error', this.onError.bind(this));
+        this.socket.addEventListener('close', this.onClose.bind(this));
     }
 
     ping = setInterval(() => {
@@ -27,40 +30,34 @@ class WebSocketService {
             .replace(':token', token)
     }
 
-    init() {
-        this.socket.addEventListener('open',
-            () => {
-            console.log('Соединение установлено');
-            setTimeout(() => this.ping, 3000);
-        });
+    onOpen() {
+        console.log('Соединение установлено');
+    }
 
-        this.socket.addEventListener('close', event => {
-            if (event.wasClean) {
-                clearInterval(this.ping)
-                console.log('Соединение закрыто чисто');
-            } else {
-                console.log('Обрыв соединения');
-                alert('Ошибка соединения')
-            }
-            console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-        });
+    onClose(event) {
+        if (event.wasClean) {
+            clearInterval(this.ping)
+            console.log('Соединение закрыто чисто');
+        } else {
+            console.log('Обрыв соединения');
+            alert('Ошибка соединения')
+        }
+        console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+    }
 
-        this.socket.addEventListener('message', event => {
-            console.log('Получены данные', event.data);
-            // todo
-            const {} = event.data;
-             this.store.update({
-                 type: 'value',
-                 props: {
+    onMessage(event) {
+        console.log('Получены данные', event.data);
+        // todo
+        const {} = event.data;
+        this.store.update({
+            type: 'value',
+            props: {}
+        }, constants.routes.messages);
+    }
 
-                 }
-             }, constants.routes.messages);
-        });
-
-        this.socket.addEventListener('error', event => {
-            console.log('Ошибка', event);
-            alert('Ошибка соединения');
-        });
+    onError(event) {
+        console.log('Ошибка', event);
+        alert('Ошибка соединения');
     }
 
     send(message: string) {

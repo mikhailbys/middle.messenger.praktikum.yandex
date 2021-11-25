@@ -34,7 +34,8 @@ class HTTPTransport {
             method: METHODS.GET,
             headers: {
                 'content-type': 'application/json',
-                Accept: 'application/json'
+                Accept: 'application/json',
+                'Access-Control-Allow-Credentials': 'true'
             }
         }, options.timeout);
     };
