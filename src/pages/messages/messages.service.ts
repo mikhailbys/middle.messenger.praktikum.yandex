@@ -2,7 +2,7 @@ import ChatsAPI from "../../api/chats/chats.api";
 import Store from "../../modules/store";
 import constants from "../../constants";
 import {Chat} from "../../models/chat";
-import WebSocketService from "../../services/webSocket.service";
+import WebSocketService from "../../services/webSocket/webSocket.service";
 import {validateMessageInput} from "./messages.helpers";
 
 const api = new ChatsAPI();

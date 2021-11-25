@@ -1,5 +1,5 @@
 import {BaseAPI} from "../base.api";
-import HTTPTransport from "../../services/api.service";
+import HTTPTransport from "../../services/api/api.service";
 import {PasswordChange} from "../../models/passwordChange.model";
 import {User} from "../../models/user.model";
 

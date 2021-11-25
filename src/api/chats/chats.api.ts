@@ -1,4 +1,4 @@
-import HTTPTransport from "../../services/api.service";
+import HTTPTransport from "../../services/api/api.service";
 import {BaseAPI} from "../base.api";
 
 const api = new HTTPTransport();
