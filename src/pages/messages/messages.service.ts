@@ -13,7 +13,7 @@ export const getChats = async () => {
     const response = await api.chats();
     if (response.status === 200 && response.response) {
         const data: Chat[] = JSON.parse(response.response);
-        if (data[0].last_message !== null) {
+        if (data[0]?.last_message !== null && data !== []) {
             store.update({
                 type: 'innerText',
                 props: {
@@ -22,8 +22,9 @@ export const getChats = async () => {
                     lastText: 'Привет'
                 }
             }, currentPage);
+            return JSON.parse(response.response);
         }
-        return JSON.parse(response.response);
+        return [];
     }
 };
 

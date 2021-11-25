@@ -10,13 +10,16 @@ import SingleChats from "./single-chats/single-chats.view";
 export const prepareMessagesPage = async (router: Router) => {
     const store = new Store();
     const chatsData = await getChats();
-    const chatComponent = createChatComponent(chatsData);
-    store.update({
-        type: 'childrenToUpdate',
-        props: {
-            chatComponent
-        }
-    }, constants.routes.messages);
+
+    if (chatsData !== []) {
+        const chatComponent = createChatComponent(chatsData);
+        store.update({
+            type: 'childrenToUpdate',
+            props: {
+                chatComponent
+            }
+        }, constants.routes.messages);
+    }
 
     const chats = document.querySelectorAll('.mess-single-chat-container');
     const messageContainer = document.querySelector('.mess-new-message-container');

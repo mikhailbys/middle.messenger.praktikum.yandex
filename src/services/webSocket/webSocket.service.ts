@@ -32,6 +32,10 @@ class WebSocketService {
 
     onOpen() {
         console.log('Соединение установлено');
+        this.socket.send(JSON.stringify({
+            content: 'Моё первое сообщение миру!',
+            type: 'message',
+        }));
     }
 
     onClose(event) {

@@ -5,7 +5,7 @@ export interface Chat {
     title: string,
     avatar: string,
     unread_count: number,
-    "last_message": {
+    "last_message"?: {
         "user": User,
         "time": string,
         "content": string
