@@ -10,8 +10,8 @@ div
                         span(class='mess-messenger-text')=chat.last_message.content
                     else
                         span(class='mess-messenger-text')
-                span(class='chat-id-container')=chat.id
-                span(class="user-id-container") 147383
+                span(class='chat-id-container hide')=chat.id
+                span(class="user-id-container") user 147383
 
             div(class='mess-info')
                 if chat.last_message
@@ -19,4 +19,4 @@ div
                     div(class='mess-counter')=chat.last_message.unread_count
                 else
                     span(class='mess-time')
-                    div(class='mess-counter')
+                    div(class='mess-counter') 0
