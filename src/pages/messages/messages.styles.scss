@@ -6,13 +6,13 @@ html {
   @include mixins.fonts;
 }
 
+body{
+  margin: 0;
+  padding: 0;
+}
+
 .mess-container {
   display: flex;
-
-  width: 100%;
-  padding: 0;
-
-  height: 100vh;
 }
 
 .mess-list-container {
@@ -157,7 +157,7 @@ input:focus {
 .mess-new-message-container {
   display: flex;
   border-top: 1px solid variables.$secondary;
-  padding: variables.$spacing_x2;
+  padding: variables.$spacing_x1;
 
   align-items: center;
 
@@ -175,7 +175,7 @@ input:focus {
 
   border-radius: 15px;
 
-  margin-right: variables.$spacing_x2;
+  margin-right: variables.$spacing_x1;
   overflow: auto;
 
   border: 1px solid variables.$secondary;
