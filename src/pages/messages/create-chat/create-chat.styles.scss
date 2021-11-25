@@ -54,6 +54,10 @@ html {
     cursor: pointer;
 }
 
+.create-chat-button:hover {
+    background-color: darken(variables.$primary, 5%);
+}
+
 .create-modal {
     display: none;
     position: fixed;

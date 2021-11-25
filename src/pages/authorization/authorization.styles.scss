@@ -28,6 +28,7 @@ html {
   @include mixins.flex-column-space-between;
 
   height: 100%;
+  margin: 7px;
 }
 
 .auth-label {
@@ -87,6 +88,10 @@ html {
   border: 0 solid variables.$primary;
   box-shadow: none;
   cursor: pointer;
+}
+
+.auth-button:hover {
+  background-color: darken(variables.$primary, 5%);
 }
 
 .auth-a {

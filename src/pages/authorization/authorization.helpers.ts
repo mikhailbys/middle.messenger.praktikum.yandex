@@ -66,9 +66,4 @@ export const prepareAuthForm = (authForm: HTMLFormElement, router: Router) => {
         e.preventDefault();
         router.go(constants.routes.signUp)
     });
-
-    document.querySelector('#chat')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        router.go(constants.routes.messages);
-    })
 }
