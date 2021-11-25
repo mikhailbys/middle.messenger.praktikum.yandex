@@ -14,7 +14,6 @@
     "stylelint": "npx stylelint \"**/*.scss\"",
     "check-types": "tsc",
     "compile": "babel src -d lib --extensions '.ts,.tsx'",
-    "prepublish": "npm run check-types && npm run compile",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' ./node_modules/.bin/mocha -r jsdom-global/register"
   },
   "repository": {
@@ -22,7 +21,7 @@
     "url": "git+https://github.com/mikhailbys/middle.messenger.praktikum.yandex.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "mikhailbys",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mikhailbys/middle.messenger.praktikum.yandex/issues"

@@ -1,4 +1,4 @@
-import Store from "../../modules/store";
+import Store from "../store";
 import constants from "../../constants";
 
 const rootUrl = 'wss://ya-praktikum.tech/ws/chats/:userId/:chatId/:token';
