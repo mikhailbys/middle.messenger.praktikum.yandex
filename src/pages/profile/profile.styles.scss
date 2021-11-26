@@ -56,20 +56,34 @@ h3 {
   @include mixins.flex-column-align-center;
 
   width: 100%;
-  margin-top: 30px;
+  margin-top: 48px;
 }
 
 .pro-change-data, .pro-change-password {
   color: variables.$primary;
+  font-size: 14px;
 }
 
 .pro-log-out {
   color: variables.$error !important;
+  font-size: 12px;
+}
+
+.pro-log-out:hover {
+  color: darken(variables.$error, 15%) !important;
 }
 
 .pro-a {
   text-align: center;
   text-decoration: none;
   color: variables.$primary;
+}
+
+.pro-a:hover {
+  color: darken(variables.$primary, 15%);
+}
+
+.pro-change-password:hover {
+  color: darken(variables.$primary, 15%);
 }
 
