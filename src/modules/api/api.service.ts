@@ -1,6 +1,5 @@
 type XHROptions = {
     data?: any,
-    body?: any,
     headers?: {[key: string]:string},
     method: keyof typeof METHODS,
     timeout?: number
