@@ -2,6 +2,7 @@ import Button from "../../components/button";
 import Span from "../../components/span/span.component";
 import Input from "../../components/input";
 import constants from "../../constants";
+import Avatar from "./avatar/avatat.view";
 
 export const initializeComponents = () => {
 
@@ -111,6 +112,8 @@ export const initializeComponents = () => {
             innerText: 'Сохранить'
         });
 
+    const avatar = new Avatar();
+
     return {
         mailLabel,
         mailInput,
@@ -133,6 +136,7 @@ export const initializeComponents = () => {
         phoneLabel,
         phoneInput,
         phoneClue,
-        saveButton
+        saveButton,
+        avatar
     };
 };

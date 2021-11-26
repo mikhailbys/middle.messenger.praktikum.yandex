@@ -1,5 +1,6 @@
 type XHROptions = {
     data?: any,
+    body?: any,
     headers?: {[key: string]:string},
     method: keyof typeof METHODS,
     timeout?: number
@@ -51,13 +52,15 @@ class HTTPTransport {
             }, options.timeout);
     };
 
-    put = (url, options: Omit<XHROptions, 'method'> = {}) => {
+    put = (url, options: Omit<XHROptions, 'method'> = {}, headers = {
+        'content-type': 'application/json'
+    }) => {
         return this.request(url, {
             ...options,
             method: METHODS.PUT,
             headers: {
-                'content-type': 'application/json',
-                Accept: 'application/json'
+                ...headers,
+                accept: 'application/json'
             }
         }, options.timeout);
     };

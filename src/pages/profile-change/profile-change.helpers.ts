@@ -4,6 +4,7 @@ import {addFocusEventOnInput} from "../../utils/formEvents";
 import constants from "../../constants";
 import Router from "../../modules/router";
 import {changeProfileData, getUserData} from "./profile-change.service";
+import {changeAvatar} from "../profile/profile.service";
 
 export const prepareProfileChangePage = (router: Router) => {
     getUserData();
@@ -47,6 +48,15 @@ export const prepareProfileChangePage = (router: Router) => {
     back?.addEventListener('click', async (e) => {
         e.preventDefault();
         router.go(constants.routes.settings);
+    });
+
+    const avatarInput = document.querySelector('.file-upload');
+    const avatarIcon = document.querySelector('.upload-button');
+    avatarIcon?.addEventListener('click', () => {
+        (avatarInput as HTMLInputElement)?.click();
+    });
+    avatarInput?.addEventListener('change', function change() {
+        onAvatarChange(this);
     });
 };
 
@@ -118,6 +128,19 @@ function validate(profileForm: HTMLFormElement) {
     }
 
     return result;
+}
+
+async function onAvatarChange(input) {
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
+        let formData = new FormData();
+        formData.append("avatar", file);
+        const result = await changeAvatar(formData);
+        if (result) {
+            const profilePic = document.querySelector('.profile-pic');
+            profilePic?.setAttribute('src', result);
+        }
+    }
 }
 
 

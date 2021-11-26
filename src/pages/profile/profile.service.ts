@@ -4,8 +4,10 @@ import constants from "../../constants";
 import {User} from "../../models/user.model";
 import {processResponseStatus} from "../../api/profile/profile.helpers";
 import Router from "../../modules/router";
+import ProfileAPI from "../../api/profile/profile.api";
 
 const api = new AuthApi();
+const profileApi = new ProfileAPI();
 const store = new Store();
 const currentPage = constants.routes.settings;
 
@@ -25,7 +27,7 @@ export const logOut = async (router: Router) => {
     return response?.status === 200;
 };
 
-export const getUserData = async (router: Router) => {
+export const getUserData = async () => {
     const response = await api.user();
     if (response && response.response) {
         // @ts-ignore
@@ -37,3 +39,10 @@ export const getUserData = async (router: Router) => {
             }, currentPage);
     }
 };
+
+export const changeAvatar = async (data: FormData) => {
+    const response = await profileApi.avatar(data);
+    if (response.status === 200 && response?.response) {
+        return JSON.parse(response.response).avatar;
+    }
+}
