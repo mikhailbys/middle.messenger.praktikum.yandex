@@ -6,20 +6,22 @@
     "node": "12.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel build src/pages/**/*.html && PORT=3000 parcel src/pages/authorization/index.html",
-    "build": "parcel build src/pages/**/*.html",
+    "start": "parcel build src/index.html && PORT=3000 parcel src/index.html",
+    "build": "parcel build src/index.html",
     "server": "node src/server/server.js",
     "lint": "node_modules/.bin/eslint . ",
     "lint: fix": "node_modules/.bin/eslint . --fix",
-    "stylelint": "npx stylelint \"**/*.scss\""
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "check-types": "tsc",
+    "compile": "babel src -d lib --extensions '.ts,.tsx'",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' ./node_modules/.bin/mocha -r jsdom-global/register"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mikhailbys/middle.messenger.praktikum.yandex.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "mikhailbys",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mikhailbys/middle.messenger.praktikum.yandex/issues"
@@ -27,13 +29,24 @@
   "homepage": "https://github.com/mikhailbys/middle.messenger.praktikum.yandex#readme",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@babel/register": "^7.12.1",
     "@parcel/transformer-pug": "^2.0.0",
-    "parcel": "^2.0.0",
-    "parcel-transformer-pug-precompile": "^1.0.6",
     "@parcel/transformer-sass": "^2.0.0",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
+    "jsdom": "18.1.1",
+    "jsdom-global": "3.0.2",
+    "mocha": "latest",
+    "parcel": "^2.0.0",
+    "parcel-transformer-pug-precompile": "^1.0.6",
     "pug": "^3.0.2",
     "sass": "^1.42.1",
     "stylelint": "^14.0.1",

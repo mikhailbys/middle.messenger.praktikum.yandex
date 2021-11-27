@@ -11,6 +11,7 @@ type Props = {
         placeholder?: string,
         id?: string
     },
+    value?: string
 }
 
 class Input extends Block {
@@ -19,11 +20,8 @@ class Input extends Block {
         super('input', props);
     }
 
-
     render() {
-        const template = templateCompile();
-        console.log('inputTemplate', template);
-        return template;
+        return templateCompile();
     }
 }
 

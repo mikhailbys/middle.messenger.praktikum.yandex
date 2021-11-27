@@ -1,0 +1,22 @@
+div
+    each chat in locals
+        div(class='mess-single-chat-container')
+            div(class='mess-avatar-container')
+                div(class='mess-avatar')
+
+            div(class='mess-message')
+                div(class='mess-messenger-name')=chat.title
+                    if chat.last_message
+                        span(class='mess-messenger-text')=chat.last_message.content
+                    else
+                        span(class='mess-messenger-text')
+                span(class='chat-id-container hide')=chat.id
+                span(class="user-id-container") 142156
+
+            div(class='mess-info')
+                if chat.last_message
+                    span(class='mess-time')=chat.last_message.time
+                    div(class='mess-counter')=chat.last_message.unread_count
+                else
+                    span(class='mess-time')
+                    div(class='mess-counter') 0
