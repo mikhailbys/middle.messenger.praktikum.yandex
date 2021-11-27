@@ -20,8 +20,11 @@
 - `lint: fix`- запуск правки файлов линтером,
 - `stylelint` - запуск стайллинтера
 
-[Проект на netlify](https://epic-archimedes-a4c2f2.netlify.app)
+## Описание
 
-[Pull-request](https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/3)
+Проведена работа над компонентом, появился слой апи, хранилища.
+
+[Проект на netlify](https://61a28d12720c2400086ad249--epic-archimedes-a4c2f2.netlify.app/)
+[Pull-request](https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/4)
 
 
