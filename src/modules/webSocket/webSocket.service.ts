@@ -1,5 +1,6 @@
 import Store from "../store";
 import constants from "../../constants";
+import {handleGetMessage} from "../../pages/messages/messages.service";
 
 const rootUrl = 'wss://ya-praktikum.tech/ws/chats/:userId/:chatId/:token';
 
@@ -24,6 +25,7 @@ class WebSocketService {
     }, 3000);
 
     prepareUrl(userId: number, chatId: number, token: string) {
+        console.log(userId)
         return rootUrl
             .replace(':userId', userId.toString())
             .replace(':chatId', chatId.toString())
@@ -35,6 +37,10 @@ class WebSocketService {
         this.socket.send(JSON.stringify({
             content: 'Моё первое сообщение миру!',
             type: 'message',
+        }));
+        this.socket.send(JSON.stringify({
+            content: '0',
+            type: 'get old'
         }));
     }
 
@@ -51,12 +57,17 @@ class WebSocketService {
 
     onMessage(event) {
         console.log('Получены данные', event.data);
-        // todo
-        const {} = event.data;
-        this.store.update({
-            type: 'value',
-            props: {}
-        }, constants.routes.messages);
+        const { data } = event;
+        const payload = JSON.parse(data);
+        if (payload.type === 'pong') {
+            return;
+        }
+        if (Array.isArray(payload)) {
+            payload.forEach(chunk => {
+                // todo create message
+                handleGetMessage(chunk.message, chunk.user_id, chunk.is_read);
+            })
+        }
     }
 
     onError(event) {

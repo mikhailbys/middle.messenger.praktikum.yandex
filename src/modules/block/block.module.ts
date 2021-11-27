@@ -13,6 +13,7 @@ interface Props {
     value?: string,
     chats?: Chat[],
     childrenToUpdate?: Block;
+    events?: { type: string, handler: (e) => void }[]
 }
 
 const ACCESS_ERROR_MESSAGE = 'Нет доступа';
@@ -31,7 +32,7 @@ class Block {
     eventBus: EventBus;
     children: Record<string, Block>;
 
-    constructor(tagName = 'div', props = {}, children = {}) {
+    constructor(tagName = 'div', props = {}, children = {}, events = []) {
         this.eventBus = new EventBus();
         this._meta = { tagName, props };
         this.props = this._makePropsProxy(props);
@@ -54,18 +55,25 @@ class Block {
 
     _createResources() {
         const { tagName } = this._meta;
-        this._element = this._createDocumentElement(tagName, this.props.attributes);
+        this._element = this._createDocumentElement(tagName, this.props.attributes, this.props.events);
     }
 
-    _createDocumentElement(tagName: string, attributes = {}) {
+    _createDocumentElement(tagName: string, attributes = {}, events) {
         const element = document.createElement(tagName);
         this._setAttributes(element, attributes);
+        this._addEventListeners(element, events);
         return element;
     }
 
     _setAttributes(element: HTMLElement, attributes: Record<string, string> = {}) {
         Object.keys(attributes).forEach((attr: string) => {
             element.setAttribute(attr, attributes[attr]);
+        });
+    }
+
+    _addEventListeners(element: HTMLElement, events?: { type: string, handler: () => void }[]) {
+        events?.forEach(event => {
+            element.addEventListener(event.type, event.handler);
         });
     }
 

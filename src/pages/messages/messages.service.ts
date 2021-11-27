@@ -71,6 +71,9 @@ export const handleChatClick = async (event, store: Store) => {
             });
         }
     });
-
-
 }
+
+// todo
+export const handleGetMessage = (content: string, userId: number, isRead: boolean) => {
+
+};
