@@ -108,6 +108,7 @@ input:focus {
 
 .mess-messenger-text {
   color: variables.$default;
+  margin: 5px;
 }
 
 .mess-message {
@@ -206,7 +207,7 @@ input:focus {
   flex-flow: column-reverse;
 }
 
-.my-message {
+.my-message .my-read-message {
   border: 1px solid;
   min-width: 60px;
   max-width: 280px;
@@ -214,7 +215,22 @@ input:focus {
   padding: 10px;
   text-align: initial;
 
-  background-color: variables.$personal_messsage;
+  background-color: variables.$personal_message;
+  border-color: lighten(variables.$default_dark, 30%);
+
+  margin-top: variables.$spacing_x1;
+  word-break: break-word;
+}
+
+.income-message {
+  border: 1px solid;
+  min-width: 60px;
+  max-width: 280px;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: initial;
+
+  background-color: variables.$income_message;
   border-color: lighten(variables.$default_dark, 30%);
 
   margin-top: variables.$spacing_x1;

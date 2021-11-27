@@ -75,5 +75,15 @@ export const handleChatClick = async (event, store: Store) => {
 
 // todo
 export const handleGetMessage = (content: string, userId: number, isRead: boolean) => {
+    console.log(`${content}, ${userId}, ${isRead}`);
+
+    const messageElement = document.createElement('div');
+    // todo user, css
+    // const isOwn = currentUserId === userId;
+    // messageElement.className = isRead ? 'my-message' : 'income-message';
+    messageElement.className = 'my-message';
+    messageElement.innerText = content;
+    const container = document.querySelector('#current-chat-container');
+    container?.append(messageElement);
 
 };

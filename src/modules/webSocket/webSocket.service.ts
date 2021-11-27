@@ -64,8 +64,7 @@ class WebSocketService {
         }
         if (Array.isArray(payload)) {
             payload.forEach(chunk => {
-                // todo create message
-                handleGetMessage(chunk.message, chunk.user_id, chunk.is_read);
+                handleGetMessage(chunk.content, chunk.user_id, chunk.is_read);
             })
         }
     }
