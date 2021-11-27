@@ -76,12 +76,12 @@ export const handleChatClick = async (event, store: Store) => {
 // todo
 export const handleGetMessage = (content: string, userId: number, isRead: boolean) => {
     console.log(`${content}, ${userId}, ${isRead}`);
-
+    const currentUser = store.pages.find(page => page.pageName === constants.routes.settings)?.props;
     const messageElement = document.createElement('div');
-    // todo user, css
-    // const isOwn = currentUserId === userId;
+    // @ts-ignore
+    const isOwn = currentUser?.props?.id === userId;
     // messageElement.className = isRead ? 'my-message' : 'income-message';
-    messageElement.className = 'my-message';
+    messageElement.className = isOwn ? 'my-message' : 'income-message';
     messageElement.innerText = content;
     const container = document.querySelector('#current-chat-container');
     container?.append(messageElement);

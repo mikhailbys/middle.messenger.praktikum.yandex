@@ -35,7 +35,7 @@ export const getUserData = async () => {
         const userData = applyUserData(data);
         store.update({
             type: 'innerText',
-            props: { ...userData }
+            props: { ...userData, id: data.id }
             }, currentPage);
     }
 };
