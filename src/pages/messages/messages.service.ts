@@ -7,7 +7,6 @@ import {validateMessageInput} from "./messages.helpers";
 
 const api = new ChatsAPI();
 const store = new Store();
-const currentPage = constants.routes.messages;
 
 export const getChats = async () => {
     const response = await api.chats();
@@ -38,20 +37,16 @@ const getToken = async (chatId: string) => {
     return '';
 };
 
-export const openChat = async (chatId: string, userId: string) => {
+export const openChat = async (chatId: string) => {
+    const currentUserId = store.pages.find(page => page.pageName === constants.routes.settings)?.props?.id;
     return getToken(chatId).then((token: string) =>
-        new WebSocketService(Number(userId), Number(chatId), token));
-    /*store.updateNoRender({
-        currentChatId: chatId,
-        token
-    }, constants.routes.messages);*/
+        new WebSocketService(Number(currentUserId), Number(chatId), token));
 };
 
-export const handleChatClick = async (event, store: Store) => {
+export const handleChatClick = async (event) => {
     event.stopImmediatePropagation();
     const chatId = event.path[0].querySelector('.chat-id-container').innerText;
-    const userId = event.path[0].querySelector('.user-id-container').innerText;
-    openChat(chatId, userId).then(wss => {
+    openChat(chatId).then(wss => {
         if (wss) {
             const sendButton = document.querySelector('.mess-send-button');
             const messageInput: HTMLInputElement | null = document.querySelector('.mess-message-input');
@@ -59,7 +54,7 @@ export const handleChatClick = async (event, store: Store) => {
                 if (validateMessageInput(messageInput)) {
                     const message = messageInput?.value ?? '';
                     wss.send(message);
-                    // попробовать заменить на children для шаблона
+                    // todo попробовать заменить на children для шаблона
                     const messageElement = document.createElement('div');
                     messageElement.className = 'my-message';
                     messageElement.innerText = message;
@@ -73,13 +68,12 @@ export const handleChatClick = async (event, store: Store) => {
     });
 }
 
-// todo
 export const handleGetMessage = (content: string, userId: number, isRead: boolean) => {
     console.log(`${content}, ${userId}, ${isRead}`);
-    const currentUser = store.pages.find(page => page.pageName === constants.routes.settings)?.props;
+    const currentUserId = store.pages.find(page => page.pageName === constants.routes.settings)?.props?.id;
     const messageElement = document.createElement('div');
     // @ts-ignore
-    const isOwn = currentUser?.props?.id === userId;
+    const isOwn = currentUserId === userId;
     // messageElement.className = isRead ? 'my-message' : 'income-message';
     messageElement.className = isOwn ? 'my-message' : 'income-message';
     messageElement.innerText = content;

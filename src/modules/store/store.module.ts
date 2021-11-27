@@ -8,7 +8,7 @@ type Props = {
 
 type StorePage = {
     pageName: string,
-    props: {}
+    props: any
     nonRenderInfo?: {[key: string]: string}
 }
 
