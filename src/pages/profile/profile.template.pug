@@ -1,54 +1,53 @@
-div(class='container')
-    div(class='profile_image')
-        img(src='../../../public/svg/image.svg' class='empty-image')
+div(class='pro-container')
+    div(class='pro-profile_image')
+        img(src='../../../public/svg/image.svg' class='pro-empty-image')
     div
-        h3(class='user-name') Михаил
 
-    div(class='row-data')
-        div(class='legend')
-            span Почта
-        div(class='value')
-            span pochta@mail.ru
+    div(class='pro-row-data')
+        div(class='pro-legend')
+            template(data-component="mailLabel")
+        div(class='pro-value')
+            template(data-component="mailValue")
 
-    div(class='row-data')
-        div(class='legend')
-            span Логин
-        div(class='value')
-            span loggin
+    div(class='pro-row-data')
+        div(class='pro-legend')
+            template(data-component="loginLabel")
+        div(class='pro-value')
+            template(data-component="loginValue")
 
-    div(class='row-data')
-        div(class='legend')
-            span Имя
-        div(class='value')
-            span Михаил
+    div(class='pro-row-data')
+        div(class='pro-legend')
+            template(data-component="nameLabel")
+        div(class='pro-value')
+            template(data-component="nameValue")
 
-    div(class='row-data')
-        div(class='legend')
-            span Фамилия
-        div(class='value')
-            span Иванов
+    div(class='pro-row-data')
+        div(class='pro-legend')
+            template(data-component="secondNameLabel")
+        div(class='pro-value')
+            template(data-component="secondNameValue")
 
-    div(class='row-data')
-        div(class='legend')
-            span Имя в чате
-        div(class='value')
-            span Михаил
+    div(class='pro-row-data')
+        div(class='pro-legend')
+            template(data-component="chatNameLabel")
+        div(class='pro-value')
+            template(data-component="chatNameValue")
 
-    div(class='row-data')
-        div(class='legend')
-            span Телефон
-        div(class='value')
-            span 8-999-140-14-14
+    div(class='pro-row-data')
+        div(class='pro-legend')
+            template(data-component="phoneLabel")
+        div(class='pro-value')
+            template(data-component="phoneValue")
 
-    div(class='row-data-action')
-        div(class='row-data')
-            div(class='change-data')
-                a(href='../profile-change/index.html') Изменить данные
+    div(class='pro-row-data-action')
+        div(class='pro-row-data')
+            div(class='pro-change-data')
+                a(href='' class='pro-a' id='pro-a-profile') Изменить данные
 
-        div(class='row-data')
-            div(class='change-password')
-                a(href='../password-change/index.html') Изменить пароль
+        div(class='pro-row-data')
+            div(class='pro-change-password')
+                a(href='' class='pro-a' id='pro-a-password') Изменить пароль
 
-        div(class='row-data')
-            div(class='log-out')
-                a(href='../authorization/index.html' class='log-out') Выйти
+        div(class='pro-row-data')
+            div(class='pro-log-out')
+                a(href='' class='pro-a pro-log-out' id='logout-button') Выйти

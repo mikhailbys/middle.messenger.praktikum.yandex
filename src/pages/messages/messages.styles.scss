@@ -6,25 +6,28 @@ html {
   @include mixins.fonts;
 }
 
-.container {
-  display: flex;
-
-  width: 100%;
+body{
+  margin: 0;
   padding: 0;
-
-  height: 100vh;
 }
 
-.list-container {
+.mess-container {
+  display: flex;
+}
+
+.mess-list-container {
   border-right: 1px solid variables.$secondary;
 
   height: 100vh;
   width: 30%;
 
   background-color: lighten(variables.$default_dark, 30%);
+  min-width: fit-content;
+
+  overflow: auto;
 }
 
-.chat-container {
+.mess-chat-container {
   @include mixins.flex-column;
   text-align: center;
 
@@ -32,13 +35,14 @@ html {
   width: 70%;
 }
 
-.choose-chat {
+.mess-choose-chat-clue {
   position: relative;
-  top: 50%;
+  top: 100px;
   transform: translateY(-50%);
+  font-size: 14px;
 }
 
-.list-header {
+.mess-list-header {
   @include mixins.flex-column;
   align-items: baseline;
 
@@ -46,12 +50,16 @@ html {
   width: 100%;
 
   border-bottom: 0.5px solid variables.$default;
+
+  position: sticky;
+  top: 0;
+  background-color: lighten(variables.$default_dark, 30%);
 }
 
-.search-input {
-  margin: 0 10px;
-  width: 90%;
-  height: 25px;
+.mess-search-input {
+  margin: 10px 10px;
+  width: 85%;
+  height: 15px;
 
   border: 0.5px solid variables.$default;
   border-radius: 5px;
@@ -66,22 +74,24 @@ input:focus {
   outline: none;
 }
 
-.single-chat-container {
+.mess-single-chat-container {
   display: flex;
 
   width: 100%;
-  height: 75px;
 
   border-bottom: 0.5px solid variables.$default;
-
-  margin-right: 5px;
+  cursor: pointer;
 }
 
-.avatar-container {
+.mess-single-chat-container:hover {
+  background-color: lighten(variables.$default_dark, 25%);
+}
+
+.mess-avatar-container {
   padding: 8px 8px;
 }
 
-.avatar{
+.mess-avatar{
   border: 1px solid variables.$secondary;
   background-color: variables.$secondary;
   border-radius: 50%;
@@ -90,30 +100,32 @@ input:focus {
   height: 55px;
 }
 
-.messenger-name {
+.mess-messenger-name {
   margin: 8px 0;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.messenger-text {
+.mess-messenger-text {
   color: variables.$default;
+  margin: 5px;
 }
 
-.message {
+.mess-message {
   @include mixins.flex-column;
-
-  margin-right: 140px;
+  width: inherit;
 }
 
-.info {
+.mess-info {
   @include mixins.flex-column;
 }
 
-.time {
+.mess-time {
   color: variables.$default;
   padding: 8px 5px;
 }
 
-.counter {
+.mess-counter {
   border: 1px solid variables.$primary;
   background-color: variables.$primary;
   color: white;
@@ -122,34 +134,36 @@ input:focus {
 
   text-align: center;
   font-size: variables.$medium;
-
   width: 20px;
   height: 20px;
-
-  margin-left: 20px;
-  margin-top: 3px;
+  margin: 5px 5px;
 }
 
-.profile-container {
+.mess-profile-container {
   display: flex;
-  align-self: flex-end;
+  align-self: normal;
+  justify-content: space-between;
 }
 
-.profile {
+.mess-profile {
   color: variables.$default;
   margin: 10px 5px;
   text-decoration: none;
   font-size: variables.$medium;
 }
 
-.hide {
+.mess-profile:hover {
+  color: darken(variables.$default, 30%);
+}
+
+.mess-hide {
   display: none !important;
 }
 
-.new-message-container {
+.mess-new-message-container {
   display: flex;
   border-top: 1px solid variables.$secondary;
-  padding: variables.$spacing_x2;
+  padding: variables.$spacing_x1;
 
   align-items: center;
 
@@ -158,32 +172,77 @@ input:focus {
   background-color: lighten(variables.$default_dark, 30%);
 }
 
-.message-input {
+.mess-message-input {
   width: 100%;
   height: 5vh;
 
-  padding: variables.$spacing_x2;
+  padding: variables.$spacing_x1;
   font-size: variables.$medium;
 
   border-radius: 15px;
-  border: none;
 
-  margin-right: variables.$spacing_x2;
+  margin-right: variables.$spacing_x1;
+  overflow: auto;
+
+  border: 1px solid variables.$secondary;
 }
 
-.send-button-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 20%;
-  margin-left: 12px;
-}
-
-.send-button {
+.mess-send-button {
   background-color: variables.$primary;
   border: none;
   border-radius: 50px;
   height: 42px;
   width: 50px;
   color: white;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.current-chat-container {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex-flow: column-reverse;
+  overflow: auto;
+}
+
+.my-message .my-read-message {
+  border: 1px solid;
+  min-width: 60px;
+  max-width: 280px;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: initial;
+
+  background-color: variables.$personal_message;
+  border-color: lighten(variables.$default_dark, 30%);
+
+  margin-top: variables.$spacing_x1;
+  word-break: break-word;
+}
+
+.income-message {
+  border: 1px solid;
+  min-width: 60px;
+  max-width: 280px;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: initial;
+
+  background-color: variables.$income_message;
+  border-color: lighten(variables.$default_dark, 30%);
+
+  margin-top: variables.$spacing_x1;
+  word-break: break-word;
+}
+
+// todo
+.send-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  margin-left: 12px;
 }

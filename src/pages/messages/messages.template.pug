@@ -1,23 +1,25 @@
-div(class='container')
-    div(class='list-container')
-        div(class='list-header')
-            div(class='profile-container')
-                a(href='../profile/index.html' class='profile') Профиль >
+div(class='mess-container')
+    div(class='mess-list-container')
+        div(class='mess-list-header')
+            template(data-component="searchInput")
+            div(class='mess-profile-container')
+                a(href='' class='mess-profile' id='create-chat') Создать +
+                a(href='' class='mess-profile' id='profile') Профиль >
 
-        div(class='single-chat-container')
-            div(class='avatar-container')
-                div(class='avatar')
+        template(data-component="chatComponent")
 
-            div(class='message')
-                h4(class='messenger-name') Ирина
+    div(class='mess-chat-container')
+        div(class='mess-choose-chat')
+            template(data-component="chooseChat")
 
-            div(class='info')
-                div(class='counter') 2
+        div(class='current-chat-container' id='current-chat-container')
 
-    div(class='chat-container')
-        div(class='choose-chat')
+        div(class='mess-new-message-container mess-hide')
+            template(data-component="messInput")
+            template(data-component="sendButton")
 
-        div(class='new-message-container hide')
+div(class='create-chat-container')
+    template(data-component="createChatModal")
 
 
 

@@ -1,65 +1,61 @@
-div(class='container')
-    div(class='profile_image')
-        img(src='../../../../public/svg/image.svg' class='empty-image')
+div(class='pro-container')
+    template(data-component="avatar")
 
     div(class='form-container')
         form(id='profile_form')
 
             div(class='form-row-data')
                 div(class='legend')
-                    span Почта
+                    template(data-component="mailLabel")
                 div(class='value')
-                    input(type='email' name='mail' value='pochta@mail.ru' class='field-input')
+                    template(data-component="mailInput")
 
-            span(class='hide' id='mail-empty') Введите почту
+            template(data-component="mailClue")
 
             div(class='form-row-data')
                 div(class='legend')
-                    span Логин
+                    template(data-component="loginLabel")
                 div(class='value')
-                    input(type='text' name='login' value='loggin' class='field-input')
+                    template(data-component="loginInput")
 
-            span(class='hide' id='login-empty') Введите логин
-            span(class='hide' id='login-error') Допустимая длинна логина 3-20 символов, латинские буквы, цифры, без пробелов, без спецсимволов (кроме "-", "_").
+            template(data-component="loginClue")
+            template(data-component="loginError")
 
             div(class='form-row-data')
                 div(class='legend')
-                    span Имя
+                    template(data-component="nameLabel")
                 div(class='value')
-                    input(type='text' name='firstName' value='Михаил' class='field-input')
+                    template(data-component="nameInput")
 
-            span(class='hide' id='first-name-empty') Введите имя
-            span(class='hide' id='first-name-error') Убедитесь в отсутствии пробелов, спецсимволов (кроме "-"), имя должно начинаться с прописной буквы
-
+            template(data-component="nameClue")
+            template(data-component="nameError")
 
             div(class='form-row-data')
                 div(class='legend')
-                    span Фамилия
+                    template(data-component="secondNameLabel")
                 div(class='value')
-                    input(type='text' name='secondName' value='Иванов' class='field-input')
+                    template(data-component="secondNameInput")
 
-            span(class='hide' id='second-name-empty') Введите фамилия
-            span(class='hide' id='second-name-error') Убедитесь в отсутствии пробелов, спецсимволов (кроме "-"), имя должно начинаться с прописной буквы
-
+            template(data-component="secondNameClue")
+            template(data-component="secondNameError")
 
             div(class='form-row-data')
                 div(class='legend')
-                    span Имя в чате
+                    template(data-component="chatNameLabel")
                 div(class='value')
-                    input(type='text' name='displayName' value='Михаил' class='field-input')
+                    template(data-component="chatNameInput")
 
-            span(class='hide' id='display-name-empty') Введите имя в чате
+            template(data-component="chatNameClue")
 
             div(class='form-row-data')
                 div(class='legend')
-                    span Телефон
+                    template(data-component="phoneLabel")
                 div(class='value')
-                    input(type='tel' name='phone' value='8-999-172-54-48' class='field-input')
+                    template(data-component="phoneInput")
 
-            span(class='hide' id='phone-empty') Введите телефон
-
+            template(data-component="phoneClue")
 
             div(class='row-data-action')
-
+                template(data-component="saveButton")
             div(class='center-text')
-                a(href='../profile/index.html') Назад
+                a(href='' id='pro-change-back') Назад

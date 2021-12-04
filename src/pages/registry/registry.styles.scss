@@ -6,17 +6,17 @@ html {
   @include mixins.fonts;
 }
 
-h3 {
+.reg_header {
   text-align: center;
 }
 
-.container {
+.reg-container {
   @include mixins.flex-column-align-center;
 
   margin-top: 10vh;
 }
 
-.form-container {
+.reg-form-container {
   border: 0.5px solid variables.$secondary;
   border-radius: 15px;
 
@@ -26,28 +26,22 @@ h3 {
   min-height: 40vh;
 }
 
-.element-container {
-  @include mixins.flex-column-space-between;
-
-  height: 100%;
-}
-
-label {
+.reg-label {
   font-size: variables.$small;
   color: darkgray;
 }
 
-form {
+.reg-form {
   @include mixins.flex-column;
 
   height: 100%;
 }
 
-input :last-child {
+.reg-input :last-child {
   margin-bottom: variables.$spacing_x3;
 }
 
-input {
+.reg-input {
   display: block;
 
   width: 100%;
@@ -60,7 +54,7 @@ input {
   border-color: variables.$primary;
 }
 
-button {
+.reg-button {
   margin-top: variables.$spacing_x1;
 
   display: block;
@@ -79,35 +73,31 @@ button {
   box-shadow: none;
 }
 
-a {
+.reg-a {
   text-align: center;
   text-decoration: none;
   font-size: variables.$small;
   color: variables.$primary;
 }
 
-.input-group {
-  margin-top: 0;
-}
-
-.input-error {
+.reg-input-error {
   border-color: variables.$error;
 }
 
-.hide {
+.reg-hide {
   display: none;
 }
 
-.show-error {
+.reg-show-error {
   font-size: variables.$small;
   color: variables.$error;
   display: block;
 }
 
-.submit-container {
+.reg-submit-container {
   @include mixins.flex-column
 }
 
-.center-text {
+.reg-a-group {
   text-align: center;
 }

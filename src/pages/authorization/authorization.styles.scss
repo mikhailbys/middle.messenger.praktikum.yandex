@@ -6,17 +6,16 @@ html {
   @include mixins.fonts;
 }
 
-h3 {
+.auth-header {
   text-align: center;
 }
 
-.container {
+.auth-container {
   @include mixins.flex-column-align-center;
-
   margin-top: 20vh;
 }
 
-.form-container {
+.auth-form-container {
   border: 0.5px solid variables.$secondary;
   border-radius: 5%;
 
@@ -25,28 +24,29 @@ h3 {
   min-height: 40vh;
 }
 
-.element-container {
+.auth-element-container {
   @include mixins.flex-column-space-between;
 
   height: 100%;
+  margin: 7px;
 }
 
-label {
+.auth-label {
   font-size: variables.$spacing_x1;
   color: variables.$default_dark;
 }
 
-form {
+.auth-form {
   @include mixins.flex-column;
 
   height: 100%;
 }
 
-input :last-child {
+.auth-input :last-child {
   margin-bottom: variables.$spacing_x3;
 }
 
-input {
+.auth-input {
   display: block;
 
   height: variables.$spacing_x2;
@@ -58,21 +58,21 @@ input {
   border-color: variables.$primary;
 }
 
-.input-error {
+.auth-input-error {
   border-color: variables.$error;
 }
 
-.hide {
+.auth-hide {
   display: none;
 }
 
-.show-error {
+.auth-show-error {
   font-size: variables.$small;
   color: variables.$error;
   display: block;
 }
 
-button {
+.auth-button {
   display: block;
   margin-bottom: variables.$spacing_x1;
 
@@ -87,25 +87,30 @@ button {
   border-radius: 3%;
   border: 0 solid variables.$primary;
   box-shadow: none;
+  cursor: pointer;
 }
 
-a {
+.auth-button:hover {
+  background-color: darken(variables.$primary, 5%);
+}
+
+.auth-a {
   text-align: center;
   text-decoration: none;
   font-size: variables.$small;
   color: variables.$primary;
 }
 
-.button-group {
+.auth-button-group {
   @include mixins.flex-column-center;
 
   margin-top: variables.$spacing_x3;
 }
 
-.input-group {
+.auth-input-group {
   margin-top: 0;
 }
 
-.a-group {
+.auth-a-group {
   @include mixins.flex-column;
 }
