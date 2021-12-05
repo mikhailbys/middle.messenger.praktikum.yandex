@@ -25,8 +25,8 @@
 Проведена работа над компонентом, появился слой апи, хранилища.
 
 
-[Проект на netlify](https://epic-archimedes-a4c2f2.netlify.app/)
+[Проект на heroku](https://bys-mes.herokuapp.com)
 
-[Pull-request](https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/4)
+[Pull-request](https://github.com/mikhailbys/middle.messenger.praktikum.yandex/pull/5)
 
 
