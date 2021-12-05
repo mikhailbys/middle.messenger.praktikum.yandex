@@ -4,7 +4,7 @@ import {getUserData, logOut} from "./profile.service";
 import {setAccess} from "../../utils/access";
 
 export const prepareSettingsPage = (router: Router) => {
-    getUserData(router);
+    getUserData();
 
     const passwordButton = document.querySelector('#pro-a-password');
     passwordButton?.addEventListener('click', async (e) => {

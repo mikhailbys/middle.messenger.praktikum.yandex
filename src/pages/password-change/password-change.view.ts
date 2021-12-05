@@ -1,8 +1,8 @@
-// @ts-ignore
-import templateCompile from './password-change.template.pug';
 import Block from "../../modules/block";
 import './password-change.styles.scss';
 import {initializeInnerComponents} from "./password-change.components";
+
+const compile = require('./password-change.template.pug');
 
 interface Props {
     templateBase: boolean
@@ -17,7 +17,7 @@ class Page extends Block {
     }
 
     render() {
-        return templateCompile();
+        return compile();
     }
 }
 

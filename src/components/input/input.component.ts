@@ -1,6 +1,6 @@
 import Block from '../../modules/block';
-// @ts-ignore
-import templateCompile from './input.template.pug';
+
+const compile = require('./input.template.pug');
 
 type Props = {
     attributes: {
@@ -21,7 +21,7 @@ class Input extends Block {
     }
 
     render() {
-        return templateCompile();
+        return compile();
     }
 }
 

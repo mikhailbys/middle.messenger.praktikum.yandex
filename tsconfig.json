@@ -6,7 +6,6 @@
     "module": "commonjs",
     "strictNullChecks": true,
     "sourceMap": true,
-    "noEmit": true,
     "skipLibCheck": true
   },
   "include": [

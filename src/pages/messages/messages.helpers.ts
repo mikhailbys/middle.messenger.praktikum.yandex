@@ -33,7 +33,7 @@ export const prepareMessagesPage = async (router: Router) => {
             while (chatContainer?.lastElementChild) {
                 chatContainer.removeChild(chatContainer.lastElementChild);
             }
-            handleChatClick(e, store);
+            handleChatClick(e);
         })
     });
 

@@ -1,6 +1,6 @@
 import Block from '../../modules/block';
-// @ts-ignore
-import templateCompile from './div.template.pug';
+
+const compile = require('./div.template.pug');
 
 type Props = {
     label?: string,
@@ -18,7 +18,7 @@ class Label extends Block {
     }
 
     render() {
-        return templateCompile({ innerText: this.props.innerText });
+        return compile({ innerText: this.props.innerText });
     }
 }
 

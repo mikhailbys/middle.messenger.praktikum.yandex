@@ -1,8 +1,8 @@
 import Block from '../../modules/block';
 import './profile.styles.scss';
-// @ts-ignore
-import templateCompile from './profile.template.pug';
 import {initializeInnerComponents} from "./profile.components";
+
+const compile = require('./profile.template.pug');
 
 class Page extends Block {
     constructor(
@@ -13,7 +13,7 @@ class Page extends Block {
     }
 
     render() {
-        return templateCompile();
+        return compile();
     }
 }
 
