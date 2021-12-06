@@ -6,9 +6,10 @@
     "node": "12.x"
   },
   "scripts": {
-    "start": "webpack && webpack serve",
+    "start": "npm run build && npm run start:express",
     "build": "webpack --config webpack.config.js",
-    "server": "node server.js",
+    "dev": "webpack serve --open",
+    "start:express": "node server.js",
     "lint": "node_modules/.bin/eslint . ",
     "lint: fix": "node_modules/.bin/eslint . --fix",
     "stylelint": "npx stylelint \"**/*.scss\"",
