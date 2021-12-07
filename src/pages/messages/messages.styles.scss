@@ -19,10 +19,11 @@ body{
   border-right: 1px solid variables.$secondary;
 
   height: 100vh;
-  width: 30%;
+  min-width: 300px;
+  max-width: 600px;
+  width: auto;
 
   background-color: lighten(variables.$default_dark, 30%);
-  min-width: fit-content;
 
   overflow: auto;
 }
@@ -208,7 +209,7 @@ input:focus {
   overflow: auto;
 }
 
-.my-message .my-read-message {
+.my-message {
   border: 1px solid;
   min-width: 60px;
   max-width: 280px;

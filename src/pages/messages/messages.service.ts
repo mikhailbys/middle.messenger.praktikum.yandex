@@ -38,14 +38,20 @@ const getToken = async (chatId: string) => {
 };
 
 export const openChat = async (chatId: string) => {
-    const currentUserId = store.pages.find(page => page.pageName === constants.routes.settings)?.props?.id;
-    return getToken(chatId).then((token: string) =>
-        new WebSocketService(Number(currentUserId), Number(chatId), token));
+    const currentUserId = store.pages.find(page =>
+        page.pageName === constants.routes.profileSettings)?.nonRenderInfo?.userId;
+    if (currentUserId && !isNaN(Number(currentUserId))) {
+        return getToken(chatId).then((token: string) =>
+            new WebSocketService(Number(currentUserId), Number(chatId), token));
+    }
 };
 
 export const handleChatClick = async (event) => {
     event.stopImmediatePropagation();
-    const chatId = event.path[0].querySelector('.chat-id-container').innerText;
+
+    const children = event.path.find(p => p.className === 'mess-message').childNodes;
+    // @ts-ignore
+    const chatId = Array.from(children)?.find(ch => ch?.className?.includes('chat-id-container'))?.innerText;
     openChat(chatId).then(wss => {
         if (wss) {
             const sendButton = document.querySelector('.mess-send-button');

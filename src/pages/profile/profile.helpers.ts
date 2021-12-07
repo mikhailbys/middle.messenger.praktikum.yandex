@@ -3,8 +3,8 @@ import constants from "../../constants";
 import {getUserData, logOut} from "./profile.service";
 import {setAccess} from "../../utils/access";
 
-export const prepareSettingsPage = (router: Router) => {
-    getUserData();
+export const prepareSettingsPage = async (router: Router) => {
+    await getUserData();
 
     const passwordButton = document.querySelector('#pro-a-password');
     passwordButton?.addEventListener('click', async (e) => {

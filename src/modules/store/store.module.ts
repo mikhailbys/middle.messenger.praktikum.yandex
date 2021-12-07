@@ -26,6 +26,7 @@ class Store {
     routes: Route[];
 
     constructor() {
+        debugger
         if (Store.__instance) {
             return Store.__instance;
         }

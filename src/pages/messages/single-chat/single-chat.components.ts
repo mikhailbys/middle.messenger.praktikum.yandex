@@ -39,7 +39,7 @@ const initializeWithProps = (chat: Chat) => {
         { attributes: { class: 'chat-id-container'}, innerText: chat.id?.toString() });
     // todo убрать тестовый id
     const userId = new Span(
-        { attributes: { class: 'user-id-container'}, innerText: '143276'});
+        { attributes: { class: 'user-id-container'}, innerText: ''});
 
     const lastText = new Span(
         { attributes: { class: 'mess-messenger-text'}, innerText: chat.last_message?.content ?? ''});
