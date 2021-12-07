@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run build && npm run start:express",
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack serve --open",
+    "dev": "npm run build && webpack serve",
     "start:express": "node server.js",
     "lint": "node_modules/.bin/eslint . ",
     "lint: fix": "node_modules/.bin/eslint . --fix",
