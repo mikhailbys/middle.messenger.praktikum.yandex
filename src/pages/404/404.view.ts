@@ -1,7 +1,7 @@
 import Block from '../../modules/block';
 import './404.styles.scss';
-// @ts-ignore
-import templateCompile from './404.template.pug';
+
+const compile = require('./404.template.pug');
 
 interface Props {
     templateBase: boolean
@@ -13,7 +13,7 @@ class Page extends Block {
     }
 
     render() {
-        return templateCompile();
+        return compile();
     }
 }
 

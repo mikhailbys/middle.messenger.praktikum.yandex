@@ -1,7 +1,7 @@
-// @ts-ignore
-import templateCompile from './single-chats.template.pug';
 import Block from "../../../modules/block";
 import {Chat} from "../../../models/chat";
+
+const compile =  require('./single-chats.template.pug');
 
 type Props = {
     attributes: {
@@ -22,7 +22,7 @@ class SingleChats extends Block {
     }
 
     render() {
-        return templateCompile(this.props.chats);
+        return compile(this.props.chats);
     }
 }
 

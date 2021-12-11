@@ -1,9 +1,9 @@
 import '../messages.styles.scss';
-// @ts-ignore
-import templateCompile from './single-chat.template.pug';
 import {initializeInnerComponents} from "./single-chat.components";
 import Block from "../../../modules/block";
 import {Chat} from "../../../models/chat";
+
+const compile = require('./single-chat.template.pug');
 
 
 class ChatElement extends Block {
@@ -19,7 +19,7 @@ class ChatElement extends Block {
     }
 
     render() {
-        return templateCompile();
+        return compile();
     }
 }
 

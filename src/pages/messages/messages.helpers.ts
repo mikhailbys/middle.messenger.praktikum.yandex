@@ -6,10 +6,12 @@ import Store from "../../modules/store";
 import {Chat} from "../../models/chat";
 import ChatElement from "./single-chat/single-chat.view";
 import SingleChats from "./single-chats/single-chats.view";
+import {getUserData} from "../profile/profile.service";
 
 export const prepareMessagesPage = async (router: Router) => {
     const store = new Store();
     const chatsData = await getChats();
+
 
     if (chatsData !== []) {
         const chatComponent = createChatComponent(chatsData);
@@ -28,12 +30,13 @@ export const prepareMessagesPage = async (router: Router) => {
 
     chats.forEach(chat => {
         chat.addEventListener('click', (e) => {
-            messageContainer?.classList.remove('mess-hide');
             clue?.classList.add('mess-hide');
+
+            messageContainer?.classList.remove('mess-hide');
             while (chatContainer?.lastElementChild) {
                 chatContainer.removeChild(chatContainer.lastElementChild);
             }
-            handleChatClick(e, store);
+            handleChatClick(e);
         })
     });
 

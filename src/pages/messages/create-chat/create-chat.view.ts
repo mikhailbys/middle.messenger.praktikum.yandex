@@ -1,7 +1,7 @@
 import Block from "../../../modules/block";
-// @ts-ignore
-import templateCompile from "./create-chat.template.pug";
 import './create-chat.styles.scss';
+
+const compile = require('./create-chat.template.pug');
 
 class Modal extends Block {
     constructor(
@@ -11,7 +11,7 @@ class Modal extends Block {
     }
 
     render() {
-        return templateCompile();
+        return compile();
     }
 }
 

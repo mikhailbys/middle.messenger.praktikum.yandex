@@ -11,6 +11,17 @@ const store = new Store();
 const currentPage = constants.routes.main;
 const messagePage = constants.routes.messages;
 
+const setUserId = async () => {
+    const response = await api.user();
+    if (response && response.response) {
+        // @ts-ignore
+        const data = JSON.parse(response.response);
+        store.updateNoRender({
+            userId: data.id
+        }, constants.routes.profileSettings);
+    }
+};
+
 export const signIn = async (data: SignIn, router: Router) => {
     const response = await api.signIn(data);
     processResponseStatus(response.status, router);
@@ -22,6 +33,8 @@ export const signIn = async (data: SignIn, router: Router) => {
     }
     if (response?.status === 200) {
         setAccess(true);
+        await setUserId();
+        debugger
         router.go(messagePage);
     }
 }
